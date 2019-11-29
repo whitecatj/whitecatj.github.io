@@ -5,13 +5,17 @@
   
 
   
-  <title>white_catj&#39;s Blog</title>
+  <title>P4302 【[SCOI2003]字符串折叠】 | white_catj&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="white_catj&#39;s Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;index.html">
+  <meta name="description" content="前置知识：区间DP如果你不知道区间DP是个啥，可以去我的这篇题解康康 大概讲了区间DP的原理（dalao请跳过） ——————可爱(≧▽≦)的分割线qwq—————— 这篇题解有部分思路借鉴skiy_gyx，感谢dalao的题解（就是他讲的有点少所以才发的这篇） 这题难度严重虚高，跟石子合并也差不了多少 chen_zhe:这是个p的省选题，顶多普及-好了，看看题目，枚举贪心搜索好像都不大可行 于是">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P4302 【[SCOI2003]字符串折叠】">
+<meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;2019&#x2F;11&#x2F;29&#x2F;P4302%20%E3%80%90[SCOI2003]%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0%E3%80%91&#x2F;index.html">
 <meta property="og:site_name" content="white_catj&#39;s Blog">
+<meta property="og:description" content="前置知识：区间DP如果你不知道区间DP是个啥，可以去我的这篇题解康康 大概讲了区间DP的原理（dalao请跳过） ——————可爱(≧▽≦)的分割线qwq—————— 这篇题解有部分思路借鉴skiy_gyx，感谢dalao的题解（就是他讲的有点少所以才发的这篇） 这题难度严重虚高，跟石子合并也差不了多少 chen_zhe:这是个p的省选题，顶多普及-好了，看看题目，枚举贪心搜索好像都不大可行 于是">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-29T04:53:12.108Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-P4302 【[SCOI2003]字符串折叠】" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-P4302 【[SCOI2003]字符串折叠】" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/29/P4302%20%E3%80%90%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0%E3%80%91/" class="article-date">
   <time datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/P4302%20%E3%80%90%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0%E3%80%91/">P4302 【[SCOI2003]字符串折叠】</a>
+    <h1 class="article-title" itemprop="name">
+      P4302 【[SCOI2003]字符串折叠】
     </h1>
   
 
@@ -129,56 +131,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/28/hello-world/" class="article-date">
-  <time datetime="2019-11-28T11:21:13.867Z" itemprop="datePublished">2019-11-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/28/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2019/11/28/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/28/hello-world/" data-id="ck3jo8s2u0001q4uxfz5cgvg7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
