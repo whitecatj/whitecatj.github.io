@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="white_catj&#39;s Blog">
 <meta property="og:description" content="区间DP">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-29T12:24:25.333Z">
+<meta property="og:updated_time" content="2019-11-29T12:26:30.572Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -95,13 +95,13 @@
 <h3 id="chen-zhe-这是个p的省选题，顶多普及"><a href="#chen-zhe-这是个p的省选题，顶多普及" class="headerlink" title="chen_zhe:这是个p的省选题，顶多普及-"></a><del>chen_zhe:这是个p的省选题，顶多普及-</del></h3><p>好了，看看题目，枚举贪心搜索好像都不大可行</p>
 <p>于是我们就用区间DP</p>
 <p>那么，怎么表示状态呢？</p>
-<p>我们用<script type="math/tex">f[i][j]</script>表示字符串里i到j的折叠长度的最小值</p>
+<p>我们用$f[i][j]$表示字符串里i到j的折叠长度的最小值</p>
 <p>直接套模板就可以得到</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">for(int l&#x3D;1;l&lt;&#x3D;n;l++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    for(int i&#x3D;1,j&#x3D;i+l-1;j&lt;&#x3D;n;i++,j++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        for(int k&#x3D;i;k&lt;j;k++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            f[i][j]&#x3D;min(f[i][j],f[i][k]+f[k+1][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<p>记得初始化时把所有的<script type="math/tex">f[i][i]</script>都初始化成1</p>
+<p>记得初始化时把所有的$f[i][i]$都初始化成1</p>
 <p>这里就不解释了</p>
 <p>当然不会这么简单</p>
-<p>对于每一个<script type="math/tex">i</script>到<script type="math/tex">j</script>的串，除了</p>
+<p>对于每一个$i$到$j$的串，除了</p>
 <ul>
 <li>分成两段的和，即上面的代码</li>
 <li>还有自己单独构成一个循环的串</li>
@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/P4302%20%E3%80%90[SCOI2003]%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0%E3%80%91/" data-id="ck3k4dh2l0000qwuxfm3wcxe6" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/P4302%20%E3%80%90[SCOI2003]%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0%E3%80%91/" data-id="ck3k4fks3000008ux3d5ybolw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
