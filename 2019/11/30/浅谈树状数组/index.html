@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>浅谈树状数组 | white_catj&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="$Description1$已知一个数列，你需要进行下面两种操作： 将某一个数加上$x$ 求出某区间每一个数的和 $Description2$已知一个数列，你需要进行下面两种操作： 1.将某区间每一个数数加上$x$ 2.求出某一个数的值 $Solution$引入树状数组是什么？ 树状数组是一个查询和修改复杂度都为log(n)的数据结构。主要用于查询任意两位之间的所有元素之和，但是每次只能修改一个元">
+<meta name="keywords" content="其它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈树状数组">
+<meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;2019&#x2F;11&#x2F;30&#x2F;%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84&#x2F;index.html">
+<meta property="og:site_name" content="white_catj&#39;s Blog">
+<meta property="og:description" content="$Description1$已知一个数列，你需要进行下面两种操作： 将某一个数加上$x$ 求出某区间每一个数的和 $Description2$已知一个数列，你需要进行下面两种操作： 1.将某区间每一个数数加上$x$ 2.求出某一个数的值 $Solution$引入树状数组是什么？ 树状数组是一个查询和修改复杂度都为log(n)的数据结构。主要用于查询任意两位之间的所有元素之和，但是每次只能修改一个元">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;images.cnblogs.com&#x2F;cnblogs_com&#x2F;wxl-Ezio&#x2F;1173002&#x2F;o_QQ%e6%88%aa%e5%9b%be20180412203826.png">
+<meta property="og:updated_time" content="2019-11-30T10:49:40.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;images.cnblogs.com&#x2F;cnblogs_com&#x2F;wxl-Ezio&#x2F;1173002&#x2F;o_QQ%e6%88%aa%e5%9b%be20180412203826.png">
+  
+    <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">white_catj&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://whitecatj.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-浅谈树状数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/30/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" class="article-date">
+  <time datetime="2019-11-29T16:00:00.000Z" itemprop="datePublished">2019-11-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      浅谈树状数组
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Description1"><a href="#Description1" class="headerlink" title="$Description1$"></a>$Description1$</h2><p>已知一个数列，你需要进行下面两种操作：</p>
+<p>将某一个数加上$x$</p>
+<p>求出某区间每一个数的和</p>
+<h2 id="Description2"><a href="#Description2" class="headerlink" title="$Description2$"></a>$Description2$</h2><p>已知一个数列，你需要进行下面两种操作：</p>
+<p>1.将某区间每一个数数加上$x$</p>
+<p>2.求出某一个数的值</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p><strong>树状数组是什么？</strong></p>
+<p>树状数组是一个查询和修改复杂度都为log(n)的数据结构。主要用于查询任意两位之间的所有元素之和，但是每次只能修改一个元素的值;经过简单修改可以在log(n)的复杂度下进行范围修改，但是这时只能查询其中一个元素的值(如果加入多个辅助数组则可以实现区间修改与区间查询)。（by 百度百科）</p>
+<p>简单点说，就是一个可以很快区间修改，单点修改，区间查询，单点查询的数据结构</p>
+<p>题外话：其实线段树也可以做到这一点，并且比树状数组可实现的东西多得多，但是因为树状数组简单好写，且效率还要高些，所以在这题我们写树状数组</p>
+<h3 id="怎么做？"><a href="#怎么做？" class="headerlink" title="怎么做？"></a>怎么做？</h3><p>遥想我当年一道黄题没做过就点开了这题，欸？这么简单？难道人生第一道黄题就是这道了吗？然后我就交了一个这样的程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">for(int j&#x3D;l;j&lt;&#x3D;r;j++) a[j]+&#x3D;k;</span></pre></td></tr></table></figure><br>欸，怎么不对？点开题解两分钟后，我默默地关掉了页面…</p>
+<p>扯远了，讲正经的,其实树状数组跟树的关系并不太大，当n=8时，它是下面这个样子的：<br>(A是输入的数组，C是我们的树状数组）<br><img src="http://images.cnblogs.com/cnblogs_com/wxl-Ezio/1173002/o_QQ%e6%88%aa%e5%9b%be20180412203826.png" alt=""><br>其中</p>
+<p>$C[1]=A[1]$</p>
+<p>$C[2]=A[1]+A[2]$</p>
+<p>$C[3]=A[3]$</p>
+<p>$C[4]=A[1]+A[2]+A[3]+A[4]$</p>
+<p>$C[5]=A[5]$</p>
+<p>$C[6]=A[5]+A[6]$</p>
+<p>$C[7]=A[7]$</p>
+<p>$C[8]=A[1]+A[2]+A[3]+A[4]+A[5]+A[6]+A[7]+A[8]$</p>
+<p>以此类推</p>
+<p>那么这颗树有什么用呢？</p>
+<p>假设我们要给$A[1]$加上1，哪些数值会被改变？</p>
+<p>$C[1],C[2],C[4],C[8],C[16]…$</p>
+<p>$A[2]$呢？</p>
+<p>$C[2],C[4],C[8],C[16]$</p>
+<p>$A[3]$</p>
+<p>$C[3],C[4],C[8],C[16]$</p>
+<p>$A[5]$</p>
+<p>$C[5],C[6],C[8],C[16]$</p>
+<p>我相信你看出规律了，对吧（逃</p>
+<p>好吧你只要知道，如果给$A[I]+K$，设$I$二进制最后一位$1$所在的位置是$q$,那么$C[I]$和$C[I+q]$都会$+K$就行了（$I$和$q$不断更新）</p>
+<p>比如说$A[5]$</p>
+<p>$5$用二进制是$101$,所以$C[5]+=k$的值会使$C[101+1]$即$C[6]+=k$</p>
+<p>而$C[6]+=k$时,因为$6=110$同时又会使$C[110+10]$即$C[8]+=k$</p>
+<p>然后$C[8]+=k$又会使$C[16]+=k$</p>
+<p>以此类推,直到要超过$n$</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>首先，<strong>单点修改</strong>怎么做？</p>
+<p>介绍一个东西叫$lowbit$，这个东西是用来求出一个数转化为二进制后，最后一个1所在的位置</p>
+<p>别想了，不是系统自带的函数，要自己写的</p>
+<p>它的写法是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">int lowbit(int k)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	return k&amp;-k;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>神奇吗？为什么呢？首先，&amp;符号是与，-k因为补码的原因，从右向左遇到第一个1为止，这个1前面的位取反，首位不动</p>
+<p>那么再利用与运算只取两个1的特性，我们就返回了<br>$2^p$(其中$p: k$ 的二进制表示数中， 右向左数第一个1的位置)</p>
+<p>好了，那么怎么add呢？刚刚已经讲过了，如果给$A[I]+K$，设$I$二进制最后一位$1$所在的位置是$q$,那么$C[I]$和$C[I+q]$都会$+K$</p>
+<p>代码就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">void add(int x,int q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	while(x&lt;&#x3D;n)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">		a[x]+&#x3D;q;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		x+&#x3D;lowbit(x);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure><br>很简单，不是吗</p>
+<p>那么第二个，<strong>区间查询</strong>呢？</p>
+<p>我们用前缀和的思想，$x$到$y$的和，那么就将从$1$到$y$的和减去从$1$到$x-1$的和。</p>
+<p>$1$到$x$的和求法是，将$x$转为$2$进制，然后一直减去$lowbit(x)$，直到$0$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">int sum(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	ans&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	while(x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		ans+&#x3D;a[x];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">		x-&#x3D;lowbit(x);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	return ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>好了，那么我们已经可以ACP3374了，但我们还要ACP3368</p>
+<p>那么就要讲到差分</p>
+<p>差分是什么？设数组$a=${$1,2,3,6,4$}，那么差分数组$b=${$1,1,1,3,-2$}，$b[i]=a[i]-a[i-1]$,那么很显然，求$a[i]$就是$b[1]+b[2]+…+b[i]$</p>
+<p>假设我们位区间{2，4}都+3，那么数组$a$变为{$1,5,6,9,4$},$b$变为{$1,4,1,3,-5$}</p>
+<p>看，只有$b[2]$和$b[5]$变了，这是因为2到4都加了2，那么差并不会变</p>
+<p>所以怎样给区间加和呢？我们先把树状数组变为差分数组，然后再加时直接加b[x-1]和b[y]，这题就解决了</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">int n,m,a[500005],ans,w,xx,yy,zz; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">int lowbit(int k)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	return k&amp;-k;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">void add(int x,int q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	while(x&lt;&#x3D;n)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		a[x]+&#x3D;q;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">		x+&#x3D;lowbit(x);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">int sum(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	ans&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	while(x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">		ans+&#x3D;a[x];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">		x-&#x3D;lowbit(x);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	return ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">		cin&gt;&gt;w;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">		add(i,w);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;m;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">		cin&gt;&gt;xx&gt;&gt;yy&gt;&gt;zz;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">		if(xx&#x3D;&#x3D;1) add(yy,zz);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">		else cout&lt;&lt;sum(zz)-sum(yy-1)&lt;&lt;endl;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">int n,m,a[500005],ans,w,xx,yy,zz,kk,lst; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">int lowbit(int k)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	return k&amp;-k;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">void add(int x,int q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	while(x&lt;&#x3D;n)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		a[x]+&#x3D;q;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">		x+&#x3D;lowbit(x);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">int cx(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	ans&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	while(x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">		ans+&#x3D;a[x];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">		x-&#x3D;lowbit(x);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	return ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">		cin&gt;&gt;w;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">		add(i,w-lst);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">		lst&#x3D;w;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;m;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">		cin&gt;&gt;xx;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">		if(xx&#x3D;&#x3D;1)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">			cin&gt;&gt;yy&gt;&gt;zz&gt;&gt;kk;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">			add(yy,kk);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">			add(zz+1,-kk);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">		&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">		else&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">			cin&gt;&gt;yy;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">			cout&lt;&lt;cx(yy)&lt;&lt;endl;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">		&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://whitecatj.github.io/2019/11/30/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" data-id="ck3lgfir2000ddwux4ym7ard9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/30/white_catj's%20code%20style/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          white_catj&#39;s code style
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">陈年旧事</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%80%E4%BB%8B/" rel="tag">简介</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%85%B6%E5%AE%83/" style="font-size: 15px;">其它</a> <a href="/tags/%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">简介</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/30/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">浅谈树状数组</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 whitecatj<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

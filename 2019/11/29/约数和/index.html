@@ -7,15 +7,15 @@
   
   <title>约数和 | white_catj&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="下次上传">
+  <meta name="description" content="$Description$对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&amp;lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值 $Solution$这题难度有点虚高，先看题目 计算$f(x)+f(x+1)+f(x+2)+…+f(y)$ 很容易联想到用前缀和的方式快速求出那么怎么算出前缀和呢很简单 考虑一下">
 <meta name="keywords" content="题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="约数和">
 <meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;2019&#x2F;11&#x2F;29&#x2F;%E7%BA%A6%E6%95%B0%E5%92%8C&#x2F;index.html">
 <meta property="og:site_name" content="white_catj&#39;s Blog">
-<meta property="og:description" content="下次上传">
+<meta property="og:description" content="$Description$对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&amp;lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值 $Solution$这题难度有点虚高，先看题目 计算$f(x)+f(x+1)+f(x+2)+…+f(y)$ 很容易联想到用前缀和的方式快速求出那么怎么算出前缀和呢很简单 考虑一下">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-29T13:58:18.205Z">
+<meta property="og:updated_time" content="2019-11-30T10:49:54.365Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -85,12 +85,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>下次上传</p>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)=1+2+3+6=12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>这题难度有点虚高，先看题目</p>
+<p>计算$f(x)+f(x+1)+f(x+2)+…+f(y)$</p>
+<h3 id="很容易联想到用前缀和的方式快速求出"><a href="#很容易联想到用前缀和的方式快速求出" class="headerlink" title="很容易联想到用前缀和的方式快速求出"></a>很容易联想到用前缀和的方式快速求出</h3><p>那么怎么算出前缀和呢<del>很简单</del></p>
+<p>考虑一下，在1到x的所有数字里</p>
+<p>是1的倍数的有$x/1$个,它们的和是$x/1*1$</p>
+<p>是2的倍数的有$x/2$个,它们的和是$x/2*2$</p>
+<p>是3的倍数的有$x/3$个,它们的和是$x/3*3$</p>
+<p>……</p>
+<p>而我们要求的是所有数的约数和</p>
+<p>很明显,只要把所有上述数字累加起来即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#define ll long long</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">ll x,y,ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">ll wk(ll q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	ans&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	for(ll i&#x3D;1;i&lt;&#x3D;q;i++) ans+&#x3D;q&#x2F;i*i;&#x2F;&#x2F;q&#x2F;i代表有几个i的倍数,再*i代表它们的和.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	return ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;x&gt;&gt;y;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;wk(y)-wk(x-1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>高高兴兴地交上去</p>
+<p>T掉4个点</p>
+<p>怎么办呢?</p>
+<p>想着简化wk里面的循环 </p>
+<p>我们再看看一个数约数的规律</p>
+<p>以16为例,$q/i$分别是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">16 8 5 4 3 2 2 2 1 1 1 1 1 1 1 1</span></pre></td></tr></table></figure></p>
+<p>这么明显的重复计算怎么能不优化一下呢</p>
+<p>我们假设当前序列（即几个一样的数）的左端点的下标是$l$,右端点的下标是$r$</p>
+<p>下一个$l$当然是$r+1$了</p>
+<p>那$r$呢?<del>由上可知易得，合情推理显然，读者自证不难</del></p>
+<p>$r=q/(q/l)$</p>
+<p>$q/l$就是当前的约数啦,$q/(q/l)$也就很好理解了</p>
+<p>现在就可以熟练地应用等差数列求和公式了</p>
+<p>本来是$ans+=q/i*i$</p>
+<p>现在把$q/i$合并了，$*i$就变成了一个等差数列</p>
+<p>ans+=约数*约数的个数</p>
+<p>约数=$q/l$</p>
+<p>约数的个数=(首项+末项)<em>项数/2=$(l+r)</em>(r-l+1)/2$</p>
+<p>愉快地解决了</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#define ll long long</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">ll x,y,ans,r,s;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">ll wk(ll q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	ans&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	for(ll l&#x3D;1;l&lt;&#x3D;q;l&#x3D;r+1)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">		s&#x3D;q&#x2F;l;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		r&#x3D;q&#x2F;s;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">		ans+&#x3D;s*(l+r)*(r-l+1)&#x2F;2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	return ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;x&gt;&gt;y;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;wk(y)-wk(x-1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;&#x2F;&#x2F;讲的很细不注释了</span></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/" data-id="ck3l39ja3000f94ux46hd1wry" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/" data-id="ck3lgfir3000fdwux4bm263rp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -163,19 +194,19 @@
           </li>
         
           <li>
-            <a href="/2019/11/29/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
+            <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">浅谈树状数组</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
           </li>
         
           <li>
             <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/">SCOI2003 字符串折叠</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/white_catj's%20code%20style/">white_catj&#39;s code style</a>
           </li>
         
       </ul>
@@ -217,5 +248,21 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

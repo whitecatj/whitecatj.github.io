@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="white_catj&#39;s Blog">
 <meta property="og:description" content="$Description$折叠的定义如下： 1.一个字符串可以看成它自身的折叠。记作S &#x3D; S2.X(S)是X(X&amp;gt;1)个S连接在一起的串的折叠。记作X(S) &#x3D; SSSS…S(X个S)。3.如果A &#x3D; A’, B &#x3D; B’，则AB &#x3D; A’B’ 例如，因为3(A) &#x3D; AAA, 2(B) &#x3D; BB，所以3(A)C2(B) &#x3D; AAACBB，而2(3(A)C)2(B) &#x3D; AAACAAACB">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-29T14:01:18.505Z">
+<meta property="og:updated_time" content="2019-11-30T10:49:48.467Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -123,11 +123,11 @@
 <p>另外两个都很好搞，这个循环节的长度的位数还要另作处理</p>
 <p>不妨定义一个数组sz，存下每个数字的长度，即：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">for(int i&#x3D;1;i&lt;&#x3D;100;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    if(i&lt;&#x3D;9) sz[i]&#x3D;1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    else if(i&gt;&#x3D;10&amp;&amp;i&lt;&#x3D;99) sz[i]&#x3D;2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    else sz[i]&#x3D;3;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">至此，我们就可以直接上代码了</span></pre></td></tr></table></figure>
-<h2 id="CODE"><a href="#CODE" class="headerlink" title="$CODE$"></a>$CODE$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">string s;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">int sz[105],f[105][105];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">bool check(int l,int r,int len)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    for(int i&#x3D;l;i&lt;&#x3D;l+len-1;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        for(int j&#x3D;i;j&lt;&#x3D;r;j+&#x3D;len)&#123; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            if(s[j]!&#x3D;s[i]) return false;        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    return true;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;s;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	int n&#x3D;s.length();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	memset(f,0x3f,sizeof(f));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;0;i&lt;n;i++) f[i][i]&#x3D;1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;100;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	    if(i&lt;&#x3D;9) sz[i]&#x3D;1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">	    else if(i&gt;&#x3D;10&amp;&amp;i&lt;&#x3D;99) sz[i]&#x3D;2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">	    else sz[i]&#x3D;3;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">	for(int l&#x3D;1;l&lt;&#x3D;n;l++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">	    for(int i&#x3D;0,j&#x3D;i+l-1;j&lt;n;i++,j++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">	        for(int k&#x3D;i;k&lt;j;k++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">	            f[i][j]&#x3D;min(f[i][j],f[i][k]+f[k+1][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">	            int len&#x3D;k-i+1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">	            if(l%len) continue;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">	            if(check(i,j,len)) f[i][j]&#x3D;min(f[i][j],sz[l&#x2F;len]+f[i][k]+2);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">	        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">	    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;f[0][n-1];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">string s;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">int sz[105],f[105][105];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">bool check(int l,int r,int len)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    for(int i&#x3D;l;i&lt;&#x3D;l+len-1;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        for(int j&#x3D;i;j&lt;&#x3D;r;j+&#x3D;len)&#123; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            if(s[j]!&#x3D;s[i]) return false;        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    return true;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;s;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	int n&#x3D;s.length();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	memset(f,0x3f,sizeof(f));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;0;i&lt;n;i++) f[i][i]&#x3D;1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;100;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	    if(i&lt;&#x3D;9) sz[i]&#x3D;1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">	    else if(i&gt;&#x3D;10&amp;&amp;i&lt;&#x3D;99) sz[i]&#x3D;2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">	    else sz[i]&#x3D;3;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">	for(int l&#x3D;1;l&lt;&#x3D;n;l++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">	    for(int i&#x3D;0,j&#x3D;i+l-1;j&lt;n;i++,j++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">	        for(int k&#x3D;i;k&lt;j;k++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">	            f[i][j]&#x3D;min(f[i][j],f[i][k]+f[k+1][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">	            int len&#x3D;k-i+1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">	            if(l%len) continue;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">	            if(check(i,j,len)) f[i][j]&#x3D;min(f[i][j],sz[l&#x2F;len]+f[i][k]+2);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">	        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">	    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;f[0][n-1];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/[SCOI2003]%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" data-id="ck3l39j9p000194uxf7142klg" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/[SCOI2003]%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" data-id="ck3lgfiqq0001dwuxdbbke77w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -148,9 +148,9 @@
     </a>
   
   
-    <a href="/2019/11/29/white_catj's%20code%20style/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">white_catj&#39;s code style</div>
+      <div class="article-nav-title">【模板】最小生成树</div>
     </a>
   
 </nav>
@@ -205,19 +205,19 @@
           </li>
         
           <li>
-            <a href="/2019/11/29/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
+            <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">浅谈树状数组</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
           </li>
         
           <li>
             <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/">SCOI2003 字符串折叠</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/white_catj's%20code%20style/">white_catj&#39;s code style</a>
           </li>
         
       </ul>
@@ -259,5 +259,21 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

@@ -7,16 +7,18 @@
   
   <title>【模板】最小生成树 | white_catj&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="下次上传">
+  <meta name="description" content="$Description$给出一个无向图，求出最小生成树，如果该图不连通，则输出orz $Solution$$kruskal$kruskal简单，kruskal好懂 其实这题评分有点低，大概是黄题差不多 这篇题解主要是从头开始讲，从并查集讲到底 好了，看题。 诶，题面怎么没讲最小生成树是什么？ 最小生成树：一个有 n 个结点的连通图的生成树是原图的极小连通子图，且包含原图中的所有 n 个结点，并且">
 <meta name="keywords" content="题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【模板】最小生成树">
 <meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;2019&#x2F;11&#x2F;29&#x2F;%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91&#x2F;index.html">
 <meta property="og:site_name" content="white_catj&#39;s Blog">
-<meta property="og:description" content="下次上传">
+<meta property="og:description" content="$Description$给出一个无向图，求出最小生成树，如果该图不连通，则输出orz $Solution$$kruskal$kruskal简单，kruskal好懂 其实这题评分有点低，大概是黄题差不多 这篇题解主要是从头开始讲，从并查集讲到底 好了，看题。 诶，题面怎么没讲最小生成树是什么？ 最小生成树：一个有 n 个结点的连通图的生成树是原图的极小连通子图，且包含原图中的所有 n 个结点，并且">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-29T13:58:29.713Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.luogu.com.cn&#x2F;upload&#x2F;pic&#x2F;28091.png">
+<meta property="og:updated_time" content="2019-11-30T10:49:41.003Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.luogu.com.cn&#x2F;upload&#x2F;pic&#x2F;28091.png">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
   
@@ -85,12 +87,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>下次上传</p>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个无向图，求出最小生成树，如果该图不连通，则输出orz</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><h3 id="kruskal"><a href="#kruskal" class="headerlink" title="$kruskal$"></a>$kruskal$</h3><p>kruskal简单，kruskal好懂</p>
+<p>其实这题评分有点低，大概是黄题差不多</p>
+<p>这篇题解主要是从头开始讲，从并查集讲到底</p>
+<p>好了，看题。</p>
+<p>诶，题面怎么没讲最小生成树是什么？</p>
+<p><strong>最小生成树：一个有 n 个结点的连通图的生成树是原图的极小连通子图，且包含原图中的所有 n 个结点，并且有保持图连通的最少的边。</strong></p>
+<p>—百度百科</p>
+<p>用人话说：<strong>把所有点都串起来且长度最短的一个网</strong></p>
+<p>那么我们应该怎么做呢？</p>
+<p><strong>$kruskal$</strong>:</p>
+<p>依据权值对每条边进行排序，然后依次取出每条边</p>
+<p>如果已经取出的所有边把所有点都串起来了，那么我们就结束，输出答案</p>
+<p>我来盗图了！图片转自<a href="https://www.luogu.org/blog/tbr-blog/solution-p3366" target="_blank" rel="noopener">Taday_Bule_Rainbow的题解</a></p>
+<p><img src="https://cdn.luogu.com.cn/upload/pic/28091.png" alt=""></p>
+<p>看起来是不是很简单？那么我们一步一步分析</p>
+<p>前向星存图，结构体排序，很简单不说了</p>
+<p>主要是怎么判断当前是否联通</p>
+<p>那么又讲到了：<strong>并查集</strong></p>
+<p>并查集是什么呢？<a href="https://www.luogu.org/problem/P3367" target="_blank" rel="noopener">模板题</a></p>
+<p>其实非常好理解，一个一个暴搜显然是不可行的</p>
+<p>我们可以为每个人定一个祖先，这样判断就可以直接判断两人的祖先是否一样</p>
+<p>首先初始化，让每个人的祖先开始都等于自己</p>
+<p>然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">int find(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	if(f[x]&#x3D;&#x3D;x) return x;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	return f[x]&#x3D;find(f[x]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">   &#x2F;&#x2F;路径压缩</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>那么路径压缩是个啥呢？比如说你要找1的祖先，结果你找到了2，然后又找到了3，然后才找到最终祖先4</p>
+<p>那么2和3的祖先都是4了</p>
+<p>我们直接在递归的过程中保存就行了</p>
+<p>现在我们直接上代码，所有的都已经注释好了，应该很好理解（逃</p>
+<h2 id="CODE"><a href="#CODE" class="headerlink" title="$CODE$"></a>$CODE$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#define N 200005</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">int n,m,f[N],ans,bs,pd;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">struct Edge&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	int u,v,w;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;e[N];&#x2F;&#x2F;前向星，但是没有add函数，很不错 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">int find(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">	if(f[x]&#x3D;&#x3D;x) return x;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	return f[x]&#x3D;find(f[x]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;&#x2F;&#x2F;并查集，上面讲过了 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">bool cmp(Edge x,Edge y)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	return x.w&lt;y.w;&#x2F;&#x2F;按权值排序 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;&#x2F;&#x2F;结构体排序，很实用的技能 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	for(register int i&#x3D;1;i&lt;&#x3D;n;i++) f[i]&#x3D;i;&#x2F;&#x2F;初始化 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	for(register int i&#x3D;0;i&lt;m;i++) cin&gt;&gt;e[i].u&gt;&gt;e[i].v&gt;&gt;e[i].w;&#x2F;&#x2F;输入 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	sort(e,e+m,cmp);&#x2F;&#x2F;排序 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">	for(register int i&#x3D;0;i&lt;m;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">		int fv&#x3D;find(e[i].v),fu&#x3D;find(e[i].u);&#x2F;&#x2F;我们取出当前边的起点和终点所在的祖先 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">		if(fv&#x3D;&#x3D;fu) continue;&#x2F;&#x2F;如果它们相同，就说明它们联通，那么就不用加这条边了 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">		f[fv]&#x3D;fu;&#x2F;&#x2F;把祖先存进去 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">		ans+&#x3D;e[i].w;&#x2F;&#x2F;总答案+&#x3D;这条边的权值 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">		if(++bs&#x3D;&#x3D;n-1)&#123;&#x2F;&#x2F;连通n个点需要n-1条边 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">			pd&#x3D;1;&#x2F;&#x2F;判断是否连通的东西 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">			break;	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">		&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">	if(!pd) cout&lt;&lt;&quot;orz&quot;;&#x2F;&#x2F;如果不连通就输出（这题好像没有这个数据 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">	else cout&lt;&lt;ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">	return 0;&#x2F;&#x2F;愉快地结束了 </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" data-id="ck3l39j9u000494uxg5tcepcu" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" data-id="ck3lgfiqt0003dwuxdsbdfkrz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -101,11 +132,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/29/white_catj's%20code%20style/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          white_catj&#39;s code style
+          SCOI2003 字符串折叠
         
       </div>
     </a>
@@ -168,19 +199,19 @@
           </li>
         
           <li>
-            <a href="/2019/11/29/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
+            <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">浅谈树状数组</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
           </li>
         
           <li>
             <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/">SCOI2003 字符串折叠</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/white_catj's%20code%20style/">white_catj&#39;s code style</a>
           </li>
         
       </ul>
@@ -222,5 +253,21 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

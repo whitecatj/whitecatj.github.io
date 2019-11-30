@@ -7,15 +7,15 @@
   
   <title>数列分段 Section II | white_catj&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="下次上传">
+  <meta name="description" content="$Description$对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。 $Solution$二分 &amp;amp; 贪心二分的基本思想：通过伪暴力枚举+判断来寻找答案 关于本题： “要求每段连续，且每段和的 _最大值最小_ ”二分无疑 我们可以对要求的答案，即每段和的最大值进行二分。 第一件事：上下限很明显，每段和的最大值最小也会大于等于数列中">
 <meta name="keywords" content="题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数列分段 Section II">
 <meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;2019&#x2F;11&#x2F;29&#x2F;%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II&#x2F;index.html">
 <meta property="og:site_name" content="white_catj&#39;s Blog">
-<meta property="og:description" content="下次上传">
+<meta property="og:description" content="$Description$对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。 $Solution$二分 &amp;amp; 贪心二分的基本思想：通过伪暴力枚举+判断来寻找答案 关于本题： “要求每段连续，且每段和的 _最大值最小_ ”二分无疑 我们可以对要求的答案，即每段和的最大值进行二分。 第一件事：上下限很明显，每段和的最大值最小也会大于等于数列中">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-29T13:58:27.345Z">
+<meta property="og:updated_time" content="2019-11-30T10:49:58.428Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -85,12 +85,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>下次上传</p>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><h3 id="二分-amp-贪心"><a href="#二分-amp-贪心" class="headerlink" title="二分 &amp; 贪心"></a>二分 &amp; 贪心</h3><p>二分的基本思想：通过伪暴力枚举+判断来寻找答案</p>
+<p>关于本题：</p>
+<h3 id="“要求每段连续，且每段和的-最大值最小-”"><a href="#“要求每段连续，且每段和的-最大值最小-”" class="headerlink" title="“要求每段连续，且每段和的 _最大值最小_ ”"></a>“要求每段连续，且每段和的 _最大值最小_ ”</h3><p>二分无疑</p>
+<p>我们可以对要求的答案，即每段和的最大值进行二分。</p>
+<h3 id="第一件事：上下限"><a href="#第一件事：上下限" class="headerlink" title="第一件事：上下限"></a>第一件事：上下限</h3><p>很明显，每段和的最大值最小也会大于等于数列中最大的数（真拗口，语文学渣哭唧唧）</p>
+<p>而最大也不会超过所有数的和</p>
+<p>所以上下限分别是</p>
+<h4 id="l-数列中最大的数"><a href="#l-数列中最大的数" class="headerlink" title="l: 数列中最大的数"></a><strong>l</strong>: 数列中最大的数</h4><h4 id="r-数列中数字之和"><a href="#r-数列中数字之和" class="headerlink" title="r: 数列中数字之和"></a><strong>r</strong>: 数列中数字之和</h4><h3 id="第二件事：如何判断当前答案是大是小？"><a href="#第二件事：如何判断当前答案是大是小？" class="headerlink" title="第二件事：如何判断当前答案是大是小？"></a>第二件事：如何判断当前答案是大是小？</h3><p>注意这段</p>
+<h4 id="“要求每段连续”"><a href="#“要求每段连续”" class="headerlink" title="“要求每段连续”"></a>“要求每段连续”</h4><p>所以对于每一个尝试的 每段和的最大值</p>
+<p>我们都可以从头进行模拟</p>
+<p>看看分几段能使得每段的和都小于等于这个值</p>
+<p>看看代码吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">bool check(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    sum&#x3D;t&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        if(sum+a[i]&lt;&#x3D;x) sum+&#x3D;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        else sum&#x3D;a[i],t++;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    return t&gt;&#x3D;m;&#x2F;&#x2F;去掉&#x3D;变20</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>其中sum是每一段的和，我们从头开始不停累加。</p>
+<p>如果超过那个最大值就把这个数归到下一段，同时，我们用t这个计数器来计算一共有几段</p>
+<p>最后return t&gt;=m，是看看现在的段数多于要求的还是少于要求的，再根据这个进行二分。</p>
+<p>还有些细节就看看注释吧</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">int n,m,a[100001],l&#x3D;-INT_MAX,r&#x3D;0,sum,t;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">bool check(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    sum&#x3D;t&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        if(sum+a[i]&lt;&#x3D;x) sum+&#x3D;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        else sum&#x3D;a[i],t++;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    return t&gt;&#x3D;m;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;&#x2F;&#x2F;上面解释过了我可不可以不解释啊QWQ</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">int main()&#123; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        cin&gt;&gt;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        r+&#x3D;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        l&#x3D;max(l,a[i]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    &#125; &#x2F;&#x2F;r是所有数的和,l是所有数中的最大值</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    &#x2F;&#x2F;关键 ↓</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    while(l&lt;&#x3D;r)&#123;  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">        int mid&#x3D;(l+r)&#x2F;2;&#x2F;&#x2F;通用模板不说了嗷</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        if(check(mid)) l&#x3D;mid+1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">        &#x2F;&#x2F;如果check(mid)返回的是true，说明t&gt;&#x3D;m，即当前分段数多于或等于需要的分段数，这说明我们给的最大值小了，于是把l右移</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        &#x2F;&#x2F;这里特别说一下等于的情况，因为题目要我们让最大值最小，所以当等于的时候，我们还可以把最大值继续调大</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">        else r&#x3D;mid-1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">        &#x2F;&#x2F;同上</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">    cout&lt;&lt;l;&#x2F;&#x2F; l即是我们要的答案</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">    return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">&#125;&#x2F;&#x2F;233</span></pre></td></tr></table></figure>
+<p>题目补充 <a href="https://www.luogu.org/problem/P1316" target="_blank" rel="noopener">P1316 丢瓶盖</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II/" data-id="ck3l39j9y000894uxb86s71ci" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II/" data-id="ck3lgfiqv0004dwuxgpcofybj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -168,19 +187,19 @@
           </li>
         
           <li>
-            <a href="/2019/11/29/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
+            <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">浅谈树状数组</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
           </li>
         
           <li>
             <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/">SCOI2003 字符串折叠</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/white_catj's%20code%20style/">white_catj&#39;s code style</a>
           </li>
         
       </ul>
@@ -222,5 +241,21 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

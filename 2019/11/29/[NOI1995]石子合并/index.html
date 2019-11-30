@@ -16,7 +16,7 @@
 <meta property="og:description" content="$Description$在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。 试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.luogu.com.cn&#x2F;upload&#x2F;pic&#x2F;63467.png">
-<meta property="og:updated_time" content="2019-11-30T04:23:48.296Z">
+<meta property="og:updated_time" content="2019-11-30T10:49:44.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.luogu.com.cn&#x2F;upload&#x2F;pic&#x2F;63467.png">
   
@@ -97,7 +97,7 @@
 <p><img src="https://cdn.luogu.com.cn/upload/pic/63467.png" alt=""></p>
 <p>好的，那么我们否决了贪心的解法</p>
 <p>那怎么做呢？</p>
-<h1 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h1><p>进入正题</p>
+<h3 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h3><p>进入正题</p>
 <p>设$f[i][j]$表示石子中合并$i$到$j$号石子的最小（大）值</p>
 <p>每一堆肯定是由两堆合并而成的，而这两堆可能是哪些呢？</p>
 <p>以上面的图片中的数据为例</p>
@@ -115,12 +115,12 @@
 <p>$f[1][n],f[2][n+1],f[3][n+2] …… f[n][n+n-1]$中的最小（大）值</p>
 <p>然后呢，计算和的时候和枚举左右端点的时候的边界都要改成2n</p>
 <p>愉快地解决了</p>
-<h2 id="CODE"><a href="#CODE" class="headerlink" title="$CODE$"></a>$CODE$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#define inf INT_MAX </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">int n,a[205],f[205][205],f2[205][205],sum[205][205],ans1&#x3D;inf,ans2&#x3D;-inf;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;n;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">		cin&gt;&gt;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		a[i+n]&#x3D;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n*2;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">		for(int j&#x3D;1;j&lt;&#x3D;n*2;j++)&#123;&#x2F;&#x2F;要枚举到2*n</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">			for(int k&#x3D;i;k&lt;&#x3D;j;k++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">				sum[i][j]+&#x3D;a[k];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++) f[i][i]&#x3D;f2[i][i]&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	for(int l&#x3D;1;l&lt;n;l++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">		for(int i&#x3D;1,j&#x3D;i+l;i&lt;n*2&amp;&amp;j&lt;n*2;i++,j&#x3D;i+l)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        &#x2F;&#x2F;依旧是左端点和右端点，但是上限变成了2*n</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">			f[i][j]&#x3D;inf; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">			for(int k&#x3D;i;k&lt;j;k++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">				f[i][j]&#x3D;min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">				f2[i][j]&#x3D;max(f2[i][j],f2[i][k]+f2[k+1][j]+sum[i][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">		ans1&#x3D;min(ans1,f[i][i+n-1]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">		ans2&#x3D;max(ans2,f2[i][i+n-1]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">	&#125;&#x2F;&#x2F;取所有中的最小值和最大值</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;ans1&lt;&lt;endl&lt;&lt;ans2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">	return 0w0;&#x2F;&#x2F;卖个萌</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#define inf INT_MAX </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">int n,a[205],f[205][205],f2[205][205],sum[205][205],ans1&#x3D;inf,ans2&#x3D;-inf;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;n;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">		cin&gt;&gt;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		a[i+n]&#x3D;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n*2;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">		for(int j&#x3D;1;j&lt;&#x3D;n*2;j++)&#123;&#x2F;&#x2F;要枚举到2*n</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">			for(int k&#x3D;i;k&lt;&#x3D;j;k++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">				sum[i][j]+&#x3D;a[k];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++) f[i][i]&#x3D;f2[i][i]&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	for(int l&#x3D;1;l&lt;n;l++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">		for(int i&#x3D;1,j&#x3D;i+l;i&lt;n*2&amp;&amp;j&lt;n*2;i++,j&#x3D;i+l)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        &#x2F;&#x2F;依旧是左端点和右端点，但是上限变成了2*n</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">			f[i][j]&#x3D;inf; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">			for(int k&#x3D;i;k&lt;j;k++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">				f[i][j]&#x3D;min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">				f2[i][j]&#x3D;max(f2[i][j],f2[i][k]+f2[k+1][j]+sum[i][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">		ans1&#x3D;min(ans1,f[i][i+n-1]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">		ans2&#x3D;max(ans2,f2[i][i+n-1]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">	&#125;&#x2F;&#x2F;取所有中的最小值和最大值</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;ans1&lt;&lt;endl&lt;&lt;ans2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">	return 0w0;&#x2F;&#x2F;卖个萌</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/[NOI1995]%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" data-id="ck3l39j9i000094uxhcpp45az" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/[NOI1995]%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" data-id="ck3lgfiqj0000dwux0i32da6m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -131,7 +131,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/29/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -198,19 +198,19 @@
           </li>
         
           <li>
-            <a href="/2019/11/29/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
+            <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">浅谈树状数组</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
           </li>
         
           <li>
             <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/">SCOI2003 字符串折叠</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/white_catj's%20code%20style/">white_catj&#39;s code style</a>
           </li>
         
       </ul>
@@ -252,5 +252,21 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
