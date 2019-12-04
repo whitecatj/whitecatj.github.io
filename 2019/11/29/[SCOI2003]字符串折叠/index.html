@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="white_catj&#39;s Blog">
 <meta property="og:description" content="$Description$折叠的定义如下： 1.一个字符串可以看成它自身的折叠。记作S &#x3D; S2.X(S)是X(X&amp;gt;1)个S连接在一起的串的折叠。记作X(S) &#x3D; SSSS…S(X个S)。3.如果A &#x3D; A’, B &#x3D; B’，则AB &#x3D; A’B’ 例如，因为3(A) &#x3D; AAA, 2(B) &#x3D; BB，所以3(A)C2(B) &#x3D; AAACBB，而2(3(A)C)2(B) &#x3D; AAACAAACB">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-30T10:49:48.467Z">
+<meta property="og:updated_time" content="2019-12-04T14:32:30.367Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -89,13 +89,14 @@
 <p>1.一个字符串可以看成它自身的折叠。记作S = S<br>2.X(S)是X(X&gt;1)个S连接在一起的串的折叠。记作X(S) = SSSS…S(X个S)。<br>3.如果A = A’, B = B’，则AB = A’B’ 例如，因为3(A) = AAA, 2(B) = BB，所以3(A)C2(B) = AAACBB，而2(3(A)C)2(B) = AAACAAACBB</p>
 <p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p>
 <a id="more"></a>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>区间DP</p>
-<h3 id="前置知识：区间DP"><a href="#前置知识：区间DP" class="headerlink" title="前置知识：区间DP"></a>前置知识：区间DP</h3><p>如果你不知道区间DP是个啥，可以去我的<a href="https://www.luogu.org/blog/123936/solution-p1880" target="_blank" rel="noopener">这篇</a>题解</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>前置知识：区间DP</p>
+<p>如果你不知道区间DP是个啥，可以去我的<a href="https://www.luogu.org/blog/123936/solution-p1880" target="_blank" rel="noopener">这篇</a>题解</p>
 <p>大概讲了区间DP的原理</p>
 <p>——————可爱(<em>≧▽≦</em>)的分割线qwq——————</p>
 <p>这篇题解有部分思路借鉴<a href="https://www.luogu.org/blog/gyx8177919/solution-p4302" target="_blank" rel="noopener">skiy_gyx</a>，感谢dalao的题解（就是他讲的有点少所以才发的这篇）</p>
 <p>这题难度严重虚高，跟石子合并也差不了多少</p>
-<h3 id="chen-zhe-这是个p的省选题，顶多普及"><a href="#chen-zhe-这是个p的省选题，顶多普及" class="headerlink" title="chen_zhe:这是个p的省选题，顶多普及-"></a><del>chen_zhe:这是个p的省选题，顶多普及-</del></h3><p>好了，看看题目，枚举贪心搜索好像都不大可行</p>
+<p><del>chen_zhe:这是个p的省选题，顶多普及-</del></p>
+<p>好了，看看题目，枚举贪心搜索好像都不大可行</p>
 <p>于是我们就用区间DP</p>
 <p>那么，怎么表示状态呢？</p>
 <p>我们用$f[i][j]$表示字符串里i到j的折叠长度的最小值</p>
@@ -127,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/[SCOI2003]%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" data-id="ck3me7gfe0003zgux7k2a42nt" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/[SCOI2003]%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" data-id="ck3re5cf400033cuxajsi0m83" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -201,15 +202,15 @@
       <ul>
         
           <li>
-            <a href="/2019/12/01/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+            <a href="/2019/12/05/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/">浅谈LCA</a>
           </li>
         
           <li>
             <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
           </li>
         
           <li>

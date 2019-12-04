@@ -16,7 +16,7 @@
 <meta property="og:description" content="$Description$在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。 试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.luogu.com.cn&#x2F;upload&#x2F;pic&#x2F;63467.png">
-<meta property="og:updated_time" content="2019-11-30T10:49:44.166Z">
+<meta property="og:updated_time" content="2019-12-04T14:32:30.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.luogu.com.cn&#x2F;upload&#x2F;pic&#x2F;63467.png">
   
@@ -90,14 +90,16 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。</p>
 <p>试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p>
 <a id="more"></a>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><h3 id="前置知识：基础dp"><a href="#前置知识：基础dp" class="headerlink" title="前置知识：基础dp"></a>前置知识：基础dp</h3><p>各路神仙什么四边形不等式啊完全不会，但还是试图解释一下正常解法</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>前置知识：基础dp</p>
+<p>各路神仙什么四边形不等式啊完全不会，但还是试图解释一下正常解法</p>
 <p>题目就不复述了，看到这题肯定首先想到贪心，即每次取相邻中最小（大）的合并</p>
 <p><del>绿题怎么可能这么简单所以肯定是错的</del></p>
 <p>这里借用<a href="https://www.luogu.org/space/show?uid=78709" target="_blank" rel="noopener">大源菌</a>的一张图<del>懒得自己找了qwq</del></p>
 <p><img src="https://cdn.luogu.com.cn/upload/pic/63467.png" alt=""></p>
 <p>好的，那么我们否决了贪心的解法</p>
 <p>那怎么做呢？</p>
-<h3 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h3><p>进入正题</p>
+<p>区间DP</p>
+<p>进入正题</p>
 <p>设$f[i][j]$表示石子中合并$i$到$j$号石子的最小（大）值</p>
 <p>每一堆肯定是由两堆合并而成的，而这两堆可能是哪些呢？</p>
 <p>以上面的图片中的数据为例</p>
@@ -108,7 +110,8 @@
 <p>其中，$k$是断点的位置，$sum$则是开始的数组中i到j的和</p>
 <p>于是就可以得到第一份代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">int n,a[105],f[105][105],f2[105][105],sum[105][105];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;n;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	memset(f,0x3f,sizeof(f));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++) cin&gt;&gt;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		for(int j&#x3D;1;j&lt;&#x3D;n;j++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">			for(int k&#x3D;i;k&lt;&#x3D;j;k++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">				sum[i][j]+&#x3D;a[k];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	&#125;&#x2F;&#x2F;sum[i][j]存的是a[i]到a[j]的和</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++) f[i][i]&#x3D;f2[i][i]&#x3D;0;&#x2F;&#x2F;只有一堆就是0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	for(int l&#x3D;1;l&lt;&#x3D;n;l++)&#123; &#x2F;&#x2F;l是长度</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;n-l+1;i++)&#123; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">			int j&#x3D;i+l-1;&#x2F;&#x2F;i是左端点，j是右端点</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">			for(int k&#x3D;i;k&lt;j;k++)&#123;&#x2F;&#x2F;k是断点</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">				f[i][j]&#x3D;min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">				f2[i][j]&#x3D;max(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;f[1][n]&lt;&lt;endl&lt;&lt;f2[1][n];&#x2F;&#x2F;1到n中的最小（大）值</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<h3 id="然而这题是一个环，所以这肯定不对"><a href="#然而这题是一个环，所以这肯定不对" class="headerlink" title="然而这题是一个环，所以这肯定不对"></a>然而这题是一个环，所以这肯定不对</h3><p>那么如何解决呢？</p>
+<p>然而这题是一个环，所以这肯定不对</p>
+<p>那么如何解决呢？</p>
 <p>我们可以在输入时加上这句话</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	a[i+n]&#x3D;a[i];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 <p>这样，我们的答案就变成了</p>
@@ -120,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/[NOI1995]%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" data-id="ck3me7gf60000zgux3pvr85hw" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/[NOI1995]%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" data-id="ck3re5cet00003cuxe3u98rjj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -131,11 +134,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/30/white_catj's%20code%20style/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          陈年旧事
+          white_catj&#39;s code style
         
       </div>
     </a>
@@ -194,15 +197,15 @@
       <ul>
         
           <li>
-            <a href="/2019/12/01/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+            <a href="/2019/12/05/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/">浅谈LCA</a>
           </li>
         
           <li>
             <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
           </li>
         
           <li>

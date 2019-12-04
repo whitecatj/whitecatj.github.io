@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="white_catj&#39;s Blog">
 <meta property="og:description" content="$Description$对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-30T11:00:49.794Z">
+<meta property="og:updated_time" content="2019-12-04T14:32:40.557Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -87,15 +87,21 @@
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。</p>
 <a id="more"></a>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><h3 id="二分-amp-贪心"><a href="#二分-amp-贪心" class="headerlink" title="二分 &amp; 贪心"></a>二分 &amp; 贪心</h3><p>二分的基本思想：通过伪暴力枚举+判断来寻找答案</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>二分 &amp; 贪心</p>
+<p>二分的基本思想：通过伪暴力枚举+判断来寻找答案</p>
 <p>关于本题：</p>
-<h3 id="“要求每段连续，且每段和的-最大值最小-”"><a href="#“要求每段连续，且每段和的-最大值最小-”" class="headerlink" title="“要求每段连续，且每段和的 _最大值最小_ ”"></a>“要求每段连续，且每段和的 _最大值最小_ ”</h3><p>二分无疑</p>
+<p>“要求每段连续，且每段和的 _最大值最小_ ”</p>
+<p>二分无疑</p>
 <p>我们可以对要求的答案，即每段和的最大值进行二分。</p>
-<h3 id="第一件事：上下限"><a href="#第一件事：上下限" class="headerlink" title="第一件事：上下限"></a>第一件事：上下限</h3><p>很明显，每段和的最大值最小也会大于等于数列中最大的数（真拗口，语文学渣哭唧唧）</p>
+<p>第一件事：上下限</p>
+<p>很明显，每段和的最大值最小也会大于等于数列中最大的数（真拗口，语文学渣哭唧唧）</p>
 <p>而最大也不会超过所有数的和</p>
 <p>所以上下限分别是</p>
-<h4 id="l-数列中最大的数"><a href="#l-数列中最大的数" class="headerlink" title="l: 数列中最大的数"></a><strong>l</strong>: 数列中最大的数</h4><h4 id="r-数列中数字之和"><a href="#r-数列中数字之和" class="headerlink" title="r: 数列中数字之和"></a><strong>r</strong>: 数列中数字之和</h4><h3 id="第二件事：如何判断当前答案是大是小？"><a href="#第二件事：如何判断当前答案是大是小？" class="headerlink" title="第二件事：如何判断当前答案是大是小？"></a>第二件事：如何判断当前答案是大是小？</h3><p>注意这段</p>
-<h4 id="“要求每段连续”"><a href="#“要求每段连续”" class="headerlink" title="“要求每段连续”"></a>“要求每段连续”</h4><p>所以对于每一个尝试的 每段和的最大值</p>
+<p><strong>l</strong>: 数列中最大的数<br><strong>r</strong>: 数列中数字之和</p>
+<p>第二件事：如何判断当前答案是大是小？</p>
+<p>注意这段</p>
+<p>s“要求每段连续”</p>
+<p>所以对于每一个尝试的 每段和的最大值</p>
 <p>我们都可以从头进行模拟</p>
 <p>看看分几段能使得每段的和都小于等于这个值</p>
 <p>看看代码吧</p>
@@ -110,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II/" data-id="ck3me7gfj0008zguxfrdu1btw" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II/" data-id="ck3re5cfa000a3cux3kjxcu1j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -121,11 +127,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/29/%E6%A3%8B%E7%9B%98/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【模板】最小生成树
+          棋盘
         
       </div>
     </a>
@@ -184,15 +190,15 @@
       <ul>
         
           <li>
-            <a href="/2019/12/01/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+            <a href="/2019/12/05/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/">浅谈LCA</a>
           </li>
         
           <li>
             <a href="/2019/11/30/white_catj's%20code%20style/">white_catj&#39;s code style</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/30/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/">陈年旧事</a>
           </li>
         
           <li>
