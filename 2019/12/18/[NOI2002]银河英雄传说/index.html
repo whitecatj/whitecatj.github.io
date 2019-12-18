@@ -5,13 +5,17 @@
   
 
   
-  <title>white_catj&#39;s Blog</title>
+  <title>NOI2002 银河英雄传说 | white_catj&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="white_catj&#39;s Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;index.html">
+  <meta name="description" content="前置知识： 并查集模板 这题与普通并查集的唯一区别在于，需要计算在链上的两个点之间的距离 就它的操作来说，把一列接在另一列后面，点之间的距离变化似乎很简单 我们除了原来的$fa[x]$表示$x$号战舰前面的的那艘战舰的编号 再开一个 $d$ 数组存储每个节点到队首的边权和（每条边的边权都是1） 在路径压缩时更新这个值 即下面的get操作 1int get(int x)&amp;#123;2	if(x &amp;#">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NOI2002 银河英雄传说">
+<meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;2019&#x2F;12&#x2F;18&#x2F;[NOI2002]%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4&#x2F;index.html">
 <meta property="og:site_name" content="white_catj&#39;s Blog">
+<meta property="og:description" content="前置知识： 并查集模板 这题与普通并查集的唯一区别在于，需要计算在链上的两个点之间的距离 就它的操作来说，把一列接在另一列后面，点之间的距离变化似乎很简单 我们除了原来的$fa[x]$表示$x$号战舰前面的的那艘战舰的编号 再开一个 $d$ 数组存储每个节点到队首的边权和（每条边的边权都是1） 在路径压缩时更新这个值 即下面的get操作 1int get(int x)&amp;#123;2	if(x &amp;#">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-18T14:07:52.975Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-[NOI2002]银河英雄传说" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-[NOI2002]银河英雄传说" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/12/18/%5BNOI2002%5D%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/" class="article-date">
   <time datetime="2019-12-17T16:00:00.000Z" itemprop="datePublished">2019-12-18</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/18/%5BNOI2002%5D%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/">NOI2002 银河英雄传说</a>
+    <h1 class="article-title" itemprop="name">
+      NOI2002 银河英雄传说
     </h1>
   
 
@@ -113,407 +115,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-关于本博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/18/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time datetime="2019-12-17T16:00:00.000Z" itemprop="datePublished">2019-12-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/18/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
-    </h1>
+    <a href="/2019/12/18/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于本博客</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>要说怎么会想搭一个自己的博客…</p>
-<p>可能是因为看好多人都有自己的博客，而且很好看，功能也很多，所以就想搭一个吧（然后发现自己的里面什么功能都不会装）</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/12/18/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/12/18/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/" data-id="ck4bdfcbk0008uwuxd2rn89p8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-To do List" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/17/To%20do%20List/" class="article-date">
-  <time datetime="2019-12-16T16:00:00.000Z" itemprop="datePublished">2019-12-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/17/To%20do%20List/">填坑清单</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>咕咕咕</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/12/17/To%20do%20List/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/12/17/To%20do%20List/" data-id="ck4bdfcbe0003uwux7skxhlnw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-浅谈LCA" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/" class="article-date">
-  <time datetime="2019-12-03T16:00:00.000Z" itemprop="datePublished">2019-12-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/">浅谈LCA</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>LCA（Least Common Ancestors），即一颗树中，两个结点的最近公共祖先</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/12/04/%E6%B5%85%E8%B0%88LCA/" data-id="ck4bdfcbq000iuwux5bm0an3n" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-[NOI1995]石子合并" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" class="article-date">
-  <time datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。</p>
-<p>试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/[NOI1995]%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" data-id="ck4bdfcb30000uwux311oha9w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-[SCOI2003]字符串折叠" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" class="article-date">
-  <time datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/">SCOI2003 字符串折叠</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>折叠的定义如下：</p>
-<p>1.一个字符串可以看成它自身的折叠。记作S = S<br>2.X(S)是X(X&gt;1)个S连接在一起的串的折叠。记作X(S) = SSSS…S(X个S)。<br>3.如果A = A’, B = B’，则AB = A’B’ 例如，因为3(A) = AAA, 2(B) = BB，所以3(A)C2(B) = AAACBB，而2(3(A)C)2(B) = AAACAAACBB</p>
-<p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/[SCOI2003]%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" data-id="ck4bdfcbh0005uwuxahjt4alr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数列分段 Section II" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/29/%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II/" class="article-date">
-  <time datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II/">数列分段 Section II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/29/%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E6%95%B0%E5%88%97%E5%88%86%E6%AE%B5%20Section%20II/" data-id="ck4bdfcbl000auwux0pl25dap" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【模板】最小生成树" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="article-date">
-  <time datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">【模板】最小生成树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个无向图，求出最小生成树，如果该图不连通，则输出orz</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" data-id="ck4bdfcbn000duwuxa5pr7vof" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-棋盘" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/29/%E6%A3%8B%E7%9B%98/" class="article-date">
-  <time datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/%E6%A3%8B%E7%9B%98/">棋盘</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>有一个$m×m$的棋盘，棋盘上每一个格子可能是红色、黄色或没有任何颜色的。你现在要从棋盘的最左上角走到棋盘的最右下角。</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/29/%E6%A3%8B%E7%9B%98/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E6%A3%8B%E7%9B%98/" data-id="ck4bdfcbo000fuwuxgejt17sj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-约数和" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/" class="article-date">
-  <time datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/">约数和</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)=1+2+3+6=12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/" data-id="ck4bdfcbr000kuwux6o6gbl7w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-  </nav>
 
 </section>
         
