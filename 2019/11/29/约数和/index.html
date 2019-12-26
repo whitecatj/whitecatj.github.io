@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>约数和 | white_catj&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="$Description$对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&amp;lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="约数和">
+<meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;2019&#x2F;11&#x2F;29&#x2F;%E7%BA%A6%E6%95%B0%E5%92%8C&#x2F;index.html">
+<meta property="og:site_name" content="white_catj&#39;s Blog">
+<meta property="og:description" content="$Description$对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&amp;lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-04T14:32:41.852Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">white_catj&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://whitecatj.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-约数和" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/" class="article-date">
+  <time datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      约数和
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)=1+2+3+6=12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p>
+<a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>这题难度有点虚高，先看题目</p>
+<p>计算$f(x)+f(x+1)+f(x+2)+…+f(y)$</p>
+<p>很容易联想到用前缀和的方式快速求出</p>
+<p>那么怎么算出前缀和呢<del>很简单</del></p>
+<p>考虑一下，在1到x的所有数字里</p>
+<p>是1的倍数的有$x/1$个,它们的和是$x/1*1$</p>
+<p>是2的倍数的有$x/2$个,它们的和是$x/2*2$</p>
+<p>是3的倍数的有$x/3$个,它们的和是$x/3*3$</p>
+<p>……</p>
+<p>而我们要求的是所有数的约数和</p>
+<p>很明显,只要把所有上述数字累加起来即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#define ll long long</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">ll x,y,ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">ll wk(ll q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	ans&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	for(ll i&#x3D;1;i&lt;&#x3D;q;i++) ans+&#x3D;q&#x2F;i*i;&#x2F;&#x2F;q&#x2F;i代表有几个i的倍数,再*i代表它们的和.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	return ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;x&gt;&gt;y;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;wk(y)-wk(x-1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>高高兴兴地交上去</p>
+<p>T掉4个点</p>
+<p>怎么办呢?</p>
+<p>想着简化wk里面的循环 </p>
+<p>我们再看看一个数约数的规律</p>
+<p>以16为例,$q/i$分别是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">16 8 5 4 3 2 2 2 1 1 1 1 1 1 1 1</span></pre></td></tr></table></figure></p>
+<p>这么明显的重复计算怎么能不优化一下呢</p>
+<p>我们假设当前序列（即几个一样的数）的左端点的下标是$l$,右端点的下标是$r$</p>
+<p>下一个$l$当然是$r+1$了</p>
+<p>那$r$呢?<del>由上可知易得，合情推理显然，读者自证不难</del></p>
+<p>$r=q/(q/l)$</p>
+<p>$q/l$就是当前的约数啦,$q/(q/l)$也就很好理解了</p>
+<p>现在就可以熟练地应用等差数列求和公式了</p>
+<p>本来是$ans+=q/i*i$</p>
+<p>现在把$q/i$合并了，$*i$就变成了一个等差数列</p>
+<p>ans+=约数*约数的个数</p>
+<p>约数=$q/l$</p>
+<p>约数的个数=(首项+末项)<em>项数/2=$(l+r)</em>(r-l+1)/2$</p>
+<p>愉快地解决了</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#define ll long long</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">ll x,y,ans,r,s;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">ll wk(ll q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	ans&#x3D;0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	for(ll l&#x3D;1;l&lt;&#x3D;q;l&#x3D;r+1)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">		s&#x3D;q&#x2F;l;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		r&#x3D;q&#x2F;s;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">		ans+&#x3D;s*(l+r)*(r-l+1)&#x2F;2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	return ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	cin&gt;&gt;x&gt;&gt;y;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	cout&lt;&lt;wk(y)-wk(x-1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;&#x2F;&#x2F;讲的很细不注释了</span></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/" data-id="ck4mufl8h000k68uxfxqncpi4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/29/%E6%A3%8B%E7%9B%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          棋盘
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/28/white_catj's%20code%20style/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">white_catj&#39;s code style</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%85%B6%E5%AE%83/" style="font-size: 15px;">其它</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">置顶</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/%5BNOI2002%5D%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/">NOI2002 银河英雄传说</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/17/To%20do%20List/">填坑清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/">浅谈LCA</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 whitecatj<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

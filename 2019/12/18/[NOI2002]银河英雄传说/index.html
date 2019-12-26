@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>NOI2002 银河英雄传说 | white_catj&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="$Description$有N个飞船排成一排，每列1个人，现在有两种操作： 1.M x y 让第i列飞船排到第j列后 2.C x y 询问x和y两艘飞船是否在一列，如果是，则输出两艘飞船之间的飞船数，否则输出-1">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NOI2002 银河英雄传说">
+<meta property="og:url" content="http:&#x2F;&#x2F;whitecatj.github.io&#x2F;2019&#x2F;12&#x2F;18&#x2F;[NOI2002]%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4&#x2F;index.html">
+<meta property="og:site_name" content="white_catj&#39;s Blog">
+<meta property="og:description" content="$Description$有N个飞船排成一排，每列1个人，现在有两种操作： 1.M x y 让第i列飞船排到第j列后 2.C x y 询问x和y两艘飞船是否在一列，如果是，则输出两艘飞船之间的飞船数，否则输出-1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-18T14:15:23.523Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">white_catj&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://whitecatj.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-[NOI2002]银河英雄传说" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/18/%5BNOI2002%5D%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/" class="article-date">
+  <time datetime="2019-12-17T16:00:00.000Z" itemprop="datePublished">2019-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NOI2002 银河英雄传说
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>有N个飞船排成一排，每列1个人，现在有两种操作：</p>
+<p>1.M x y 让第i列飞船排到第j列后</p>
+<p>2.C x y 询问x和y两艘飞船是否在一列，如果是，则输出两艘飞船之间的飞船数，否则输出-1</p>
+<a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>前置知识： <a href="https://www.luogu.com.cn/problem/P3367" target="_blank" rel="noopener">并查集模板</a></p>
+<p>这题与普通并查集的唯一区别在于，需要计算在链上的两个点之间的距离</p>
+<p>就它的操作来说，把一列接在另一列后面，点之间的距离变化似乎很简单</p>
+<p>我们除了原来的$fa[x]$表示$x$号战舰前面的的那艘战舰的编号</p>
+<p>再开一个 $d$ 数组存储每个节点到队首的边权和（每条边的边权都是1）</p>
+<p>在路径压缩时更新这个值</p>
+<p>即下面的get操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">int get(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	if(x &#x3D;&#x3D; fa[x]) return x; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	int q &#x3D; get(fa[x]); &#x2F;&#x2F;原模板</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	d[x] +&#x3D; d[fa[x]]; &#x2F;&#x2F;这个点到队首的距离应该加上它前面那一艘的距离</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	return fa[x] &#x3D; q; &#x2F;&#x2F;原模板，路径压缩</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>在收到C指令时，分别找到$x$和$y$的祖先，然后完成查询，路径压缩</p>
+<p>如果两人的祖先一样，说明在同一列，两人之间的距离显然有$abs(d[x] - d[y]) - 1$</p>
+<p>收到M指令时，先把$x$的树根作为$y$树根的子节点</p>
+<p>连起来之后，$x$树根到$y$树根的距离应该是$y$数组现有的飞船数量</p>
+<p>所以我们再开一个$size$数组，在每个树根处存下现在这个集合里有多少飞船</p>
+<p>于是就有以下的merge操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">void merge(int x, int y)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	x &#x3D; get(x);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	y &#x3D; get(y); &#x2F;&#x2F;找到两人的祖先</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	fa[x] &#x3D; y; &#x2F;&#x2F;把y作为x的祖先</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	d[x] &#x3D; size[y]; &#x2F;&#x2F;现在x到根的距离应该是y这条链的长度了</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	size[y] +&#x3D; size[x]; &#x2F;&#x2F;y的长度要加上x的长度</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#define N 30005</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">int T, x, y;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">int fa[N], d[N], size[N];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">char c; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">int get(int x)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	if(x &#x3D;&#x3D; fa[x]) return x;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	int q &#x3D; get(fa[x]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	d[x] +&#x3D; d[fa[x]];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	return fa[x] &#x3D; q;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">void merge(int x, int y)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	x &#x3D; get(x);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	y &#x3D; get(y);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	fa[x] &#x3D; y;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">	d[x] &#x3D; size[y];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">	size[y] +&#x3D; size[x];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">int main()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">	scanf(&quot;%d&quot;, &amp;T);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; 1; i &lt; N; ++i) fa[i] &#x3D; i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; 1; i &lt; N; ++i) size[i] &#x3D; 1;&#x2F;&#x2F;记得两个初始化，每个点的祖先设成自己，每条链的初始长度为1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; 1; i &lt;&#x3D; T; ++i)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">		cin&gt;&gt;c&gt;&gt;x&gt;&gt;y;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">		if(c &#x3D;&#x3D; &#39;M&#39;) merge(x, y);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">		else&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">			if(get(x) &#x3D;&#x3D; get(y)) printf(&quot;%d\n&quot;, abs(d[x] - d[y]) - 1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">			else printf(&quot;-1\n&quot;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">	return 0w0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>//本文章很大来自于《算法进阶》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://whitecatj.github.io/2019/12/18/[NOI2002]%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/" data-id="ck4mufl88000568uxe99ud6ef" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/19/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          关于本博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/17/To%20do%20List/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">填坑清单</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%85%B6%E5%AE%83/" style="font-size: 15px;">其它</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">置顶</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/%5BNOI2002%5D%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/">NOI2002 银河英雄传说</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/17/To%20do%20List/">填坑清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/">浅谈LCA</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 whitecatj<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
