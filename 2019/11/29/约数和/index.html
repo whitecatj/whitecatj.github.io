@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="white_catj&#39;s Blog">
 <meta property="og:description" content="$Description$对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&amp;lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-04T14:32:41.852Z">
+<meta property="og:updated_time" content="2020-01-04T11:54:27.806Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -92,9 +92,9 @@
 <p>很容易联想到用前缀和的方式快速求出</p>
 <p>那么怎么算出前缀和呢<del>很简单</del></p>
 <p>考虑一下，在1到x的所有数字里</p>
-<p>是1的倍数的有$x/1$个,它们的和是$x/1*1$</p>
-<p>是2的倍数的有$x/2$个,它们的和是$x/2*2$</p>
-<p>是3的倍数的有$x/3$个,它们的和是$x/3*3$</p>
+<p>是1的倍数的有$x/1$个,它们的和是$x / 1 * 1$</p>
+<p>是2的倍数的有$x/2$个,它们的和是$x / 2 * 2$</p>
+<p>是3的倍数的有$x/3$个,它们的和是$x / 3 * 3$</p>
 <p>……</p>
 <p>而我们要求的是所有数的约数和</p>
 <p>很明显,只要把所有上述数字累加起来即可</p>
@@ -110,11 +110,10 @@
 <p>下一个$l$当然是$r+1$了</p>
 <p>那$r$呢?<del>由上可知易得，合情推理显然，读者自证不难</del></p>
 <p>$r=q/(q/l)$</p>
-<p>$q/l$就是当前的约数啦,$q/(q/l)$也就很好理解了</p>
 <p>现在就可以熟练地应用等差数列求和公式了</p>
-<p>本来是$ans+=q/i*i$</p>
-<p>现在把$q/i$合并了，$*i$就变成了一个等差数列</p>
-<p>ans+=约数*约数的个数</p>
+<p>本来是$ans+=q / i * i$</p>
+<p>现在把$q / i$合并了，$* i$就变成了一个等差数列</p>
+<p>ans+=约数 * 约数的个数</p>
 <p>约数=$q/l$</p>
 <p>约数的个数=(首项+末项)<em>项数/2=$(l+r)</em>(r-l+1)/2$</p>
 <p>愉快地解决了</p>
@@ -123,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/" data-id="ck4o6ifwh000idwux0vwn50b2" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/" data-id="ck50p1zh5000pbgux138a9ca2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
@@ -144,9 +143,9 @@
     </a>
   
   
-    <a href="/2019/11/29/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/28/%E9%99%88%E5%B9%B4%E6%97%A7%E4%BA%8B/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">浅谈树状数组</div>
+      <div class="article-nav-title">陈年旧事</div>
     </a>
   
 </nav>
@@ -165,7 +164,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
     </div>
   </div>
 
@@ -175,7 +174,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%85%B6%E5%AE%83/" style="font-size: 15px;">其它</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">置顶</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+      <a href="/tags/%E5%85%B6%E5%AE%83/" style="font-size: 13.33px;">其它</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">笔记</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">置顶</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
     </div>
   </div>
 
@@ -184,7 +183,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
     </div>
   </div>
 
@@ -197,6 +196,14 @@
       <ul>
         
           <li>
+            <a href="/2020/01/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%832%EF%BC%9A%E5%88%86%E5%9D%97/">数据结构之从入门到放弃0：树状数组</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%831%EF%BC%9A%E7%BA%BF%E6%AE%B5%E6%A0%91/">数据结构之从入门到放弃1：线段树</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/19/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/">关于本博客</a>
           </li>
         
@@ -206,14 +213,6 @@
         
           <li>
             <a href="/2019/12/17/To%20do%20List/">填坑清单</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/">浅谈LCA</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">NOI1995 石子合并</a>
           </li>
         
       </ul>
@@ -228,7 +227,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 whitecatj<br>
+      &copy; 2020 whitecatj<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
