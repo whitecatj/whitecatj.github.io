@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="white_catj&#39;s Blog">
 <meta property="og:description" content="$Description$已知一个数列，你需要进行下面两种操作： 1.将某区间每一个数加上$x$ 2.求出某区间每一个数的和">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-05T15:41:14.726Z">
+<meta property="og:updated_time" content="2020-01-07T14:11:42.180Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="white_catj&#39;s Blog" type="application/atom+xml">
@@ -92,8 +92,8 @@
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p><del>似 曾 相 识</del></p>
 <p>分块，也是一种数据结构，它相对于树状数组和线段树来说，通用直观，更好理解</p>
 <p>因为好理解，我就不找图了<del>才不是懒呢</del></p>
-<h3 id="基础思想："><a href="#基础思想：" class="headerlink" title="基础思想："></a>基础思想：</h3><p>我们把数列a分成若干个长度为$sqrt(N)$的段（最后一段可以不足）</p>
-<p>第i段的左端点为(i - 1) <em> $sqrt(N)$ + 1，右端点为i </em> $sqrt(N)$ (最后一个为N)</p>
+<h3 id="基础思想："><a href="#基础思想：" class="headerlink" title="基础思想："></a>基础思想：</h3><p>我们把数列a分成若干个长度为$\sqrt{N}$的段（最后一段可以不足）</p>
+<p>第i段的左端点为(i - 1) <em> $\sqrt{N}$ + 1，右端点为i </em> $\sqrt{N}$ (最后一个为N)</p>
 <p>开两个数组sum和add，sum表示这一段的和，add表示这一段增加的值</p>
 <p>左端点，右端点，sum都可以预处理出来</p>
 <p>开个数组L[x]表示第x段的左端点，R[x]表示第x段的右端点</p>
@@ -104,7 +104,7 @@
 <p>在l到L[p]，R[q]到r之间的区域，直接暴力循环，给每个a都加上d,sum[p] += d <em> (R[p] - l + 1), sum[q] += d </em> (r - L[q] + 1)</p>
 <p>对于 p + 1 到 q - 1 之间的段落，给每个add加上d，代表这一段的所有数字都要加上d</p>
 <p>注意特判：如果p==q，那么直接从l到r暴力就行了</p>
-<p>容易看出，该操作是O($sqrt(N)$)的（且常数略大）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">void change(int l, int r, int d)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	int p &#x3D; pos[l], q &#x3D; pos[r];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	if(p &#x3D;&#x3D; q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		for(int i &#x3D; l; i &lt;&#x3D; r; ++i) a[i] +&#x3D; d;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">		sum[p] +&#x3D; d * (r - l + 1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">		return;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; p + 1; i &lt;&#x3D; q - 1; ++i) add[i] +&#x3D; d;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; l; i &lt;&#x3D; R[p]; ++i) a[i] +&#x3D; d;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	sum[p] +&#x3D; d * (R[p] - l + 1)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; L[q]; i &lt;&#x3D; r; ++i) a[i] +&#x3D; d;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	sum[q] +&#x3D; d * (r - L[q] + 1)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure></p>
+<p>容易看出，该操作是O($\sqrt{N}$)的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">void change(int l, int r, int d)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	int p &#x3D; pos[l], q &#x3D; pos[r];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	if(p &#x3D;&#x3D; q)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		for(int i &#x3D; l; i &lt;&#x3D; r; ++i) a[i] +&#x3D; d;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">		sum[p] +&#x3D; d * (r - l + 1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">		return;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; p + 1; i &lt;&#x3D; q - 1; ++i) add[i] +&#x3D; d;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; l; i &lt;&#x3D; R[p]; ++i) a[i] +&#x3D; d;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	sum[p] +&#x3D; d * (R[p] - l + 1)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	for(int i &#x3D; L[q]; i &lt;&#x3D; r; ++i) a[i] +&#x3D; d;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	sum[q] +&#x3D; d * (r - L[q] + 1)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure></p>
 <h3 id="区间查询"><a href="#区间查询" class="headerlink" title="区间查询"></a>区间查询</h3><p>和区间修改一模一样啊</p>
 <p>不足一段的直接暴力加，中间的就加上sum[i] + add[i] * (R[i] - L[i] + 1)</p>
 <p>记得特判</p>
@@ -114,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2020/01/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%832%EF%BC%9A%E5%88%86%E5%9D%97/" data-id="ck51vbfs4000g7wux5mro2p1d" class="article-share-link">Share</a>
+      <a data-url="http://whitecatj.github.io/2020/01/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%832%EF%BC%9A%E5%88%86%E5%9D%97/" data-id="ck53yd3t00009jsux8d0j4uys" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
@@ -175,7 +175,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -204,7 +204,7 @@
           </li>
         
           <li>
-            <a href="/2019/12/17/To%20do%20List/">填坑清单</a>
+            <a href="/2019/12/04/%E6%B5%85%E8%B0%88LCA/">浅谈LCA</a>
           </li>
         
       </ul>
