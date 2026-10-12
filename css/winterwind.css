@@ -10,3 +10,4 @@ body{background:#f4f4fa;color:#303345;font-family:"Segoe UI","Microsoft YaHei",s
 @media(max-width:350px){.winter-brand{font-size:12px}.winter-nav{gap:12px}#header-title{left:50%}#logo{font-size:30px}}
 .winter-search{border:0;background:transparent;color:white;font:inherit;font-size:13px;padding:0;min-height:44px;cursor:pointer}#search-form-wrap{z-index:3}@media(max-width:767px){.winter-nav{gap:12px}.winter-search{font-size:12px}#search-form-wrap.on{right:0;width:100%}}
 #header-inner{overflow:hidden}
+#wrap>.outer::before,#wrap>.outer::after{display:none}#wrap{background:#f4f4fa}
