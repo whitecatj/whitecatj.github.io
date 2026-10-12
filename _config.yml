@@ -60,6 +60,7 @@ prismjs:
   line_number: true
   tab_replace: ''
 
+
 # Home page setting
 index_generator:
   path: ''
