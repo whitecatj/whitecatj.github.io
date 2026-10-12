@@ -10,7 +10,25 @@
   <rights>All rights reserved 2026, 冬风</rights>
   <subtitle>Infinity</subtitle>
   <title>冬风 · winterwind</title>
-  <updated>2026-10-12T09:15:47.091Z</updated>
+  <updated>2026-10-12T09:17:11.551Z</updated>
+  <entry>
+    <author>
+      <name>冬风</name>
+    </author>
+    <category term="随笔" scheme="http://whitecatj.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    <content>
+      <![CDATA[<p>保留了之前剩下的所有东西，没有进行任何改动<br>可以看到纯粹的初中生风味<br>虽然，感觉以前的设想完全没有实现啊。</p><p>QQ：1320672949<br>微信；Winterwindww<br>邮箱：<a href="mailto:&#50;&#x34;&#x30;&#48;&#x30;&#49;&#54;&#50;&#x35;&#x39;&#64;&#115;&#x74;&#117;&#46;&#112;&#107;&#x75;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#110;">2400016259@stu.pku.edu.cn</a></p>]]>
+    </content>
+    <id>http://whitecatj.github.io/2026/10/12/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2%202026%E7%89%88/</id>
+    <link href="http://whitecatj.github.io/2026/10/12/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2%202026%E7%89%88/"/>
+    <published>2026-10-12T09:15:00.000Z</published>
+    <summary>
+      <![CDATA[<p>保留了之前剩下的所有东西，没有进行任何改动<br>可以看到纯粹的初中生风味<br>虽然，感觉以前的设想完全没有实现啊。</p>
+<p>QQ：1320672949<br>微信；Winterwindww<br>邮箱：<a href="mailto:&#50;&#x34;&#x3]]>
+    </summary>
+    <title>关于本博客 2026版</title>
+    <updated>2026-10-12T09:17:11.551Z</updated>
+  </entry>
   <entry>
     <author>
       <name>冬风</name>
@@ -27,7 +45,7 @@
 <p>可能是因为看好多人都有自己的博客，而且很好看，功能也很多，所以就想搭一个吧（然后发现自己的里面什么功能都不会装）</p>]]>
     </summary>
     <title>关于本博客</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -44,7 +62,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个长度为$n+2$的序列$a_i$，其中第1个数和第$]]>
     </summary>
     <title>代价</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -62,7 +80,7 @@
 <p>$\sum\limits_{i&#x3D;1}^n\sum\limits_{j&#x3D;1}^n\sum\limits_{k&#x3D;1}^n\sum\limits_{l&#x3D;1}^n (a_i,\operatorname{or},a_j),\operatorname{xor},(a_k,\operatorname{and},a_l)$</p>]]>
     </summary>
     <title>谔运算</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -81,7 +99,7 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土2：分块</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -100,7 +118,7 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土1：线段树</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -119,7 +137,7 @@
 <p>2.C x y 询问x和y两艘飞船是否在一列，如果是，则输出两艘飞船之间的飞船数，否则输出-1</p>]]>
     </summary>
     <title>NOI2002 银河英雄传说</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -136,7 +154,25 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>LCA（Least Common Ancestors），即一颗树中，两个结点的最近公共祖先</p>]]>
     </summary>
     <title>浅谈LCA</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>冬风</name>
+    </author>
+    <category term="题解" scheme="http://whitecatj.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    <content>
+      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。</p><p>试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p><span id="more"></span><h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>前置知识：基础dp</p><p>各路神仙什么四边形不等式啊完全不会，但还是试图解释一下正常解法</p><p>题目就不复述了，看到这题肯定首先想到贪心，即每次取相邻中最小（大）的合并</p><p><del>绿题怎么可能这么简单所以肯定是错的</del></p><p>这里借用<a href="https://www.luogu.org/space/show?uid=78709">大源菌</a>的一张图<del>懒得自己找了qwq</del></p><p><img src="https://cdn.luogu.com.cn/upload/pic/63467.png"></p><p>好的，那么我们否决了贪心的解法</p><p>那怎么做呢？</p><p>区间DP</p><p>进入正题</p><p>设$f[i][j]$表示石子中合并$i$到$j$号石子的最小（大）值</p><p>每一堆肯定是由两堆合并而成的，而这两堆可能是哪些呢？</p><p>以上面的图片中的数据为例</p><p>合并到最后两堆只能是  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 与 4，6，5，4，2的和</span><br><span class="line"></span><br><span class="line">3，4的和 与 6，5，4，2的和</span><br><span class="line"></span><br><span class="line">3，4，6的和 与 5，4，2的和</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure><p>可以发现，中间有一个断点，我们可以枚举这个断点，再在两端的和中取最小（大）值</p><p>于是我们就得到了这个公式</p><p>$f[i][j] &#x3D; min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j])$</p><p>$(max)$</p><p>其中，$k$是断点的位置，$sum$则是开始的数组中i到j的和</p><p>于是就可以得到第一份代码</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,a[105],f[105][105],f2[105][105],sum[105][105];</span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line">memset(f,0x3f,sizeof(f));</span><br><span class="line">for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i];</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">for(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">for(int k=i;k&lt;=j;k++)&#123;</span><br><span class="line">sum[i][j]+=a[k];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;//sum[i][j]存的是a[i]到a[j]的和</span><br><span class="line">for(int i=1;i&lt;=n;i++) f[i][i]=f2[i][i]=0;//只有一堆就是0</span><br><span class="line">for(int l=1;l&lt;=n;l++)&#123; //l是长度</span><br><span class="line">for(int i=1;i&lt;=n-l+1;i++)&#123; </span><br><span class="line">int j=i+l-1;//i是左端点，j是右端点</span><br><span class="line">for(int k=i;k&lt;j;k++)&#123;//k是断点</span><br><span class="line">f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span><br><span class="line">f2[i][j]=max(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;f[1][n]&lt;&lt;endl&lt;&lt;f2[1][n];//1到n中的最小（大）值</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然而这题是一个环，所以这肯定不对</p><p>那么如何解决呢？</p><p>我们可以在输入时加上这句话</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">cin&gt;&gt;a[i];</span><br><span class="line">a[i+n]=a[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样，我们的答案就变成了</p><p>$f[1][n],f[2][n+1],f[3][n+2] …… f[n][n+n-1]$中的最小（大）值</p><p>然后呢，计算和的时候和枚举左右端点的时候的边界都要改成2n</p><p>愉快地解决了</p><h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define inf INT_MAX </span><br><span class="line">using namespace std;</span><br><span class="line">int n,a[205],f[205][205],f2[205][205],sum[205][205],ans1=inf,ans2=-inf;</span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">cin&gt;&gt;a[i];</span><br><span class="line">a[i+n]=a[i];</span><br><span class="line">&#125;</span><br><span class="line">for(int i=1;i&lt;=n*2;i++)&#123;</span><br><span class="line">for(int j=1;j&lt;=n*2;j++)&#123;//要枚举到2*n</span><br><span class="line">for(int k=i;k&lt;=j;k++)&#123;</span><br><span class="line">sum[i][j]+=a[k];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">for(int i=1;i&lt;=n;i++) f[i][i]=f2[i][i]=0;</span><br><span class="line">for(int l=1;l&lt;n;l++)&#123;</span><br><span class="line">for(int i=1,j=i+l;i&lt;n*2&amp;&amp;j&lt;n*2;i++,j=i+l)&#123;</span><br><span class="line">        //依旧是左端点和右端点，但是上限变成了2*n</span><br><span class="line">f[i][j]=inf; </span><br><span class="line">for(int k=i;k&lt;j;k++)&#123;</span><br><span class="line">f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span><br><span class="line">f2[i][j]=max(f2[i][j],f2[i][k]+f2[k+1][j]+sum[i][j]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">ans1=min(ans1,f[i][i+n-1]);</span><br><span class="line">ans2=max(ans2,f2[i][i+n-1]);</span><br><span class="line">&#125;//取所有中的最小值和最大值</span><br><span class="line">cout&lt;&lt;ans1&lt;&lt;endl&lt;&lt;ans2;</span><br><span class="line">return 0w0;//卖个萌</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>http://whitecatj.github.io/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/</id>
+    <link href="http://whitecatj.github.io/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/"/>
+    <published>2019-11-28T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。</p>
+<p>试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p>]]>
+    </summary>
+    <title>NOI1995 石子合并</title>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -155,25 +191,7 @@
 <p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p>]]>
     </summary>
     <title>SCOI2003 字符串折叠</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>冬风</name>
-    </author>
-    <category term="题解" scheme="http://whitecatj.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
-    <content>
-      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。</p><p>试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p><span id="more"></span><h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>前置知识：基础dp</p><p>各路神仙什么四边形不等式啊完全不会，但还是试图解释一下正常解法</p><p>题目就不复述了，看到这题肯定首先想到贪心，即每次取相邻中最小（大）的合并</p><p><del>绿题怎么可能这么简单所以肯定是错的</del></p><p>这里借用<a href="https://www.luogu.org/space/show?uid=78709">大源菌</a>的一张图<del>懒得自己找了qwq</del></p><p><img src="https://cdn.luogu.com.cn/upload/pic/63467.png"></p><p>好的，那么我们否决了贪心的解法</p><p>那怎么做呢？</p><p>区间DP</p><p>进入正题</p><p>设$f[i][j]$表示石子中合并$i$到$j$号石子的最小（大）值</p><p>每一堆肯定是由两堆合并而成的，而这两堆可能是哪些呢？</p><p>以上面的图片中的数据为例</p><p>合并到最后两堆只能是  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 与 4，6，5，4，2的和</span><br><span class="line"></span><br><span class="line">3，4的和 与 6，5，4，2的和</span><br><span class="line"></span><br><span class="line">3，4，6的和 与 5，4，2的和</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure><p>可以发现，中间有一个断点，我们可以枚举这个断点，再在两端的和中取最小（大）值</p><p>于是我们就得到了这个公式</p><p>$f[i][j] &#x3D; min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j])$</p><p>$(max)$</p><p>其中，$k$是断点的位置，$sum$则是开始的数组中i到j的和</p><p>于是就可以得到第一份代码</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,a[105],f[105][105],f2[105][105],sum[105][105];</span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line">memset(f,0x3f,sizeof(f));</span><br><span class="line">for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i];</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">for(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">for(int k=i;k&lt;=j;k++)&#123;</span><br><span class="line">sum[i][j]+=a[k];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;//sum[i][j]存的是a[i]到a[j]的和</span><br><span class="line">for(int i=1;i&lt;=n;i++) f[i][i]=f2[i][i]=0;//只有一堆就是0</span><br><span class="line">for(int l=1;l&lt;=n;l++)&#123; //l是长度</span><br><span class="line">for(int i=1;i&lt;=n-l+1;i++)&#123; </span><br><span class="line">int j=i+l-1;//i是左端点，j是右端点</span><br><span class="line">for(int k=i;k&lt;j;k++)&#123;//k是断点</span><br><span class="line">f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span><br><span class="line">f2[i][j]=max(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;f[1][n]&lt;&lt;endl&lt;&lt;f2[1][n];//1到n中的最小（大）值</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然而这题是一个环，所以这肯定不对</p><p>那么如何解决呢？</p><p>我们可以在输入时加上这句话</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">cin&gt;&gt;a[i];</span><br><span class="line">a[i+n]=a[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样，我们的答案就变成了</p><p>$f[1][n],f[2][n+1],f[3][n+2] …… f[n][n+n-1]$中的最小（大）值</p><p>然后呢，计算和的时候和枚举左右端点的时候的边界都要改成2n</p><p>愉快地解决了</p><h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define inf INT_MAX </span><br><span class="line">using namespace std;</span><br><span class="line">int n,a[205],f[205][205],f2[205][205],sum[205][205],ans1=inf,ans2=-inf;</span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">cin&gt;&gt;a[i];</span><br><span class="line">a[i+n]=a[i];</span><br><span class="line">&#125;</span><br><span class="line">for(int i=1;i&lt;=n*2;i++)&#123;</span><br><span class="line">for(int j=1;j&lt;=n*2;j++)&#123;//要枚举到2*n</span><br><span class="line">for(int k=i;k&lt;=j;k++)&#123;</span><br><span class="line">sum[i][j]+=a[k];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">for(int i=1;i&lt;=n;i++) f[i][i]=f2[i][i]=0;</span><br><span class="line">for(int l=1;l&lt;n;l++)&#123;</span><br><span class="line">for(int i=1,j=i+l;i&lt;n*2&amp;&amp;j&lt;n*2;i++,j=i+l)&#123;</span><br><span class="line">        //依旧是左端点和右端点，但是上限变成了2*n</span><br><span class="line">f[i][j]=inf; </span><br><span class="line">for(int k=i;k&lt;j;k++)&#123;</span><br><span class="line">f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]+sum[i][j]);</span><br><span class="line">f2[i][j]=max(f2[i][j],f2[i][k]+f2[k+1][j]+sum[i][j]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">ans1=min(ans1,f[i][i+n-1]);</span><br><span class="line">ans2=max(ans2,f2[i][i+n-1]);</span><br><span class="line">&#125;//取所有中的最小值和最大值</span><br><span class="line">cout&lt;&lt;ans1&lt;&lt;endl&lt;&lt;ans2;</span><br><span class="line">return 0w0;//卖个萌</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]>
-    </content>
-    <id>http://whitecatj.github.io/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/</id>
-    <link href="http://whitecatj.github.io/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/"/>
-    <published>2019-11-28T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。</p>
-<p>试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p>]]>
-    </summary>
-    <title>NOI1995 石子合并</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -190,7 +208,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个无向图，求出最小生成树，如果该图不连通，则输出orz</p>]]>
     </summary>
     <title>【模板】最小生成树</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -207,41 +225,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。</p>]]>
     </summary>
     <title>数列分段 Section II</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>冬风</name>
-    </author>
-    <category term="题解" scheme="http://whitecatj.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
-    <content>
-      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>有一个$m×m$的棋盘，棋盘上每一个格子可能是红色、黄色或没有任何颜色的。你现在要从棋盘的最左上角走到棋盘的最右下角。</p><span id="more"></span><p>任何一个时刻，你所站在的位置必须是有颜色的（不能是无色的）， 你只能向上、 下、左、 右四个方向前进。当你从一个格子走向另一个格子时，如果两个格子的颜色相同，那你不需要花费金币；如果不同，则你需要花费1个金币。</p><p>另外,你可以花费2个金币施展魔法让下一个无色格子暂时变为你指定的颜色。但这个魔法不能连续使用， 而且这个魔法的持续时间很短，也就是说，如果你使用了这个魔法，走到了这个暂时有颜色的格子上，你就不能继续使用魔法； 只有当你离开这个位置，走到一个本来就有颜色的格子上的时候，你才能继续使用这个魔法，而当你离开了这个位置（施展魔法使得变为有颜色的格子）时，这个格子恢复为无色。</p><p>现在你要从棋盘的最左上角，走到棋盘的最右下角，求花费的最少金币是多少？</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>首先按照正常思路肯定是dfs四个变量每次判断魔法能不能用之类的</p><p>但我们才不按照套路走呢QWQ</p><p><img src="https://cdn.luogu.com.cn/upload/pic/32558.png"></p><p>考虑一下使用魔法之后的情况，不就是可以通过对绿色方块施展魔法，再到达图中的蓝色方块吗。</p><p>那么我们是不是可以把魔法这个功能省去，再把可以移动的地方增加到12个方向呢（图中有色格子）？</p><p>最后提一点：记得加上剪枝</p><p>还有一些细节看注释吧</p><h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int m,n,xa,ya,c,a[101][101],ans=23333333;</span><br><span class="line">int vis[101][101];</span><br><span class="line">int q[101][101];</span><br><span class="line">int fx[12]=&#123;0,0,0,0,1,1,1,-1,-1,-1,2,-2&#125;,fy[12]=&#123;1,-1,2,-2,-1,0,1,-1,0,1,0,0&#125;,fq[12]=&#123;0,0,2,2,2,0,2,2,0,2,2,2&#125;;</span><br><span class="line">//a存地图,q记忆化，vis记录访问过没，fx,fy,fq三个数组方便搜索，fq是要加的金币数</span><br><span class="line">void dfs(int x,int y,int sum)&#123;//x,y存坐标，sum存钱数</span><br><span class="line">    if(q[x][y]&amp;&amp;q[x][y]&lt;=sum) return;</span><br><span class="line">    q[x][y]=sum;//嗯，应该很好懂</span><br><span class="line">    if(x==m&amp;&amp;y==m)&#123;</span><br><span class="line">        ans=min(sum,ans);</span><br><span class="line">        return;</span><br><span class="line">    &#125;//搜到了</span><br><span class="line">    if(((x==m-1&amp;&amp;y==m)||(y==m-1&amp;&amp;x==m))&amp;&amp;a[m][m]==0)&#123;  //细节来了：如果在终点的左边或者上边一格，则要特殊判断，否则根据12向搜索的原则走不到</span><br><span class="line">        ans=min(sum+2,ans);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    vis[x][y]=1;</span><br><span class="line">    for(int i=0;i&lt;12;i++)&#123;</span><br><span class="line">        int nx=x+fx[i],ny=y+fy[i];</span><br><span class="line">        if(nx&lt;1||nx&gt;m||ny&lt;1||ny&gt;m||vis[nx][ny]==1) continue;//不解释了啊</span><br><span class="line">        if(a[nx][ny]==a[x][y]) dfs(nx,ny,sum+fq[i]);//如果同色就直接加</span><br><span class="line">        else if(a[nx][ny]&amp;&amp;a[nx][ny]!=a[x][y]) dfs(nx,ny,sum+fq[i]+1);//异色就加一</span><br><span class="line">    &#125;</span><br><span class="line">    vis[x][y]=0;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;xa&gt;&gt;ya&gt;&gt;c;</span><br><span class="line">        a[xa][ya]=c+1;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(1,1,0);//从坐标（1，1）出发，初始价格为0</span><br><span class="line">    if(ans==23333333) cout&lt;&lt;&quot;-1&quot;;</span><br><span class="line">    else cout&lt;&lt;ans;</span><br><span class="line">return 0;</span><br><span class="line">&#125;//主程序应该好理解</span><br></pre></td></tr></table></figure>]]>
-    </content>
-    <id>http://whitecatj.github.io/2019/11/29/%E6%A3%8B%E7%9B%98/</id>
-    <link href="http://whitecatj.github.io/2019/11/29/%E6%A3%8B%E7%9B%98/"/>
-    <published>2019-11-28T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>有一个$m×m$的棋盘，棋盘上每一个格子可能是红色、黄色或没有任何颜色的。你现在要从棋盘的最左上角走到棋盘的最右下角。</p>]]>
-    </summary>
-    <title>棋盘</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>冬风</name>
-    </author>
-    <category term="题解" scheme="http://whitecatj.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
-    <content>
-      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p><span id="more"></span><h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>这题难度有点虚高，先看题目</p><p>计算$f(x)+f(x+1)+f(x+2)+…+f(y)$</p><p>很容易联想到用前缀和的方式快速求出</p><p>那么怎么算出前缀和呢<del>很简单</del></p><p>考虑一下，在1到x的所有数字里</p><p>是1的倍数的有$x&#x2F;1$个,它们的和是$x &#x2F; 1 * 1$</p><p>是2的倍数的有$x&#x2F;2$个,它们的和是$x &#x2F; 2 * 2$</p><p>是3的倍数的有$x&#x2F;3$个,它们的和是$x &#x2F; 3 * 3$</p><p>……</p><p>而我们要求的是所有数的约数和</p><p>很明显,只要把所有上述数字累加起来即可</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">ll x,y,ans;</span><br><span class="line">ll wk(ll q)&#123;</span><br><span class="line">ans=0;</span><br><span class="line">for(ll i=1;i&lt;=q;i++) ans+=q/i*i;//q/i代表有几个i的倍数,再*i代表它们的和.</span><br><span class="line">return ans;</span><br><span class="line">&#125; </span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">cout&lt;&lt;wk(y)-wk(x-1);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>高高兴兴地交上去</p><p>T掉4个点</p><p>怎么办呢?</p><p>想着简化wk里面的循环</p><p>我们再看看一个数约数的规律</p><p>以16为例,$q&#x2F;i$分别是  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">16 8 5 4 3 2 2 2 1 1 1 1 1 1 1 1</span><br></pre></td></tr></table></figure><p>这么明显的重复计算怎么能不优化一下呢</p><p>我们假设当前序列（即几个一样的数）的左端点的下标是$l$,右端点的下标是$r$</p><p>下一个$l$当然是$r+1$了</p><p>那$r$呢?<del>由上可知易得，合情推理显然，读者自证不难</del></p><p>$r&#x3D;q&#x2F;(q&#x2F;l)$</p><p>现在就可以熟练地应用等差数列求和公式了</p><p>本来是$ans+&#x3D;q &#x2F; i * i$</p><p>现在把$q &#x2F; i$合并了，$* i$就变成了一个等差数列</p><p>ans+&#x3D;约数 * 约数的个数</p><p>约数&#x3D;$q&#x2F;l$</p><p>约数的个数&#x3D;(首项+末项)<em>项数&#x2F;2&#x3D;$(l+r)</em>(r-l+1)&#x2F;2$</p><p>愉快地解决了</p><h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">ll x,y,ans,r,s;</span><br><span class="line">ll wk(ll q)&#123;</span><br><span class="line">ans=0;</span><br><span class="line">for(ll l=1;l&lt;=q;l=r+1)&#123;</span><br><span class="line">s=q/l;</span><br><span class="line">r=q/s;</span><br><span class="line">ans+=s*(l+r)*(r-l+1)/2;</span><br><span class="line">&#125; </span><br><span class="line">return ans;</span><br><span class="line">&#125; </span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">cout&lt;&lt;wk(y)-wk(x-1);</span><br><span class="line">return 0;</span><br><span class="line">&#125;//讲的很细不注释了</span><br></pre></td></tr></table></figure>]]>
-    </content>
-    <id>http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/</id>
-    <link href="http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/"/>
-    <published>2019-11-28T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p>]]>
-    </summary>
-    <title>约数和</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -260,7 +244,41 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土0：树状数组</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>冬风</name>
+    </author>
+    <category term="题解" scheme="http://whitecatj.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    <content>
+      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>有一个$m×m$的棋盘，棋盘上每一个格子可能是红色、黄色或没有任何颜色的。你现在要从棋盘的最左上角走到棋盘的最右下角。</p><span id="more"></span><p>任何一个时刻，你所站在的位置必须是有颜色的（不能是无色的）， 你只能向上、 下、左、 右四个方向前进。当你从一个格子走向另一个格子时，如果两个格子的颜色相同，那你不需要花费金币；如果不同，则你需要花费1个金币。</p><p>另外,你可以花费2个金币施展魔法让下一个无色格子暂时变为你指定的颜色。但这个魔法不能连续使用， 而且这个魔法的持续时间很短，也就是说，如果你使用了这个魔法，走到了这个暂时有颜色的格子上，你就不能继续使用魔法； 只有当你离开这个位置，走到一个本来就有颜色的格子上的时候，你才能继续使用这个魔法，而当你离开了这个位置（施展魔法使得变为有颜色的格子）时，这个格子恢复为无色。</p><p>现在你要从棋盘的最左上角，走到棋盘的最右下角，求花费的最少金币是多少？</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>首先按照正常思路肯定是dfs四个变量每次判断魔法能不能用之类的</p><p>但我们才不按照套路走呢QWQ</p><p><img src="https://cdn.luogu.com.cn/upload/pic/32558.png"></p><p>考虑一下使用魔法之后的情况，不就是可以通过对绿色方块施展魔法，再到达图中的蓝色方块吗。</p><p>那么我们是不是可以把魔法这个功能省去，再把可以移动的地方增加到12个方向呢（图中有色格子）？</p><p>最后提一点：记得加上剪枝</p><p>还有一些细节看注释吧</p><h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int m,n,xa,ya,c,a[101][101],ans=23333333;</span><br><span class="line">int vis[101][101];</span><br><span class="line">int q[101][101];</span><br><span class="line">int fx[12]=&#123;0,0,0,0,1,1,1,-1,-1,-1,2,-2&#125;,fy[12]=&#123;1,-1,2,-2,-1,0,1,-1,0,1,0,0&#125;,fq[12]=&#123;0,0,2,2,2,0,2,2,0,2,2,2&#125;;</span><br><span class="line">//a存地图,q记忆化，vis记录访问过没，fx,fy,fq三个数组方便搜索，fq是要加的金币数</span><br><span class="line">void dfs(int x,int y,int sum)&#123;//x,y存坐标，sum存钱数</span><br><span class="line">    if(q[x][y]&amp;&amp;q[x][y]&lt;=sum) return;</span><br><span class="line">    q[x][y]=sum;//嗯，应该很好懂</span><br><span class="line">    if(x==m&amp;&amp;y==m)&#123;</span><br><span class="line">        ans=min(sum,ans);</span><br><span class="line">        return;</span><br><span class="line">    &#125;//搜到了</span><br><span class="line">    if(((x==m-1&amp;&amp;y==m)||(y==m-1&amp;&amp;x==m))&amp;&amp;a[m][m]==0)&#123;  //细节来了：如果在终点的左边或者上边一格，则要特殊判断，否则根据12向搜索的原则走不到</span><br><span class="line">        ans=min(sum+2,ans);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    vis[x][y]=1;</span><br><span class="line">    for(int i=0;i&lt;12;i++)&#123;</span><br><span class="line">        int nx=x+fx[i],ny=y+fy[i];</span><br><span class="line">        if(nx&lt;1||nx&gt;m||ny&lt;1||ny&gt;m||vis[nx][ny]==1) continue;//不解释了啊</span><br><span class="line">        if(a[nx][ny]==a[x][y]) dfs(nx,ny,sum+fq[i]);//如果同色就直接加</span><br><span class="line">        else if(a[nx][ny]&amp;&amp;a[nx][ny]!=a[x][y]) dfs(nx,ny,sum+fq[i]+1);//异色就加一</span><br><span class="line">    &#125;</span><br><span class="line">    vis[x][y]=0;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;xa&gt;&gt;ya&gt;&gt;c;</span><br><span class="line">        a[xa][ya]=c+1;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(1,1,0);//从坐标（1，1）出发，初始价格为0</span><br><span class="line">    if(ans==23333333) cout&lt;&lt;&quot;-1&quot;;</span><br><span class="line">    else cout&lt;&lt;ans;</span><br><span class="line">return 0;</span><br><span class="line">&#125;//主程序应该好理解</span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>http://whitecatj.github.io/2019/11/29/%E6%A3%8B%E7%9B%98/</id>
+    <link href="http://whitecatj.github.io/2019/11/29/%E6%A3%8B%E7%9B%98/"/>
+    <published>2019-11-28T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>有一个$m×m$的棋盘，棋盘上每一个格子可能是红色、黄色或没有任何颜色的。你现在要从棋盘的最左上角走到棋盘的最右下角。</p>]]>
+    </summary>
+    <title>棋盘</title>
+    <updated>2026-10-12T09:17:11.551Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>冬风</name>
+    </author>
+    <category term="题解" scheme="http://whitecatj.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    <content>
+      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p><span id="more"></span><h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>这题难度有点虚高，先看题目</p><p>计算$f(x)+f(x+1)+f(x+2)+…+f(y)$</p><p>很容易联想到用前缀和的方式快速求出</p><p>那么怎么算出前缀和呢<del>很简单</del></p><p>考虑一下，在1到x的所有数字里</p><p>是1的倍数的有$x&#x2F;1$个,它们的和是$x &#x2F; 1 * 1$</p><p>是2的倍数的有$x&#x2F;2$个,它们的和是$x &#x2F; 2 * 2$</p><p>是3的倍数的有$x&#x2F;3$个,它们的和是$x &#x2F; 3 * 3$</p><p>……</p><p>而我们要求的是所有数的约数和</p><p>很明显,只要把所有上述数字累加起来即可</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">ll x,y,ans;</span><br><span class="line">ll wk(ll q)&#123;</span><br><span class="line">ans=0;</span><br><span class="line">for(ll i=1;i&lt;=q;i++) ans+=q/i*i;//q/i代表有几个i的倍数,再*i代表它们的和.</span><br><span class="line">return ans;</span><br><span class="line">&#125; </span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">cout&lt;&lt;wk(y)-wk(x-1);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>高高兴兴地交上去</p><p>T掉4个点</p><p>怎么办呢?</p><p>想着简化wk里面的循环</p><p>我们再看看一个数约数的规律</p><p>以16为例,$q&#x2F;i$分别是  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">16 8 5 4 3 2 2 2 1 1 1 1 1 1 1 1</span><br></pre></td></tr></table></figure><p>这么明显的重复计算怎么能不优化一下呢</p><p>我们假设当前序列（即几个一样的数）的左端点的下标是$l$,右端点的下标是$r$</p><p>下一个$l$当然是$r+1$了</p><p>那$r$呢?<del>由上可知易得，合情推理显然，读者自证不难</del></p><p>$r&#x3D;q&#x2F;(q&#x2F;l)$</p><p>现在就可以熟练地应用等差数列求和公式了</p><p>本来是$ans+&#x3D;q &#x2F; i * i$</p><p>现在把$q &#x2F; i$合并了，$* i$就变成了一个等差数列</p><p>ans+&#x3D;约数 * 约数的个数</p><p>约数&#x3D;$q&#x2F;l$</p><p>约数的个数&#x3D;(首项+末项)<em>项数&#x2F;2&#x3D;$(l+r)</em>(r-l+1)&#x2F;2$</p><p>愉快地解决了</p><h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">ll x,y,ans,r,s;</span><br><span class="line">ll wk(ll q)&#123;</span><br><span class="line">ans=0;</span><br><span class="line">for(ll l=1;l&lt;=q;l=r+1)&#123;</span><br><span class="line">s=q/l;</span><br><span class="line">r=q/s;</span><br><span class="line">ans+=s*(l+r)*(r-l+1)/2;</span><br><span class="line">&#125; </span><br><span class="line">return ans;</span><br><span class="line">&#125; </span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">cout&lt;&lt;wk(y)-wk(x-1);</span><br><span class="line">return 0;</span><br><span class="line">&#125;//讲的很细不注释了</span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/</id>
+    <link href="http://whitecatj.github.io/2019/11/29/%E7%BA%A6%E6%95%B0%E5%92%8C/"/>
+    <published>2019-11-28T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p>]]>
+    </summary>
+    <title>约数和</title>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -280,7 +298,7 @@
 <p>唯一的好处大概是认识了<a href="https://www.luogu.com.cn/user/123937">@咸味的果冻</a></p>]]>
     </summary>
     <title>陈年旧事</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -297,6 +315,6 @@
       <![CDATA[<p>咕咕咕</p>]]>
     </summary>
     <title>填坑清单</title>
-    <updated>2026-10-12T09:15:47.091Z</updated>
+    <updated>2026-10-12T09:17:11.551Z</updated>
   </entry>
 </feed>
