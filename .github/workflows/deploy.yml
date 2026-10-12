@@ -32,6 +32,9 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          # 构建机默认 UTC，会让无时区写法的文章日期整体偏移一天，必须锁定为 +08:00
+          TZ: Asia/Shanghai
 
       - name: Deploy to master branch
         uses: peaceiris/actions-gh-pages@v4
