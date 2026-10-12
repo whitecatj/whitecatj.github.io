@@ -328,7 +328,8 @@ function login(tk){
   token = tk;
   return gh("/user").then(function(u){
     return gh("/repos/" + REPO).then(function(repo){
-      var canWrite = repo.permissions && repo.permissions.push;
+      // fine-grained token 的 permissions 结构与 classic 不同，只有明确为 false 才报警
+      var canWrite = !repo.permissions || repo.permissions.push !== false;
       localStorage.setItem(LS_KEY, token);
       document.body.classList.add("logged");
       $("whoami").innerHTML = (u.avatar_url ? '<img src="' + esc(u.avatar_url) + '">' : "") + esc(u.login);
