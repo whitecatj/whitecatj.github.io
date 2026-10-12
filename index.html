@@ -88,12 +88,12 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>保留了之前剩下的所有东西，没有进行任何改动<br>可以看到纯粹的初中生风味<br>虽然，感觉以前的设想完全没有实现啊。</p>
-<p>QQ：1320672949<br>微信；Winterwindww<br>邮箱：<a href="mailto:&#50;&#x34;&#x30;&#48;&#48;&#x31;&#54;&#x32;&#x35;&#57;&#x40;&#x73;&#x74;&#117;&#x2e;&#x70;&#x6b;&#117;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#x63;&#110;">2400016259@stu.pku.edu.cn</a></p>
+<p>QQ：1320672949<br>微信；Winterwindww<br>邮箱：<a href="mailto:&#x32;&#x34;&#48;&#48;&#x30;&#49;&#54;&#x32;&#53;&#57;&#x40;&#x73;&#x74;&#117;&#x2e;&#x70;&#107;&#117;&#x2e;&#101;&#x64;&#x75;&#46;&#99;&#110;">2400016259@stu.pku.edu.cn</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2026/10/12/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2%202026%E7%89%88/" data-id="cuid9xqEnlQ2BE9GFRCcIX32d" data-title="关于本博客 2026版" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2026/10/12/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2%202026%E7%89%88/" data-id="cuidxqW_KLruBxbIL1ECGEU3O" data-title="关于本博客 2026版" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -139,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2020/03/19/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/" data-id="cuidQ-xRe3GYNOMmeLNPe7xqz" data-title="关于本博客" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2020/03/19/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/" data-id="cuidk0Q7ddynoHcm6qqnLF1Pt" data-title="关于本博客" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -176,30 +176,15 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个长度为$n+2$的序列$a_i$，其中第1个数和第$n+2$个数固定为$1$，你每次可以选择序列中的一个数删除（不能是第一个和最后一个），删除位置$p$上的数的代价为$a_p-1  <em>a_p</em>  a_p+1$。你需要执行这个操作直到不能再执行。求最小的代价和。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>首先，subtask2，3，5是显然的区间DP,详情可参照P1063能量项链，这里不再赘述。</p>
-<p>分析一下三个数的情况：即$1,a,b,c,1$,假设$a,b,c≠1$</p>
-<p>有以下几种情况：</p>
-<p>$ab+bc+a,ab+bc+b,ab+bc+c$（从两边删）</p>
-<p>$abc+ac+a,abc+ac+c$（从中间删）</p>
-<p>$∵a,b,c\ge2$</p>
-<p>$∴abc+ac-ab-bc &#x3D; b(ac-a-c)+ac \ge 4$</p>
-<p>$∴ab+bc &lt; abc+ac$</p>
-<p>所以上面一行比下面一行小，即先从两边删除小于从中间删</p>
-<p>当数字增加，显然从中间删会比两边多乘一个数，所以我们应该从两边删。</p>
-<p>注意到第一行唯一的区别就是最后一个删的数字，所以我们应该把最小的数留到最后，即优先删大的数</p>
-<p>但上述的前提是不能有数为1，如果是</p>
-<p>$1,2,3,4,1,5,6,1 $呢？</p>
-<p>如果按照刚才的策略，我们会依次删去$6,5,2,3,4,1$</p>
-<p>但$6,5,4,3,2,1$是优于这个解的</p>
-<p>我们可以把刚刚的方法推广，对于</p>
-<p>$1,2,3,4,1$这一组单独处理，剩下的一组也单独处理</p>
-<p>换句话说，就是以1为界，把整个数列分成一段一段的，每一段分别处理</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n, a[1000005], lst = 1;</span><br><span class="line">long long ans; </span><br><span class="line">void calc(int l, int r)&#123;</span><br><span class="line">	lst = r + 2;</span><br><span class="line">	if(l &gt; r) return;</span><br><span class="line">	while(l &lt; r)&#123;</span><br><span class="line">		if(a[l] &gt; a[r])&#123; ans += a[l] * a[l + 1]; ++l;&#125;</span><br><span class="line">		else&#123; ans += a[r] * a[r - 1]; --r;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	ans += a[l];</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;n); a[0] = a[n + 1] = 1;</span><br><span class="line">	for(int i = 1; i &lt;= n; ++i)&#123;scanf(&quot;%d&quot;, &amp;a[i]); ans += (a[i] == 1);&#125;</span><br><span class="line">    //按照刚才的策略，1肯定是最后被删去的，即每个1对答案的贡献就是1</span><br><span class="line">	for(int i = 1; i &lt;= n; ++i) if(a[i] == 1) calc(lst, i - 1); </span><br><span class="line">	calc(lst, n);</span><br><span class="line">	printf(&quot;%lld&quot;, ans);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/03/18/%E4%BB%A3%E4%BB%B7/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2020/03/18/%E4%BB%A3%E4%BB%B7/" data-id="cuidFxku50O66APBp7Hz8VAw7" data-title="代价" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2020/03/18/%E4%BB%A3%E4%BB%B7/" data-id="cuidUigMgT1a7dfXYFHsLFdFH" data-title="代价" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -245,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2020/02/16/%E8%B0%94%E8%BF%90%E7%AE%97/" data-id="cuidFH5HWkzWRraTMboVRM-3Z" data-title="谔运算" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2020/02/16/%E8%B0%94%E8%BF%90%E7%AE%97/" data-id="cuidIPhJh4fB10kMotZMwxJn_" data-title="谔运算" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -292,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2020/01/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%832%EF%BC%9A%E5%88%86%E5%9D%97/" data-id="cuid6s6own4Q2-eikX8w9xxPF" data-title="数据结构之从入门到入土2：分块" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2020/01/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%832%EF%BC%9A%E5%88%86%E5%9D%97/" data-id="cuidxKsi32iLXLu0Jh2uow6MR" data-title="数据结构之从入门到入土2：分块" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -339,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2020/01/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%831%EF%BC%9A%E7%BA%BF%E6%AE%B5%E6%A0%91/" data-id="cuid77-w8VodzpeInPf3MX87d" data-title="数据结构之从入门到入土1：线段树" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2020/01/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%831%EF%BC%9A%E7%BA%BF%E6%AE%B5%E6%A0%91/" data-id="cuid-mUfjVUkQsc68vt3-ktey" data-title="数据结构之从入门到入土1：线段树" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -386,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/12/18/%5BNOI2002%5D%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/" data-id="cuidSHjYRNV4Ge7-Cs1fbP0xP" data-title="NOI2002 银河英雄传说" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2019/12/18/%5BNOI2002%5D%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/" data-id="cuiduwoGqygsXjUtWRlqh4Fou" data-title="NOI2002 银河英雄传说" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -431,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/12/04/%E6%B5%85%E8%B0%88LCA/" data-id="cuidbyU0MG_aNeTqnYFoEcPA4" data-title="浅谈LCA" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2019/12/04/%E6%B5%85%E8%B0%88LCA/" data-id="cuidCWPkXfZZVerwFqQmT6pvT" data-title="浅谈LCA" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -477,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" data-id="cuidZaEsaolbugFukQxFnKI6W" data-title="NOI1995 石子合并" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/%5BNOI1995%5D%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" data-id="cuid9ChnFMXmqLJj7YSNHW9CQ" data-title="NOI1995 石子合并" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -491,9 +476,9 @@
 
 
   
-    <article id="post-[SCOI2003]字符串折叠" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-【模板】最小生成树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" class="article-date">
+    <a href="/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="article-date">
   <time class="dt-published" datetime="2019-11-28T16:00:00.000Z" itemprop="datePublished">2019-11-29</time>
 </a>
     
@@ -505,7 +490,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/">SCOI2003 字符串折叠</a>
+      <a class="p-name article-title" href="/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">【模板】最小生成树</a>
     </h1>
   
 
@@ -513,18 +498,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>折叠的定义如下：</p>
-<p>1.一个字符串可以看成它自身的折叠。记作S &#x3D; S<br>2.X(S)是X(X&gt;1)个S连接在一起的串的折叠。记作X(S) &#x3D; SSSS…S(X个S)。<br>3.如果A &#x3D; A’, B &#x3D; B’，则AB &#x3D; A’B’ 例如，因为3(A) &#x3D; AAA, 2(B) &#x3D; BB，所以3(A)C2(B) &#x3D; AAACBB，而2(3(A)C)2(B) &#x3D; AAACAAACBB</p>
-<p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个无向图，求出最小生成树，如果该图不连通，则输出orz</p>
         
           <p class="article-more-link">
-            <a href="/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/#more">阅读全文</a>
+            <a href="/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2019/11/29/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/" data-id="cuidov9ljVJwOfNO54hs9yb6g" data-title="SCOI2003 字符串折叠" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2019/11/29/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" data-id="cuidwBRI2fhrnqhWaFRkTcQ6c" data-title="【模板】最小生成树" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
