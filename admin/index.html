@@ -296,9 +296,14 @@ function dateFromInput(v){
   return v.replace("T"," ") + ":00";
 }
 function slugify(t){
-  return String(t||"").trim()
-    .replace(/[\/\\:*?"<>|#%{}^\[\]`+=\s]+/g, "-")
-    .replace(/-+/g,"-").replace(/^-|-$/g,"") || "untitled";
+  // 只清除文件名里真正危险/非法的字符；空格、中文、方括号一律保留，
+  // 保证对已有文件名是「幂等」的（不会把 To do List 改成 To-do-List 而产生重复文件）
+  var s = String(t||"").trim()
+    .replace(/[\/\\:*?"<>|#%\u0000-\u001f]+/g, "-")
+    .replace(/\s+/g, " ")
+    .replace(/-{2,}/g, "-")
+    .replace(/^[-\s]+/, "").replace(/[-\s]+$/, "");
+  return s || "untitled";
 }
 
 /* ================== 界面 ================== */
@@ -464,28 +469,43 @@ $("fBody").addEventListener("keydown", function(e){
 });
 
 /* ================== 保存 / 删除 ================== */
+// 直接问 GitHub：目标路径在分支上到底存不存在？不再依赖内存里的列表，
+// 因为列表刷新有延迟，一滞后就会被误判成「新文件」。
+function probeFile(path){
+  var url = "/repos/" + REPO + "/contents/" + encPath(path) + "?ref=" + BRANCH;
+  var attempt = 0;
+  function go(){
+    attempt++;
+    return gh(url).then(function(d){
+      return { exists: !!(d && d.sha), sha: (d && d.sha) || null };
+    }).catch(function(e){
+      if (e.status === 404) return { exists:false, sha:null };   // 确实不存在 → 新建
+      // 限流(403)/服务端抖动：等一下重试，绝不能当成「不存在」
+      if (attempt < 3 && (e.status === 403 || e.status >= 500 || !e.status)){
+        return new Promise(function(r){ setTimeout(r, 900 * attempt); }).then(go);
+      }
+      throw e;
+    });
+  }
+  return go();
+}
+
 function save(){
   var title = $("fTitle").value.trim();
-  var name  = ($("fName").value.trim() || slugify(title));
+  if (!title){ alert("请先填标题"); $("fTitle").focus(); return; }
+
+  var name  = slugify($("fName").value.trim() || title);
   var date  = dateFromInput($("fDate").value) || dateFromInput(nowInput());
   var tags  = $("fTags").value.split(/[，,]/).map(function(s){ return s.trim(); }).filter(Boolean);
   var body  = $("fBody").value;
 
-  if (!title){ alert("请先填标题"); $("fTitle").focus(); return; }
-  name = slugify(name);
-
-  var existing = list.filter(function(p){ return p.name === name + ".md"; })[0];
-  var isUpdate = !!(cur && cur.name === name + ".md");
-  if (existing && !isUpdate){
-    if (!confirm("已有同名文章「" + existing.title + "」，继续保存会覆盖它。确定吗？")) return;
-  }
-
   var content = buildPost({ title:title, date:date, tags:tags, body:body });
   var path = POSTS + "/" + name + ".md";
+  var btn = $("saveBtn");
   setStatus('<span class="spin"></span>正在提交…', "busy");
-  $("saveBtn").disabled = true;
+  btn.disabled = true;
 
-  var doSave = function(sha){
+  function put(sha, isUpdate){
     var payload = {
       message: (isUpdate ? "更新文章：" : "新增文章：") + title,
       content: b64enc(content),
@@ -495,22 +515,42 @@ function save(){
     return gh("/repos/" + REPO + "/contents/" + encPath(path), {
       method: "PUT", body: JSON.stringify(payload)
     });
-  };
+  }
 
-  // 若目标文件已存在，先取它的 sha（更新必须带 sha）
-  (function(){
-    if (isUpdate && cur.sha) return Promise.resolve(cur.sha);
-    if (existing) return gh("/repos/" + REPO + "/contents/" + encPath(path) + "?ref=" + BRANCH).then(function(d){ return d.sha; }).catch(function(){ return null; });
-    return Promise.resolve(null);
-  })().then(doSave).then(function(res){
-    cur = { name: name + ".md", sha: res.content.sha };
+  probeFile(path).then(function(p){
+    return put(p.sha, p.exists).catch(function(e){
+      // 探测与写入之间状态变了（比如上一秒刚点过一次）→ 重新探测再来一次
+      if (/sha/i.test(String(e.message || ""))) {
+        return probeFile(path).then(function(p2){ return put(p2.sha, p2.exists); });
+      }
+      throw e;
+    });
+  }).then(function(res){
+    var newSha = (res && res.content && res.content.sha) || null;
+    cur = { name: name + ".md", sha: newSha };
+    // 立刻把本地列表更新掉，避免「保存完马上再点一次」时状态还是旧的
+    var hit = -1;
+    list.forEach(function(it, k){ if (it.name === name + ".md") hit = k; });
+    var entry = { name: name + ".md", sha: newSha, title: title, date: date, tags: tags };
+    if (hit >= 0) list[hit] = entry; else list.push(entry);
+    list.sort(function(a,b){ return String(b.date).localeCompare(String(a.date)) || a.name.localeCompare(b.name); });
+    $("fName").value = name;
+    nameTouched = true;
+    $("delBtn").hidden = false;
+    renderList();
     setStatus("已提交，GitHub 正在构建…", "busy");
-    $("saveBtn").disabled = false;
-    loadList();
+    loadList();     // 后台静默刷新，拿回服务端的真实状态
     watchBuild();
   }).catch(function(e){
-    $("saveBtn").disabled = false;
-    setStatus("保存失败：" + e.message + (e.status===404 ? "（多半是令牌没有写入权限）" : ""), "fail");
+    var extra = "";
+    if (e.status === 401) extra = "（令牌无效或已过期，请退出后重新登录）";
+    else if (e.status === 403) extra = "（请求过于频繁或令牌权限不足，等一分钟再试）";
+    else if (e.status === 404) extra = "（令牌对该仓库没有写入权限，或分支名不对）";
+    else if (e.status === 409) extra = "（这篇文章刚在别处被改过，刷新页面后重试）";
+    else if (e.status === 422) extra = "（内容校验未通过：" + ((e.data && e.data.errors) ? JSON.stringify(e.data.errors) : "请检查标题与文件名") + "）";
+    setStatus("保存失败：" + e.message + extra, "fail");
+  }).then(function(){
+    btn.disabled = false;
   });
 }
 $("saveBtn").onclick = save;
