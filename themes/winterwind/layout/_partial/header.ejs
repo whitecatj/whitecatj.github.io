@@ -1,0 +1,18 @@
+<header id="header">
+  <div id="banner" role="img" aria-label="Madeline 坐在 Celeste 山顶望向云海"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a class="winter-brand" href="<%- url_for() %>">冬风 / winterwind</a>
+      <nav class="winter-nav" aria-label="主导航">
+        <% for (var i in theme.menu){ %><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a><% } %>
+      <button class="nav-search-btn winter-search" type="button" aria-label="搜索">搜索</button>
+      </nav>
+      <div id="search-form-wrap"><%- search_form({button: '搜索', text: __('search')}) %></div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap"><a href="<%- url_for() %>" id="logo">冬风</a></h1>
+      <p class="winter-handle">winterwind</p>
+      <% if (config.subtitle){ %><p id="subtitle-wrap"><span id="subtitle"><%= config.subtitle %></span></p><% } %>
+    </div>
+  </div>
+</header>

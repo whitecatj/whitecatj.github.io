@@ -2,12 +2,12 @@
 ## Docs: https://hexo.io/docs/configuration.html
 
 # Site
-title: white_catj's Blog
-subtitle: ''
+title: 冬风 · winterwind
+subtitle: 'Infinity'
 description: ''
 keywords:
-author: white_catj
-language: en
+author: 冬风
+language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -90,7 +90,7 @@ exclude:
 ignore:
 
 # Extensions
-theme: landscape
+theme: winterwind
 
 # Deployment
 ## 若本机可直连 GitHub，执行 `hexo g -d` 即可发布

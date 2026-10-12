@@ -72,3 +72,7 @@ tools/                         本地工具（迁移脚本、API 发布脚本）
 - 代码块 DOM：新版 Hexo 把行号列与代码列合并在同一表格行内，显示效果相同
 - 少数正文里的 `_下划线_` 现在会正确渲染成斜体（旧版原样输出下划线字符）
 - 主题静态资源（fancybox、jQuery）是新版打包的，文件名不同，页面表现一致
+
+## 冬风主题
+
+站点名称在 _config.yml 的 title 中修改，签名在 subtitle 中修改；当前为 Infinity，设为空字符串即可隐藏。头像与背景分别位于 source/images/avatar.jpg 和 source/images/celeste-summit.jpg。主题源码在 themes/winterwind，发布仍只推 main。
