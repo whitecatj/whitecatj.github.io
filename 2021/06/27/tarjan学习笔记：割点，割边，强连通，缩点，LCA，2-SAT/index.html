@@ -6,18 +6,18 @@
   
   <title>tarjan学习笔记：割点，割边，强连通，缩点，LCA，2-SAT | 冬风 · winterwind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1.割点题目：给定n个点，m条边的无向图，求图的割点。 割点：在一张无向图中删去这个点以及相连的边，原图的连通分量增加。 简单来说，删去这个点后，原图被分成了两半。 考虑对原图进行dfs，依据dfs顺序得到一棵树。  如上图左，3和4是割点，原图的dfs树如右图。 tarjan算法主要利用两个数组：dfn和low。其中dfn数组为时间戳，即该点是第几个被搜索到的。low数组代表该点能回溯到的树中最">
+  <meta name="description" content="1.割点题目：给定n个点，m条边的无向图，求图的割点。 割点：在一张无向图中删去这个点以及相连的边，原图的连通分量增加。 简单来说，删去这个点后，原图被分成了两半。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tarjan学习笔记：割点，割边，强连通，缩点，LCA，2-SAT">
 <meta property="og:url" content="http://whitecatj.github.io/2021/06/27/tarjan%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%89%B2%E7%82%B9%EF%BC%8C%E5%89%B2%E8%BE%B9%EF%BC%8C%E5%BC%BA%E8%BF%9E%E9%80%9A%EF%BC%8C%E7%BC%A9%E7%82%B9%EF%BC%8CLCA%EF%BC%8C2-SAT/index.html">
 <meta property="og:site_name" content="冬风 · winterwind">
-<meta property="og:description" content="1.割点题目：给定n个点，m条边的无向图，求图的割点。 割点：在一张无向图中删去这个点以及相连的边，原图的连通分量增加。 简单来说，删去这个点后，原图被分成了两半。 考虑对原图进行dfs，依据dfs顺序得到一棵树。  如上图左，3和4是割点，原图的dfs树如右图。 tarjan算法主要利用两个数组：dfn和low。其中dfn数组为时间戳，即该点是第几个被搜索到的。low数组代表该点能回溯到的树中最">
+<meta property="og:description" content="1.割点题目：给定n个点，m条边的无向图，求图的割点。 割点：在一张无向图中删去这个点以及相连的边，原图的连通分量增加。 简单来说，删去这个点后，原图被分成了两半。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/2hj6a452.png?x-oss-process=image/resize,m_lfit,h_170,w_225">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/75ahhrwj.png?x-oss-process=image/resize,m_lfit,h_170,w_225">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/jqzov1k4.png?x-oss-process=image/resize,m_lfit,h_170,w_225">
 <meta property="article:published_time" content="2021-06-27T13:42:00.000Z">
-<meta property="article:modified_time" content="2026-10-12T15:51:41.004Z">
+<meta property="article:modified_time" content="2026-10-12T15:54:13.481Z">
 <meta property="article:author" content="冬风">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -96,6 +96,7 @@
         <h4 id="1-割点"><a href="#1-割点" class="headerlink" title="1.割点"></a>1.割点</h4><p>题目：给定n个点，m条边的无向图，求图的割点。</p>
 <p>割点：在一张无向图中删去这个点以及相连的边，原图的连通分量增加。</p>
 <p>简单来说，删去这个点后，原图被分成了两半。</p>
+<span id="more"></span>
 <p>考虑对原图进行dfs，依据dfs顺序得到一棵树。</p>
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2hj6a452.png?x-oss-process=image/resize,m_lfit,h_170,w_225"></p>
 <p>如上图左，3和4是割点，原图的dfs树如右图。</p>
@@ -128,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2021/06/27/tarjan%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%89%B2%E7%82%B9%EF%BC%8C%E5%89%B2%E8%BE%B9%EF%BC%8C%E5%BC%BA%E8%BF%9E%E9%80%9A%EF%BC%8C%E7%BC%A9%E7%82%B9%EF%BC%8CLCA%EF%BC%8C2-SAT/" data-id="cuidKrNlsEB03hRdBVJAV2f2g" data-title="tarjan学习笔记：割点，割边，强连通，缩点，LCA，2-SAT" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://whitecatj.github.io/2021/06/27/tarjan%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%89%B2%E7%82%B9%EF%BC%8C%E5%89%B2%E8%BE%B9%EF%BC%8C%E5%BC%BA%E8%BF%9E%E9%80%9A%EF%BC%8C%E7%BC%A9%E7%82%B9%EF%BC%8CLCA%EF%BC%8C2-SAT/" data-id="cuid4r05ykPTOr4Iw71Umx8OS" data-title="tarjan学习笔记：割点，割边，强连通，缩点，LCA，2-SAT" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
