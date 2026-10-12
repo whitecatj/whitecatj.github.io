@@ -326,19 +326,21 @@ function updateUrl(){
 /* ================== 登录 ================== */
 function login(tk){
   token = tk;
-  return gh("/user").then(function(u){
-    return gh("/repos/" + REPO).then(function(repo){
-      // fine-grained token 的 permissions 结构与 classic 不同，只有明确为 false 才报警
-      var canWrite = !repo.permissions || repo.permissions.push !== false;
-      localStorage.setItem(LS_KEY, token);
-      document.body.classList.add("logged");
+  // 先确认能读到仓库
+  return gh("/repos/" + REPO).then(function(repo){
+    // fine-grained token 的 permissions 结构与 classic 不同，只有明确为 false 才报警
+    var canWrite = !repo.permissions || repo.permissions.push !== false;
+    localStorage.setItem(LS_KEY, token);
+    document.body.classList.add("logged");
+    if (!canWrite){
+      setStatus("这个令牌对仓库没有写入权限，保存会失败。请确认 Contents 权限设为 Read and write。", "fail");
+    }
+    // 头像和用户名尽力而为，拿不到不影响使用
+    return gh("/user").then(function(u){
       $("whoami").innerHTML = (u.avatar_url ? '<img src="' + esc(u.avatar_url) + '">' : "") + esc(u.login);
-      if (!canWrite){
-        setStatus('⚠️ 这个令牌对仓库没有写入权限，保存会失败。请确认 Contents 权限设为 Read and write。', "fail");
-      }
-      loadList();
-      return true;
-    });
+    }).catch(function(){
+      $("whoami").textContent = (repo.owner && repo.owner.login) || "";
+    }).then(function(){ loadList(); return true; });
   });
 }
 $("loginBtn").onclick = function(){
@@ -502,13 +504,13 @@ function save(){
     return Promise.resolve(null);
   })().then(doSave).then(function(res){
     cur = { name: name + ".md", sha: res.content.sha };
-    setStatus("✅ 已发布，GitHub 正在构建…", "busy");
+    setStatus("已提交，GitHub 正在构建…", "busy");
     $("saveBtn").disabled = false;
     loadList();
     watchBuild();
   }).catch(function(e){
     $("saveBtn").disabled = false;
-    setStatus("❌ 保存失败：" + e.message + (e.status===404 ? "（多半是令牌没有写入权限）" : ""), "fail");
+    setStatus("保存失败：" + e.message + (e.status===404 ? "（多半是令牌没有写入权限）" : ""), "fail");
   });
 }
 $("saveBtn").onclick = save;
@@ -521,10 +523,10 @@ $("delBtn").onclick = function(){
     method: "DELETE",
     body: JSON.stringify({ message:"删除文章：" + $("fTitle").value, sha: cur.sha, branch: BRANCH })
   }).then(function(){
-    setStatus("✅ 已删除，等待构建…", "busy");
+    setStatus("已删除，等待构建…", "busy");
     cur = null; showForm(false); loadList(); watchBuild();
   }).catch(function(e){
-    setStatus("❌ 删除失败：" + e.message, "fail");
+    setStatus("删除失败：" + e.message, "fail");
   });
 };
 
@@ -541,9 +543,9 @@ function watchBuild(){
       if (r.status === "completed"){
         clearInterval(pollTimer); pollTimer = null;
         if (r.conclusion === "success")
-          setStatus('🎉 已上线　<a href="' + SITE + '/" target="_blank">打开站点 →</a>', "done");
+          setStatus('已上线　<a href="' + SITE + '/" target="_blank">打开站点 →</a>', "done");
         else
-          setStatus('⚠️ 构建失败（' + esc(r.conclusion) + '）　<a href="' + r.html_url + '" target="_blank">查看日志 →</a>', "fail");
+          setStatus('构建失败（' + esc(r.conclusion) + '）　<a href="' + r.html_url + '" target="_blank">查看日志 →</a>', "fail");
       } else {
         setStatus('<span class="spin"></span>构建中（' + esc(r.status) + '）…', "busy");
       }
