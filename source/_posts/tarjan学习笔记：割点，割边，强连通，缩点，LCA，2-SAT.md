@@ -12,7 +12,9 @@ tags:
 割点：在一张无向图中删去这个点以及相连的边，原图的连通分量增加。
 
 简单来说，删去这个点后，原图被分成了两半。
+
 <!-- more -->
+
 考虑对原图进行dfs，依据dfs顺序得到一棵树。
 
 ![](https://cdn.luogu.com.cn/upload/image_hosting/2hj6a452.png?x-oss-process=image/resize,m_lfit,h_170,w_225)
