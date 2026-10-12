@@ -9,7 +9,7 @@
   <link href="http://whitecatj.github.io/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, white_catj</rights>
   <title>white_catj's Blog</title>
-  <updated>2026-10-12T05:19:24.783Z</updated>
+  <updated>2026-10-12T05:21:48.737Z</updated>
   <entry>
     <author>
       <name>white_catj</name>
@@ -26,7 +26,7 @@
 <h1 id="123"><a href="#123" class="headerlink" title="123"></a>123</h1><p>123</p>]]>
     </summary>
     <title>测试2</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -45,7 +45,7 @@
 <p>奇怪的事情。。。</p>]]>
     </summary>
     <title>测试</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -63,7 +63,7 @@
 <p>可能是因为看好多人都有自己的博客，而且很好看，功能也很多，所以就想搭一个吧（然后发现自己的里面什么功能都不会装）</p>]]>
     </summary>
     <title>关于本博客</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -80,7 +80,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个长度为$n+2$的序列$a_i$，其中第1个数和第$]]>
     </summary>
     <title>代价</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -98,7 +98,7 @@
 <p>$\sum\limits_{i&#x3D;1}^n\sum\limits_{j&#x3D;1}^n\sum\limits_{k&#x3D;1}^n\sum\limits_{l&#x3D;1}^n (a_i,\operatorname{or},a_j),\operatorname{xor},(a_k,\operatorname{and},a_l)$</p>]]>
     </summary>
     <title>谔运算</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -117,7 +117,7 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土2：分块</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -136,7 +136,7 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土1：线段树</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -155,7 +155,7 @@
 <p>2.C x y 询问x和y两艘飞船是否在一列，如果是，则输出两艘飞船之间的飞船数，否则输出-1</p>]]>
     </summary>
     <title>NOI2002 银河英雄传说</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -172,7 +172,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>LCA（Least Common Ancestors），即一颗树中，两个结点的最近公共祖先</p>]]>
     </summary>
     <title>浅谈LCA</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -190,7 +190,7 @@
 <p>试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p>]]>
     </summary>
     <title>NOI1995 石子合并</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -209,7 +209,7 @@
 <p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p>]]>
     </summary>
     <title>SCOI2003 字符串折叠</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -226,7 +226,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个无向图，求出最小生成树，如果该图不连通，则输出orz</p>]]>
     </summary>
     <title>【模板】最小生成树</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -243,7 +243,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。</p>]]>
     </summary>
     <title>数列分段 Section II</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -262,7 +262,7 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土0：树状数组</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -279,7 +279,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>有一个$m×m$的棋盘，棋盘上每一个格子可能是红色、黄色或没有任何颜色的。你现在要从棋盘的最左上角走到棋盘的最右下角。</p>]]>
     </summary>
     <title>棋盘</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -296,7 +296,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p>]]>
     </summary>
     <title>约数和</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -316,7 +316,7 @@
 <p>唯一的好处大概是认识了<a href="https://www.luogu.com.cn/user/123937">@咸味的果冻</a></p>]]>
     </summary>
     <title>陈年旧事</title>
-    <updated>2026-10-12T05:19:24.783Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -333,6 +333,6 @@
       <![CDATA[<p>咕咕咕</p>]]>
     </summary>
     <title>填坑清单</title>
-    <updated>2026-10-12T05:19:24.782Z</updated>
+    <updated>2026-10-12T05:21:48.737Z</updated>
   </entry>
 </feed>
