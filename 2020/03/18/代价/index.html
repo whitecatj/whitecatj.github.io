@@ -4,25 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>代价 | white_catj&#39;s Blog</title>
+  <title>代价 | 冬风 · winterwind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="$Description$给出一个长度为$n+2$的序列$a_i$，其中第1个数和第$n+2$个数固定为$1$，你每次可以选择序列中的一个数删除（不能是第一个和最后一个），删除位置$p$上的数的代价为$a_p-1  a_p  a_p+1$。你需要执行这个操作直到不能再执行。求最小的代价和。 $Solution$首先，subtask2，3，5是显然的区间DP,详情可参照P1063能量项链，这里不再赘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代价">
 <meta property="og:url" content="http://whitecatj.github.io/2020/03/18/%E4%BB%A3%E4%BB%B7/index.html">
-<meta property="og:site_name" content="white_catj&#39;s Blog">
+<meta property="og:site_name" content="冬风 · winterwind">
 <meta property="og:description" content="$Description$给出一个长度为$n+2$的序列$a_i$，其中第1个数和第$n+2$个数固定为$1$，你每次可以选择序列中的一个数删除（不能是第一个和最后一个），删除位置$p$上的数的代价为$a_p-1  a_p  a_p+1$。你需要执行这个操作直到不能再执行。求最小的代价和。 $Solution$首先，subtask2，3，5是显然的区间DP,详情可参照P1063能量项链，这里不再赘">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-12T06:43:33.268Z">
-<meta property="article:author" content="white_catj">
+<meta property="article:modified_time" content="2026-10-12T09:00:33.913Z">
+<meta property="article:author" content="冬风">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="white_catj's Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="冬风 · winterwind" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/images/avatar.jpg">
   
   
   
@@ -36,44 +36,38 @@
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
+  
+<link rel="stylesheet" href="/css/winterwind.css">
+
 <meta name="generator" content="Hexo 8.1.2"></head>
 
 <body>
   <div id="container">
     <div id="wrap">
       <header id="header">
-  <div id="banner"></div>
+  <div id="banner" role="img" aria-label="Madeline 坐在 Celeste 山顶望向云海"></div>
   <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">white_catj&#39;s Blog</a>
-      </h1>
-      
-    </div>
     <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
+      <a class="winter-brand" href="/">冬风 / winterwind</a>
+      <nav class="winter-nav" aria-label="主导航">
+        <a href="/">首页</a><a href="/archives">归档</a>
+      <button class="nav-search-btn winter-search" type="button" aria-label="搜索">搜索</button>
       </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://whitecatj.github.io"></form>
-      </div>
+      <div id="search-form-wrap"><form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">搜索</button><input type="hidden" name="sitesearch" value="http://whitecatj.github.io"></form></div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap"><a href="/" id="logo">冬风</a></h1>
+      <p class="winter-handle">winterwind</p>
+      <p id="subtitle-wrap"><span id="subtitle">Infinity</span></p>
     </div>
   </div>
 </header>
-
       <div class="outer">
+        <div class="winter-mobile-profile"><section class="winter-profile" aria-label="作者资料">
+  <img src="/images/avatar.jpg" width="86" height="86" alt="冬风的头像">
+  <div class="winter-profile-name"><h2>冬风</h2><p>winterwind</p></div>
+  <div class="winter-stats"><span><strong>18</strong>文章</span><span><strong>6</strong>标签</span></div>
+</section></div>
         <section id="main"><article id="post-代价" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2020/03/18/%E4%BB%A3%E4%BB%B7/" class="article-date">
@@ -120,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://whitecatj.github.io/2020/03/18/%E4%BB%A3%E4%BB%B7/" data-id="cuidoe-uepd7V5RXP6aXXi5w7" data-title="代价" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://whitecatj.github.io/2020/03/18/%E4%BB%A3%E4%BB%B7/" data-id="cuidlTXvWTwYAaXmNdlPcnzj2" data-title="代价" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -133,7 +127,7 @@
 <nav id="article-nav">
   
     <a href="/2020/03/19/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
           关于本博客
@@ -143,7 +137,7 @@
   
   
     <a href="/2020/02/16/%E8%B0%94%E8%BF%90%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">后一篇</strong>
       <div class="article-nav-title">谔运算</div>
     </a>
   
@@ -156,13 +150,18 @@
 </section>
         
           <aside id="sidebar">
+  <section class="winter-profile" aria-label="作者资料">
+  <img src="/images/avatar.jpg" width="86" height="86" alt="冬风的头像">
+  <div class="winter-profile-name"><h2>冬风</h2><p>winterwind</p></div>
+  <div class="winter-stats"><span><strong>18</strong>文章</span><span><strong>6</strong>标签</span></div>
+</section>
   
     
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
       <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
     </div>
@@ -172,7 +171,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
       <a href="/tags/%E5%85%B6%E5%AE%83/" style="font-size: 13.33px;">其它</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">笔记</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">置顶</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
     </div>
@@ -181,9 +180,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">十月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li></ul>
     </div>
   </div>
 
@@ -191,7 +190,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
@@ -228,7 +227,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2026 white_catj<br>
+      &copy; 2026 冬风<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -237,9 +236,9 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">首页</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">归档</a>
   
 </nav>
     
