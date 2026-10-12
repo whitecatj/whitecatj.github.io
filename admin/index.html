@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>博客后台 · white_catj's Blog</title>
+<style>
+:root{
+  --blue:#006bde; --blue-h:#0059bb; --bg:#f2f4f7; --card:#fff; --line:#e4e8ee;
+  --text:#1f2328; --muted:#68707c; --ok:#0f9d58; --err:#d93025; --radius:10px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+button{font:inherit;cursor:pointer}
+input,textarea{font:inherit;color:inherit}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em}
+
+/* ------- 登录 ------- */
+#login{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 2px 14px rgba(16,24,40,.05)}
+.login{width:100%;max-width:440px;padding:28px 26px}
+.login h1{margin:0 0 6px;font-size:20px}
+.login .sub{margin:0 0 18px;color:var(--muted);font-size:13px}
+label.f{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}
+.in{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;outline:none;transition:.15s}
+.in:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,107,222,.12)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:9px 16px;border:1px solid transparent;
+  border-radius:8px;background:var(--blue);color:#fff;font-weight:600;font-size:14px;transition:.15s;white-space:nowrap}
+.btn:hover{background:var(--blue-h)}
+.btn.ghost{background:#fff;color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{background:#f6f8fa}
+.btn.danger{background:#fff;color:var(--err);border-color:#f3c2bf}
+.btn.danger:hover{background:#fdf1f0}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.sm{padding:6px 11px;font-size:13px;border-radius:7px}
+.hint{margin-top:18px;padding:12px 14px;background:#f8fafc;border:1px solid var(--line);border-radius:8px;font-size:13px;color:var(--muted);line-height:1.7}
+.hint b{color:var(--text)}
+.hint ol{margin:8px 0 0;padding-left:19px}
+.msg{margin-top:12px;font-size:13.5px;display:none;word-break:break-all}
+.msg.on{display:block}
+.msg.err{color:var(--err)}
+.msg.ok{color:var(--ok)}
+
+/* ------- 主界面 ------- */
+#app{display:none;height:100%;flex-direction:column}
+body.logged #login{display:none}
+body.logged #app{display:flex}
+header{display:flex;align-items:center;gap:12px;padding:0 18px;height:56px;background:#fff;border-bottom:1px solid var(--line);flex:0 0 auto}
+.brand{font-weight:700;font-size:16px;display:flex;align-items:center;gap:8px}
+.brand .tag{font-size:11px;font-weight:600;color:var(--blue);background:#e8f1fd;border-radius:5px;padding:2px 6px}
+header .sp{flex:1}
+header .who{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px}
+header .who img{width:20px;height:20px;border-radius:50%}
+main{flex:1;display:flex;min-height:0}
+aside{width:300px;flex:0 0 300px;border-right:1px solid var(--line);background:#fff;display:flex;flex-direction:column;min-height:0}
+.aside-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted)}
+.list{overflow:auto;flex:1;padding:8px}
+.item{padding:9px 11px;border-radius:8px;cursor:pointer;margin-bottom:2px;border:1px solid transparent}
+.item:hover{background:#f6f8fa}
+.item.on{background:#e8f1fd;border-color:#cfe3fa}
+.item .t{font-weight:600;font-size:14px;line-height:1.45;word-break:break-all}
+.item .m{font-size:12px;color:var(--muted);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap}
+.item .m .tg{color:var(--blue)}
+section#editor{flex:1;overflow:auto;padding:20px 22px;min-width:0}
+.empty{color:var(--muted);font-size:14px;text-align:center;margin-top:80px;line-height:2}
+.form{display:none}
+.form.on{display:block}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.row>.col{flex:1;min-width:220px}
+textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.75;resize:vertical;tab-size:4}
+.url{margin-top:10px;font-size:12.5px;color:var(--muted);word-break:break-all}
+.foot{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--line)}
+.status{font-size:13px;color:var(--muted);margin-left:auto;text-align:right;line-height:1.5}
+.status.busy{color:var(--blue)}
+.status.done{color:var(--ok)}
+.status.fail{color:var(--err)}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid #cfe3fa;border-top-color:var(--blue);
+  border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media(max-width:760px){
+  main{flex-direction:column}
+  aside{width:auto;flex:0 0 auto;max-height:38vh;border-right:0;border-bottom:1px solid var(--line)}
+  section#editor{padding:16px 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= 登录 ================= -->
+<div id="login">
+  <div class="card login">
+    <h1>博客后台</h1>
+    <p class="sub">white_catj's Blog · 在网页上写文章，点一下就发布</p>
+
+    <label class="f" for="tk">访问令牌（GitHub Token）</label>
+    <input class="in" id="tk" type="password" placeholder="github_pat_... 或 ghp_..." autocomplete="off" spellcheck="false">
+    <div class="msg" id="loginMsg"></div>
+    <div style="margin-top:14px;display:flex;gap:10px">
+      <button class="btn" id="loginBtn">登录</button>
+      <button class="btn ghost" id="clearBtn">清除已保存</button>
+    </div>
+
+    <div class="hint">
+      令牌只存在你这台设备的浏览器里，不会发给任何第三方。<br>
+      <b>怎么拿到令牌：</b>
+      <ol>
+        <li>打开 <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">新建 Fine-grained token</a></li>
+        <li>Token name 写 <code>blog-admin</code>，Expiration 选 90 天</li>
+        <li>Repository access 选 <b>Only select repositories</b> → 勾 <code>whitecatj.github.io</code></li>
+        <li>Permissions → Repository permissions → <b>Contents</b> 设为 <b>Read and write</b></li>
+        <li>点 Generate token，复制 <code>github_pat_</code> 开头那串，贴到上面</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 主界面 ================= -->
+<div id="app">
+  <header>
+    <div class="brand">white_catj's Blog <span class="tag">后台</span></div>
+    <div class="sp"></div>
+    <a class="btn ghost sm" id="siteLink" href="https://whitecatj.github.io/" target="_blank">查看站点</a>
+    <span class="who" id="whoami"></span>
+    <button class="btn ghost sm" id="logout">退出</button>
+  </header>
+
+  <main>
+    <aside>
+      <div class="aside-head">
+        <span>文章（<b id="cnt">0</b>）</span>
+        <button class="btn sm" id="newBtn">＋ 新建</button>
+      </div>
+      <div class="list" id="list"><div class="item"><div class="t" style="color:var(--muted)">读取中…</div></div></div>
+    </aside>
+
+    <section id="editor">
+      <div class="empty" id="emptyTip">从左边选一篇文章，或点「＋ 新建」开始写。</div>
+
+      <div class="form" id="form">
+        <div class="row">
+          <div class="col">
+            <label class="f" for="fTitle">标题</label>
+            <input class="in" id="fTitle" placeholder="例如：浅谈 LCA">
+          </div>
+          <div class="col">
+            <label class="f" for="fName">文件名（决定网址，可用中文）</label>
+            <input class="in" id="fName" placeholder="留空则自动用标题">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label class="f" for="fDate">日期</label>
+            <input class="in" id="fDate" type="datetime-local">
+          </div>
+          <div class="col">
+            <label class="f" for="fTags">标签（逗号分隔）</label>
+            <input class="in" id="fTags" placeholder="题解, 数据结构">
+          </div>
+        </div>
+
+        <label class="f" for="fBody">正文（Markdown）</label>
+        <textarea class="in body" id="fBody" spellcheck="false" placeholder="直接写 markdown，代码块用三个反引号包裹。&#10;&#10;空一行再写 &lt;!-- more --&gt; 可控制首页摘要。"></textarea>
+
+        <div class="url">网址：<code id="urlPreview"></code></div>
+
+        <div class="foot">
+          <button class="btn" id="saveBtn">保存并发布</button>
+          <button class="btn ghost" id="cancelBtn">取消</button>
+          <button class="btn danger" id="delBtn" hidden>删除文章</button>
+          <span class="status" id="status"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================== 配置 ================== */
+var API    = "https://api.github.com";
+var REPO   = "whitecatj/whitecatj.github.io";
+var BRANCH = "main";
+var POSTS  = "source/_posts";
+var SITE   = "https://whitecatj.github.io";
+var LS_KEY = "whitecatj_blog_token";
+
+var token = "";
+var list  = [];      // [{name, sha, title, date, tags}]
+var cur   = null;    // 当前编辑的文章 {name, sha} 或 null(新建)
+var nameTouched = false;
+
+/* ================== 工具 ================== */
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+
+// 中文安全的 base64
+function b64enc(str){
+  var bytes = new TextEncoder().encode(str), bin = "";
+  for (var i=0;i<bytes.length;i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+function b64dec(s){
+  var bin = atob(String(s).replace(/\s/g,""));
+  var bytes = new Uint8Array(bin.length);
+  for (var i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+/* ================== API ================== */
+function gh(path, opts){
+  opts = opts || {};
+  var headers = {
+    "Authorization": "Bearer " + token,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28"
+  };
+  if (opts.body) headers["Content-Type"] = "application/json";
+  return fetch(API + path, {
+    method: opts.method || "GET",
+    headers: headers,
+    body: opts.body
+  }).then(function(r){
+    return r.text().then(function(t){
+      var d = null;
+      try { d = t ? JSON.parse(t) : null; } catch(e){ d = { raw: t }; }
+      if (!r.ok) {
+        var e = new Error((d && d.message) || ("HTTP " + r.status));
+        e.status = r.status; e.data = d;
+        throw e;
+      }
+      return d;
+    });
+  });
+}
+function encPath(p){
+  return p.split("/").map(encodeURIComponent).join("/");
+}
+
+/* ================== front-matter ================== */
+function parsePost(text){
+  var m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/.exec(text);
+  if (!m) return { fm:{}, body:text };
+  var fm = {}, key = null;
+  m[1].split(/\r?\n/).forEach(function(line){
+    var kv = /^([A-Za-z_][\w-]*)\s*:\s*(.*)$/.exec(line);
+    if (kv){
+      key = kv[1];
+      var v = kv[2].trim();
+      if (v === "") { fm[key] = []; }
+      else {
+        v = v.replace(/^["']|["']$/g, "");
+        if (key === "tags" || key === "categories")
+          fm[key] = v.replace(/^\[|\]$/g,"").split(/[，,]/).map(function(s){return s.trim().replace(/^["']|["']$/g,"");}).filter(Boolean);
+        else fm[key] = v;
+      }
+    } else {
+      var li = /^\s*-\s*(.+)$/.exec(line);
+      if (li && key){
+        if (!Array.isArray(fm[key])) fm[key] = [];
+        fm[key].push(li[1].trim().replace(/^["']|["']$/g,""));
+      }
+    }
+  });
+  return { fm:fm, body:m[2] };
+}
+function buildPost(o){
+  var tags = (o.tags || []).filter(Boolean);
+  var s = "---\n";
+  s += 'title: "' + String(o.title||"").replace(/"/g,'\\"') + '"\n';
+  s += "date: " + o.date + "\n";
+  s += "tags:\n" + (tags.length ? tags.map(function(t){ return '  - "' + t.replace(/"/g,'\\"') + '"'; }).join("\n") : "  - \"随笔\"") + "\n";
+  s += "---\n\n";
+  s += String(o.body||"").replace(/^\s*\n/,"");
+  return s.replace(/\s*$/,"") + "\n";
+}
+function toDateInput(v){
+  var m = String(v||"").match(/(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);
+  if (!m) return "";
+  return m[1] + "-" + m[2] + "-" + m[3] + "T" + m[4] + ":" + m[5];
+}
+function nowInput(){
+  var d = new Date(), p = function(n){ return (n<10?"0":"")+n; };
+  return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+"T"+p(d.getHours())+":"+p(d.getMinutes());
+}
+function dateFromInput(v){
+  if (!v) return "";
+  return v.replace("T"," ") + ":00";
+}
+function slugify(t){
+  return String(t||"").trim()
+    .replace(/[\/\\:*?"<>|#%{}^\[\]`+=\s]+/g, "-")
+    .replace(/-+/g,"-").replace(/^-|-$/g,"") || "untitled";
+}
+
+/* ================== 界面 ================== */
+function setMsg(el, text, cls){
+  el.textContent = text || "";
+  el.className = "msg" + (text ? " on " + (cls||"") : "");
+}
+function setStatus(text, cls){
+  var s = $("status");
+  s.className = "status" + (cls ? " " + cls : "");
+  s.innerHTML = text || "";
+}
+function showForm(on){
+  $("form").className = "form" + (on ? " on" : "");
+  $("emptyTip").style.display = on ? "none" : "block";
+}
+function updateUrl(){
+  var n = $("fName").value.trim() || slugify($("fTitle").value);
+  var d = $("fDate").value || nowInput();
+  var m = d.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) { $("urlPreview").textContent = SITE + "/"; return; }
+  $("urlPreview").textContent = SITE + "/" + m[1] + "/" + m[2] + "/" + m[3] + "/" + encodeURIComponent(n) + "/";
+}
+
+/* ================== 登录 ================== */
+function login(tk){
+  token = tk;
+  return gh("/user").then(function(u){
+    return gh("/repos/" + REPO).then(function(repo){
+      var canWrite = repo.permissions && repo.permissions.push;
+      localStorage.setItem(LS_KEY, token);
+      document.body.classList.add("logged");
+      $("whoami").innerHTML = (u.avatar_url ? '<img src="' + esc(u.avatar_url) + '">' : "") + esc(u.login);
+      if (!canWrite){
+        setStatus('⚠️ 这个令牌对仓库没有写入权限，保存会失败。请确认 Contents 权限设为 Read and write。', "fail");
+      }
+      loadList();
+      return true;
+    });
+  });
+}
+$("loginBtn").onclick = function(){
+  var tk = $("tk").value.trim();
+  if (!tk) { setMsg($("loginMsg"), "请先粘贴令牌", "err"); return; }
+  setMsg($("loginMsg"), "验证中…");
+  this.disabled = true;
+  var self = this;
+  login(tk).catch(function(e){
+    localStorage.removeItem(LS_KEY);
+    setMsg($("loginMsg"), "登录失败：" + e.message + (e.status===401 ? "（令牌无效或已过期）" : ""), "err");
+  }).then(function(){ self.disabled = false; });
+};
+$("clearBtn").onclick = function(){
+  localStorage.removeItem(LS_KEY);
+  $("tk").value = "";
+  setMsg($("loginMsg"), "已清除本机保存的令牌", "ok");
+};
+$("logout").onclick = function(){
+  localStorage.removeItem(LS_KEY);
+  token = ""; list = []; cur = null;
+  document.body.classList.remove("logged");
+  $("tk").value = "";
+  setMsg($("loginMsg"), "");
+};
+
+/* ================== 文章列表 ================== */
+function loadList(){
+  $("list").innerHTML = '<div class="item"><div class="t" style="color:var(--muted)">读取中…</div></div>';
+  gh("/repos/" + REPO + "/contents/" + encPath(POSTS) + "?ref=" + BRANCH).then(function(items){
+    if (!Array.isArray(items)) throw new Error("返回格式异常");
+    var files = items.filter(function(x){ return x.type === "file" && /\.md$/i.test(x.name); });
+    $("cnt").textContent = files.length;
+    // 并发读取每篇的 front-matter
+    return Promise.all(files.map(function(f){
+      return gh("/repos/" + REPO + "/contents/" + encPath(f.path) + "?ref=" + BRANCH).then(function(d){
+        var txt = b64dec(d.content || "");
+        var p = parsePost(txt);
+        return {
+          name: f.name,
+          sha: d.sha,
+          title: p.fm.title || f.name.replace(/\.md$/i,""),
+          date: p.fm.date || "",
+          tags: p.fm.tags || []
+        };
+      }).catch(function(){
+        return { name:f.name, sha:f.sha, title:f.name.replace(/\.md$/i,""), date:"", tags:[] };
+      });
+    }));
+  }).then(function(arr){
+    arr.sort(function(a,b){ return String(b.date).localeCompare(String(a.date)) || a.name.localeCompare(b.name); });
+    list = arr;
+    renderList();
+  }).catch(function(e){
+    $("list").innerHTML = '<div class="item"><div class="t" style="color:var(--err)">读取失败：' + esc(e.message) + '</div></div>';
+  });
+}
+function renderList(){
+  var box = $("list");
+  if (!list.length){ box.innerHTML = '<div class="item"><div class="t" style="color:var(--muted)">还没有文章</div></div>'; return; }
+  box.innerHTML = list.map(function(p, i){
+    var d = String(p.date).slice(0,10);
+    var tg = (p.tags||[]).slice(0,2).map(function(t){ return '<span class="tg">#' + esc(t) + '</span>'; }).join("");
+    return '<div class="item' + (cur && cur.name===p.name ? ' on' : '') + '" data-i="' + i + '">' +
+      '<div class="t">' + esc(p.title) + '</div>' +
+      '<div class="m"><span>' + esc(d) + '</span>' + tg + '</div></div>';
+  }).join("");
+  Array.prototype.forEach.call(box.querySelectorAll(".item"), function(el){
+    el.onclick = function(){ openPost(list[+el.dataset.i]); };
+  });
+}
+
+/* ================== 编辑器 ================== */
+function openPost(p){
+  gh("/repos/" + REPO + "/contents/" + encPath(POSTS + "/" + p.name) + "?ref=" + BRANCH).then(function(d){
+    var txt = b64dec(d.content || "");
+    var parsed = parsePost(txt);
+    cur = { name: p.name, sha: d.sha };
+    $("fTitle").value   = parsed.fm.title || p.name.replace(/\.md$/i,"");
+    $("fName").value    = p.name.replace(/\.md$/i,"");
+    $("fDate").value    = toDateInput(parsed.fm.date) || nowInput();
+    $("fTags").value    = (parsed.fm.tags || []).join(", ");
+    $("fBody").value    = parsed.body.replace(/^\s*\n/,"");
+    $("delBtn").hidden  = false;
+    setStatus("");
+    nameTouched = true;
+    showForm(true);
+    renderList();
+    updateUrl();
+    $("fBody").focus();
+  }).catch(function(e){
+    alert("打开失败：" + e.message);
+  });
+}
+function newPost(){
+  cur = null;
+  $("fTitle").value = ""; $("fName").value = "";
+  $("fDate").value = nowInput(); $("fTags").value = "";
+  $("fBody").value = ""; $("delBtn").hidden = true;
+  setStatus("");
+  nameTouched = false;
+  showForm(true);
+  renderList();
+  updateUrl();
+  $("fTitle").focus();
+}
+$("newBtn").onclick = newPost;
+$("cancelBtn").onclick = function(){ cur = null; showForm(false); renderList(); };
+$("fTitle").oninput = function(){ if (!nameTouched) { $("fName").value = slugify(this.value); } updateUrl(); };
+$("fName").oninput = function(){ nameTouched = true; updateUrl(); };
+$("fDate").oninput = updateUrl;
+document.addEventListener("keydown", function(e){
+  if ((e.ctrlKey || e.metaKey) && e.key === "s"){ e.preventDefault(); if ($("form").classList.contains("on")) save(); }
+});
+$("fBody").addEventListener("keydown", function(e){
+  if (e.key === "Tab"){ e.preventDefault();
+    var s = this.selectionStart, en = this.selectionEnd;
+    this.value = this.value.slice(0,s) + "  " + this.value.slice(en);
+    this.selectionStart = this.selectionEnd = s + 2;
+  }
+});
+
+/* ================== 保存 / 删除 ================== */
+function save(){
+  var title = $("fTitle").value.trim();
+  var name  = ($("fName").value.trim() || slugify(title));
+  var date  = dateFromInput($("fDate").value) || dateFromInput(nowInput());
+  var tags  = $("fTags").value.split(/[，,]/).map(function(s){ return s.trim(); }).filter(Boolean);
+  var body  = $("fBody").value;
+
+  if (!title){ alert("请先填标题"); $("fTitle").focus(); return; }
+  name = slugify(name);
+
+  var existing = list.filter(function(p){ return p.name === name + ".md"; })[0];
+  var isUpdate = !!(cur && cur.name === name + ".md");
+  if (existing && !isUpdate){
+    if (!confirm("已有同名文章「" + existing.title + "」，继续保存会覆盖它。确定吗？")) return;
+  }
+
+  var content = buildPost({ title:title, date:date, tags:tags, body:body });
+  var path = POSTS + "/" + name + ".md";
+  setStatus('<span class="spin"></span>正在提交…', "busy");
+  $("saveBtn").disabled = true;
+
+  var doSave = function(sha){
+    var payload = {
+      message: (isUpdate ? "更新文章：" : "新增文章：") + title,
+      content: b64enc(content),
+      branch: BRANCH
+    };
+    if (sha) payload.sha = sha;
+    return gh("/repos/" + REPO + "/contents/" + encPath(path), {
+      method: "PUT", body: JSON.stringify(payload)
+    });
+  };
+
+  // 若目标文件已存在，先取它的 sha（更新必须带 sha）
+  (function(){
+    if (isUpdate && cur.sha) return Promise.resolve(cur.sha);
+    if (existing) return gh("/repos/" + REPO + "/contents/" + encPath(path) + "?ref=" + BRANCH).then(function(d){ return d.sha; }).catch(function(){ return null; });
+    return Promise.resolve(null);
+  })().then(doSave).then(function(res){
+    cur = { name: name + ".md", sha: res.content.sha };
+    setStatus("✅ 已发布，GitHub 正在构建…", "busy");
+    $("saveBtn").disabled = false;
+    loadList();
+    watchBuild();
+  }).catch(function(e){
+    $("saveBtn").disabled = false;
+    setStatus("❌ 保存失败：" + e.message + (e.status===404 ? "（多半是令牌没有写入权限）" : ""), "fail");
+  });
+}
+$("saveBtn").onclick = save;
+
+$("delBtn").onclick = function(){
+  if (!cur) return;
+  if (!confirm("确定删除「" + ($("fTitle").value || cur.name) + "」？删除后需要等 Actions 构建，站点才会更新。")) return;
+  setStatus('<span class="spin"></span>正在删除…', "busy");
+  gh("/repos/" + REPO + "/contents/" + encPath(POSTS + "/" + cur.name), {
+    method: "DELETE",
+    body: JSON.stringify({ message:"删除文章：" + $("fTitle").value, sha: cur.sha, branch: BRANCH })
+  }).then(function(){
+    setStatus("✅ 已删除，等待构建…", "busy");
+    cur = null; showForm(false); loadList(); watchBuild();
+  }).catch(function(e){
+    setStatus("❌ 删除失败：" + e.message, "fail");
+  });
+};
+
+/* ================== 构建状态 ================== */
+var pollTimer = null;
+function watchBuild(){
+  if (pollTimer) clearInterval(pollTimer);
+  var n = 0;
+  pollTimer = setInterval(function(){
+    n++;
+    gh("/repos/" + REPO + "/actions/runs?per_page=1&branch=" + BRANCH).then(function(d){
+      var r = (d.workflow_runs || [])[0];
+      if (!r) { return; }
+      if (r.status === "completed"){
+        clearInterval(pollTimer); pollTimer = null;
+        if (r.conclusion === "success")
+          setStatus('🎉 已上线　<a href="' + SITE + '/" target="_blank">打开站点 →</a>', "done");
+        else
+          setStatus('⚠️ 构建失败（' + esc(r.conclusion) + '）　<a href="' + r.html_url + '" target="_blank">查看日志 →</a>', "fail");
+      } else {
+        setStatus('<span class="spin"></span>构建中（' + esc(r.status) + '）…', "busy");
+      }
+    }).catch(function(){});
+    if (n > 40){ clearInterval(pollTimer); pollTimer = null; }
+  }, 6000);
+}
+
+/* ================== 启动 ================== */
+var saved = localStorage.getItem(LS_KEY);
+if (saved){
+  login(saved).catch(function(){
+    localStorage.removeItem(LS_KEY);
+    setMsg($("loginMsg"), "保存的令牌已失效，请重新输入。", "err");
+  });
+}
+})();
+</script>
+</body>
+</html>
