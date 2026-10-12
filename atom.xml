@@ -9,7 +9,24 @@
   <link href="http://whitecatj.github.io/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, white_catj</rights>
   <title>white_catj's Blog</title>
-  <updated>2026-10-12T03:23:32.940Z</updated>
+  <updated>2026-10-12T03:25:19.823Z</updated>
+  <entry>
+    <author>
+      <name>white_catj</name>
+    </author>
+    <category term="测试" scheme="http://whitecatj.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    <content>
+      <![CDATA[<p>这是一次自动发布链路自检，几秒后会被自动删除。</p><span id="more"></span><p>看到这条说明发布通道是通的。</p>]]>
+    </content>
+    <id>http://whitecatj.github.io/2026/10/12/deploy-check/</id>
+    <link href="http://whitecatj.github.io/2026/10/12/deploy-check/"/>
+    <published>2026-10-12T03:25:00.000Z</published>
+    <summary>
+      <![CDATA[<p>这是一次自动发布链路自检，几秒后会被自动删除。</p>]]>
+    </summary>
+    <title>部署链路自检</title>
+    <updated>2026-10-12T03:25:19.823Z</updated>
+  </entry>
   <entry>
     <author>
       <name>white_catj</name>
@@ -26,7 +43,7 @@
 <p>可能是因为看好多人都有自己的博客，而且很好看，功能也很多，所以就想搭一个吧（然后发现自己的里面什么功能都不会装）</p>]]>
     </summary>
     <title>关于本博客</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -43,7 +60,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个长度为$n+2$的序列$a_i$，其中第1个数和第$]]>
     </summary>
     <title>代价</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -61,7 +78,7 @@
 <p>$\sum\limits_{i&#x3D;1}^n\sum\limits_{j&#x3D;1}^n\sum\limits_{k&#x3D;1}^n\sum\limits_{l&#x3D;1}^n (a_i,\operatorname{or},a_j),\operatorname{xor},(a_k,\operatorname{and},a_l)$</p>]]>
     </summary>
     <title>谔运算</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -80,7 +97,7 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土2：分块</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -99,7 +116,7 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土1：线段树</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -118,7 +135,7 @@
 <p>2.C x y 询问x和y两艘飞船是否在一列，如果是，则输出两艘飞船之间的飞船数，否则输出-1</p>]]>
     </summary>
     <title>NOI2002 银河英雄传说</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -135,26 +152,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>LCA（Least Common Ancestors），即一颗树中，两个结点的最近公共祖先</p>]]>
     </summary>
     <title>浅谈LCA</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>white_catj</name>
-    </author>
-    <category term="题解" scheme="http://whitecatj.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
-    <content>
-      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>折叠的定义如下：</p><p>1.一个字符串可以看成它自身的折叠。记作S &#x3D; S<br>2.X(S)是X(X&gt;1)个S连接在一起的串的折叠。记作X(S) &#x3D; SSSS…S(X个S)。<br>3.如果A &#x3D; A’, B &#x3D; B’，则AB &#x3D; A’B’ 例如，因为3(A) &#x3D; AAA, 2(B) &#x3D; BB，所以3(A)C2(B) &#x3D; AAACBB，而2(3(A)C)2(B) &#x3D; AAACAAACBB</p><p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p><span id="more"></span><h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>前置知识：区间DP</p><p>如果你不知道区间DP是个啥，可以去我的<a href="https://www.luogu.org/blog/123936/solution-p1880">这篇</a>题解</p><p>大概讲了区间DP的原理</p><p>——————可爱(<em>≧▽≦</em>)的分割线qwq——————</p><p>这篇题解有部分思路借鉴<a href="https://www.luogu.org/blog/gyx8177919/solution-p4302">skiy_gyx</a>，感谢dalao的题解（就是他讲的有点少所以才发的这篇）</p><p>这题难度严重虚高，跟石子合并也差不了多少</p><p><del>chen_zhe:这是个p的省选题，顶多普及-</del></p><p>好了，看看题目，枚举贪心搜索好像都不大可行</p><p>于是我们就用区间DP</p><p>那么，怎么表示状态呢？</p><p>我们用$f[i][j]$表示字符串里i到j的折叠长度的最小值</p><p>直接套模板就可以得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(int l=1;l&lt;=n;l++)&#123;</span><br><span class="line">    for(int i=1,j=i+l-1;j&lt;=n;i++,j++)&#123;</span><br><span class="line">        for(int k=i;k&lt;j;k++)&#123;</span><br><span class="line">            f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>记得初始化时把所有的$f[i][i]$都初始化成1</p><p>这里就不解释了</p><p>当然不会这么简单</p><p>对于每一个$i$到$j$的串，除了</p><ul><li>分成两段的和，即上面的代码</li><li>还有自己单独构成一个循环的串</li></ul><p>那么重点就在于判断这个串是否循环了</p><p>这个串如果循环，那么一定有一个循环节</p><p>比如abcabcabcabc中的abc</p><p>正好，我们上面的程序里面枚举了一遍断点</p><p>那么正好接着判断i到k的这一串可不可以作为循环节</p><p>首先，如果当前串的长度不是循环节的整数倍，那就直接排除</p><p>其次，我们只要写一个check函数</p><p>遍历一遍这个串，看看是不是每个都符合</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bool check(int l,int r,int len)&#123;</span><br><span class="line">    for(int i=l;i&lt;=l+len-1;i++)&#123; //遍历循环节的每一位</span><br><span class="line">        for(int j=i;j&lt;=r;j+=len)&#123; //和之后串里的每一个循环节的相应位进行比较</span><br><span class="line">            if(s[j]!=s[i]) return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>最后一点，这时折叠后的长度就是：</p><p>循环节的长度+2（括号）+循环节的长度的位数（即括号开头的数字）</p><p>另外两个都很好搞，这个循环节的长度的位数还要另作处理</p><p>不妨定义一个数组sz，存下每个数字的长度，即：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(int i=1;i&lt;=100;i++)&#123;</span><br><span class="line">    if(i&lt;=9) sz[i]=1;</span><br><span class="line">    else if(i&gt;=10&amp;&amp;i&lt;=99) sz[i]=2;</span><br><span class="line">    else sz[i]=3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">至此，我们就可以直接上代码了</span><br></pre></td></tr></table></figure><h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">string s;</span><br><span class="line">int sz[105],f[105][105];</span><br><span class="line">bool check(int l,int r,int len)&#123;</span><br><span class="line">    for(int i=l;i&lt;=l+len-1;i++)&#123;</span><br><span class="line">        for(int j=i;j&lt;=r;j+=len)&#123; </span><br><span class="line">            if(s[j]!=s[i]) return false;        </span><br><span class="line">&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;s;</span><br><span class="line">int n=s.length();</span><br><span class="line">memset(f,0x3f,sizeof(f));</span><br><span class="line">for(int i=0;i&lt;n;i++) f[i][i]=1;</span><br><span class="line">for(int i=1;i&lt;=100;i++)&#123;</span><br><span class="line">    if(i&lt;=9) sz[i]=1;</span><br><span class="line">    else if(i&gt;=10&amp;&amp;i&lt;=99) sz[i]=2;</span><br><span class="line">    else sz[i]=3;</span><br><span class="line">&#125;</span><br><span class="line">for(int l=1;l&lt;=n;l++)&#123;</span><br><span class="line">    for(int i=0,j=i+l-1;j&lt;n;i++,j++)&#123;</span><br><span class="line">        for(int k=i;k&lt;j;k++)&#123;</span><br><span class="line">            f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]);</span><br><span class="line">            int len=k-i+1;</span><br><span class="line">            if(l%len) continue;</span><br><span class="line">            if(check(i,j,len)) f[i][j]=min(f[i][j],sz[l/len]+f[i][k]+2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;f[0][n-1];</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]>
-    </content>
-    <id>http://whitecatj.github.io/2019/11/28/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/</id>
-    <link href="http://whitecatj.github.io/2019/11/28/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/"/>
-    <published>2019-11-28T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>折叠的定义如下：</p>
-<p>1.一个字符串可以看成它自身的折叠。记作S &#x3D; S<br>2.X(S)是X(X&gt;1)个S连接在一起的串的折叠。记作X(S) &#x3D; SSSS…S(X个S)。<br>3.如果A &#x3D; A’, B &#x3D; B’，则AB &#x3D; A’B’ 例如，因为3(A) &#x3D; AAA, 2(B) &#x3D; BB，所以3(A)C2(B) &#x3D; AAACBB，而2(3(A)C)2(B) &#x3D; AAACAAACBB</p>
-<p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p>]]>
-    </summary>
-    <title>SCOI2003 字符串折叠</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -172,7 +170,7 @@
 <p>试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p>]]>
     </summary>
     <title>NOI1995 石子合并</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -189,7 +187,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>给出一个无向图，求出最小生成树，如果该图不连通，则输出orz</p>]]>
     </summary>
     <title>【模板】最小生成树</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -206,7 +204,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于给定的一个长度为N的正整数数列A，现要将其分成M(M≤N)段，并要求每段连续，且每段和的最大值最小。</p>]]>
     </summary>
     <title>数列分段 Section II</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -225,7 +223,7 @@
 <p>2.求出某区间每一个数的和</p>]]>
     </summary>
     <title>数据结构之从入门到入土0：树状数组</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -242,7 +240,26 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>有一个$m×m$的棋盘，棋盘上每一个格子可能是红色、黄色或没有任何颜色的。你现在要从棋盘的最左上角走到棋盘的最右下角。</p>]]>
     </summary>
     <title>棋盘</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>white_catj</name>
+    </author>
+    <category term="题解" scheme="http://whitecatj.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    <content>
+      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>折叠的定义如下：</p><p>1.一个字符串可以看成它自身的折叠。记作S &#x3D; S<br>2.X(S)是X(X&gt;1)个S连接在一起的串的折叠。记作X(S) &#x3D; SSSS…S(X个S)。<br>3.如果A &#x3D; A’, B &#x3D; B’，则AB &#x3D; A’B’ 例如，因为3(A) &#x3D; AAA, 2(B) &#x3D; BB，所以3(A)C2(B) &#x3D; AAACBB，而2(3(A)C)2(B) &#x3D; AAACAAACBB</p><p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p><span id="more"></span><h2 id="Solution"><a href="#Solution" class="headerlink" title="$Solution$"></a>$Solution$</h2><p>前置知识：区间DP</p><p>如果你不知道区间DP是个啥，可以去我的<a href="https://www.luogu.org/blog/123936/solution-p1880">这篇</a>题解</p><p>大概讲了区间DP的原理</p><p>——————可爱(<em>≧▽≦</em>)的分割线qwq——————</p><p>这篇题解有部分思路借鉴<a href="https://www.luogu.org/blog/gyx8177919/solution-p4302">skiy_gyx</a>，感谢dalao的题解（就是他讲的有点少所以才发的这篇）</p><p>这题难度严重虚高，跟石子合并也差不了多少</p><p><del>chen_zhe:这是个p的省选题，顶多普及-</del></p><p>好了，看看题目，枚举贪心搜索好像都不大可行</p><p>于是我们就用区间DP</p><p>那么，怎么表示状态呢？</p><p>我们用$f[i][j]$表示字符串里i到j的折叠长度的最小值</p><p>直接套模板就可以得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(int l=1;l&lt;=n;l++)&#123;</span><br><span class="line">    for(int i=1,j=i+l-1;j&lt;=n;i++,j++)&#123;</span><br><span class="line">        for(int k=i;k&lt;j;k++)&#123;</span><br><span class="line">            f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>记得初始化时把所有的$f[i][i]$都初始化成1</p><p>这里就不解释了</p><p>当然不会这么简单</p><p>对于每一个$i$到$j$的串，除了</p><ul><li>分成两段的和，即上面的代码</li><li>还有自己单独构成一个循环的串</li></ul><p>那么重点就在于判断这个串是否循环了</p><p>这个串如果循环，那么一定有一个循环节</p><p>比如abcabcabcabc中的abc</p><p>正好，我们上面的程序里面枚举了一遍断点</p><p>那么正好接着判断i到k的这一串可不可以作为循环节</p><p>首先，如果当前串的长度不是循环节的整数倍，那就直接排除</p><p>其次，我们只要写一个check函数</p><p>遍历一遍这个串，看看是不是每个都符合</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bool check(int l,int r,int len)&#123;</span><br><span class="line">    for(int i=l;i&lt;=l+len-1;i++)&#123; //遍历循环节的每一位</span><br><span class="line">        for(int j=i;j&lt;=r;j+=len)&#123; //和之后串里的每一个循环节的相应位进行比较</span><br><span class="line">            if(s[j]!=s[i]) return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>最后一点，这时折叠后的长度就是：</p><p>循环节的长度+2（括号）+循环节的长度的位数（即括号开头的数字）</p><p>另外两个都很好搞，这个循环节的长度的位数还要另作处理</p><p>不妨定义一个数组sz，存下每个数字的长度，即：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(int i=1;i&lt;=100;i++)&#123;</span><br><span class="line">    if(i&lt;=9) sz[i]=1;</span><br><span class="line">    else if(i&gt;=10&amp;&amp;i&lt;=99) sz[i]=2;</span><br><span class="line">    else sz[i]=3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">至此，我们就可以直接上代码了</span><br></pre></td></tr></table></figure><h2 id="Code"><a href="#Code" class="headerlink" title="$Code$"></a>$Code$</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">string s;</span><br><span class="line">int sz[105],f[105][105];</span><br><span class="line">bool check(int l,int r,int len)&#123;</span><br><span class="line">    for(int i=l;i&lt;=l+len-1;i++)&#123;</span><br><span class="line">        for(int j=i;j&lt;=r;j+=len)&#123; </span><br><span class="line">            if(s[j]!=s[i]) return false;        </span><br><span class="line">&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">cin&gt;&gt;s;</span><br><span class="line">int n=s.length();</span><br><span class="line">memset(f,0x3f,sizeof(f));</span><br><span class="line">for(int i=0;i&lt;n;i++) f[i][i]=1;</span><br><span class="line">for(int i=1;i&lt;=100;i++)&#123;</span><br><span class="line">    if(i&lt;=9) sz[i]=1;</span><br><span class="line">    else if(i&gt;=10&amp;&amp;i&lt;=99) sz[i]=2;</span><br><span class="line">    else sz[i]=3;</span><br><span class="line">&#125;</span><br><span class="line">for(int l=1;l&lt;=n;l++)&#123;</span><br><span class="line">    for(int i=0,j=i+l-1;j&lt;n;i++,j++)&#123;</span><br><span class="line">        for(int k=i;k&lt;j;k++)&#123;</span><br><span class="line">            f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]);</span><br><span class="line">            int len=k-i+1;</span><br><span class="line">            if(l%len) continue;</span><br><span class="line">            if(check(i,j,len)) f[i][j]=min(f[i][j],sz[l/len]+f[i][k]+2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;f[0][n-1];</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>http://whitecatj.github.io/2019/11/28/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/</id>
+    <link href="http://whitecatj.github.io/2019/11/28/%5BSCOI2003%5D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8A%98%E5%8F%A0/"/>
+    <published>2019-11-28T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>折叠的定义如下：</p>
+<p>1.一个字符串可以看成它自身的折叠。记作S &#x3D; S<br>2.X(S)是X(X&gt;1)个S连接在一起的串的折叠。记作X(S) &#x3D; SSSS…S(X个S)。<br>3.如果A &#x3D; A’, B &#x3D; B’，则AB &#x3D; A’B’ 例如，因为3(A) &#x3D; AAA, 2(B) &#x3D; BB，所以3(A)C2(B) &#x3D; AAACBB，而2(3(A)C)2(B) &#x3D; AAACAAACBB</p>
+<p>给一个字符串，求它的最短折叠。例如AAAAAAAAAABABABCCD的最短折叠为：9(A)3(AB)CCD。</p>]]>
+    </summary>
+    <title>SCOI2003 字符串折叠</title>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -259,7 +276,7 @@
       <![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="$Description$"></a>$Description$</h2><p>对于一个数X，函数f(X)表示X所有约数的和。例如：f(6)&#x3D;1+2+3+6&#x3D;12。对于一个X，现在的问题是，给定两个正整数X,Y(X&lt;Y)，算出f(X)+f(X+1)+……+f(Y)的值</p>]]>
     </summary>
     <title>约数和</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -279,7 +296,7 @@
 <p>唯一的好处大概是认识了<a href="https://www.luogu.com.cn/user/123937">@咸味的果冻</a></p>]]>
     </summary>
     <title>陈年旧事</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
   <entry>
     <author>
@@ -296,6 +313,6 @@
       <![CDATA[<p>咕咕咕</p>]]>
     </summary>
     <title>填坑清单</title>
-    <updated>2026-10-12T03:23:32.940Z</updated>
+    <updated>2026-10-12T03:25:19.823Z</updated>
   </entry>
 </feed>
