@@ -73,6 +73,35 @@ section#editor{flex:1;overflow:auto;padding:20px 22px;min-width:0}
 .row{display:flex;gap:14px;flex-wrap:wrap}
 .row>.col{flex:1;min-width:220px}
 textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.75;resize:vertical;tab-size:4}
+.bodyhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
+.bodyhead label.f{margin:0}
+.tabs{display:flex;gap:4px;background:#f1f4f8;border:1px solid var(--line);border-radius:9px;padding:3px}
+.tab{border:0;background:transparent;color:var(--muted);font-size:13px;font-weight:600;padding:5px 12px;border-radius:6px}
+.tab.on{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(16,24,40,.1)}
+.pane{margin-top:6px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:14px 18px;
+  min-height:430px;max-height:62vh;overflow:auto}
+.pane.md{font-size:14.5px;line-height:1.8;background:#fcfdff}
+.pane.md h1,.pane.md h2,.pane.md h3{line-height:1.35;margin:18px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.pane.md h1{font-size:1.5em}.pane.md h2{font-size:1.3em}.pane.md h3{font-size:1.12em;border-bottom:0}
+.pane.md p{margin:10px 0}
+.pane.md ul,.pane.md ol{padding-left:24px;margin:10px 0}
+.pane.md li{margin:4px 0}
+.pane.md pre{background:#f6f8fa;border:1px solid var(--line);border-radius:7px;padding:11px 13px;overflow:auto}
+.pane.md pre code{background:none;padding:0}
+.pane.md code{background:#f1f3f6;padding:1.5px 5px;border-radius:4px}
+.pane.md blockquote{margin:10px 0;padding:2px 14px;border-left:4px solid #d8dee7;color:var(--muted);background:#f8fafc}
+.pane.md table{border-collapse:collapse;margin:12px 0;width:100%}
+.pane.md th,.pane.md td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+.pane.md th{background:#f6f8fa}
+.pane.md img{max-width:100%}
+.pane.md hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.pane .dim{color:var(--muted);font-size:13.5px}
+.cheat{font-size:13.5px;line-height:1.9;color:var(--muted)}
+.cheat b{color:var(--text)}
+.cheat table{border-collapse:collapse;margin:10px 0;width:100%}
+.cheat td{border:1px solid var(--line);padding:7px 10px;vertical-align:top}
+.cheat td:first-child{width:44%;color:var(--text);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#f8fafc;white-space:pre}
+.cheat .warn{color:var(--err)}
 .url{margin-top:10px;font-size:12.5px;color:var(--muted);word-break:break-all}
 .foot{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--line)}
 .status{font-size:13px;color:var(--muted);margin-left:auto;text-align:right;line-height:1.5}
@@ -164,8 +193,17 @@ textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Con
           </div>
         </div>
 
-        <label class="f" for="fBody">正文（Markdown）</label>
+        <div class="bodyhead">
+          <label class="f" for="fBody">正文（Markdown）</label>
+          <div class="tabs">
+            <button class="tab on" id="tabEdit" type="button">编辑</button>
+            <button class="tab" id="tabPrev" type="button">预览</button>
+            <button class="tab" id="tabHelp" type="button">语法速查</button>
+          </div>
+        </div>
         <textarea class="in body" id="fBody" spellcheck="false" placeholder="直接写 markdown，代码块用三个反引号包裹。&#10;&#10;空一行再写 &lt;!-- more --&gt; 可控制首页摘要。"></textarea>
+        <div class="pane md" id="preview" hidden></div>
+        <div class="pane" id="mdHelp" hidden></div>
 
         <div class="url">网址：<code id="urlPreview"></code></div>
 
@@ -196,6 +234,7 @@ var token = "";
 var list  = [];      // [{name, sha, title, date, tags}]
 var cur   = null;    // 当前编辑的文章 {name, sha} 或 null(新建)
 var nameTouched = false;
+var saving = false;
 
 /* ================== 工具 ================== */
 function $(id){ return document.getElementById(id); }
@@ -237,7 +276,7 @@ function gh(path, opts){
         e.status = r.status; e.data = d;
         throw e;
       }
-      return d;
+      return opts.raw ? t : d;    // raw: 需要纯文本返回（例如 markdown 渲染接口）
     });
   });
 }
@@ -433,6 +472,7 @@ function openPost(p){
     setStatus("");
     nameTouched = true;
     showForm(true);
+    showTab("edit");
     renderList();
     updateUrl();
     $("fBody").focus();
@@ -440,6 +480,65 @@ function openPost(p){
     alert("打开失败：" + e.message);
   });
 }
+/* ---------- 编辑 / 预览 / 语法速查 ---------- */
+var CHEAT = [
+  ['# 一级标题', '井号后面<b>必须打一个空格</b>，否则原样显示'],
+  ['## 二级标题', '三级、四级依次类推'],
+  ['**粗体**', '两个星号夹住'],
+  ['*斜体*', '一个星号夹住'],
+  ['- 列表项', '减号 + 空格；有序列表用 <code>1. </code>'],
+  ['> 引用', '大于号 + 空格'],
+  ['`行内代码`', '单个反引号夹住'],
+  ['```\\n代码块\\n```', '三个<b>反引号</b>（键盘左上角 Esc 下面那个键）占一行，首尾各一行。<br><span class="warn">注意：不是单引号 \'\'\' </span>'],
+  ['[文字](https://链接)', '超链接'],
+  ['![说明](图片地址)', '插图片'],
+  ['| A | B |\\n|---|---|\\n| 1 | 2 |', '表格'],
+  ['---', '分隔线'],
+  ['<!-- more -->', '独占一行时，上面的内容作为首页摘要']
+];
+function buildCheat(){
+  var rows = CHEAT.map(function(r){
+    return '<tr><td>' + esc(r[0]) + '</td><td>' + r[1] + '</td></tr>';
+  }).join("");
+  $("mdHelp").innerHTML = '<div class="cheat"><b>Markdown 语法速查</b>' +
+    '<table>' + rows + '</table>' +
+    '<p>写完点上面的「预览」就能看到发布后的样子。预览用的是 GitHub 自己的渲染器，和站点最终效果基本一致。</p></div>';
+}
+
+function showTab(which){
+  ["tabEdit","tabPrev","tabHelp"].forEach(function(id){
+    var on = (id === "tabEdit" && which === "edit") || (id === "tabPrev" && which === "prev") || (id === "tabHelp" && which === "help");
+    $(id).className = "tab" + (on ? " on" : "");
+  });
+  $("fBody").hidden   = which !== "edit";
+  $("preview").hidden = which !== "prev";
+  $("mdHelp").hidden  = which !== "help";
+  if (which === "prev") renderPreview();
+}
+$("tabEdit").onclick = function(){ showTab("edit"); };
+$("tabPrev").onclick = function(){ showTab("prev"); };
+$("tabHelp").onclick = function(){ showTab("help"); };
+
+var previewTimer = null;
+function renderPreview(){
+  var box = $("preview"), text = $("fBody").value;
+  if (!text.trim()){ box.innerHTML = '<p class="dim">（正文还是空的）</p>'; return; }
+  box.innerHTML = '<p class="dim">渲染中…</p>';
+  gh("/markdown", {
+    method: "POST", raw: true,
+    body: JSON.stringify({ text: text, mode: "gfm", context: REPO })
+  }).then(function(html){
+    if ($("tabPrev").classList.contains("on")) box.innerHTML = html || '<p class="dim">（没有内容）</p>';
+  }).catch(function(e){
+    box.innerHTML = '<p class="dim">预览失败：' + esc(e.message) + '（不影响保存）</p>';
+  });
+}
+$("fBody").addEventListener("input", function(){
+  if (!$("tabPrev").classList.contains("on")) return;
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(renderPreview, 500);
+});
+
 function newPost(){
   cur = null;
   $("fTitle").value = ""; $("fName").value = "";
@@ -448,6 +547,7 @@ function newPost(){
   setStatus("");
   nameTouched = false;
   showForm(true);
+  showTab("edit");
   renderList();
   updateUrl();
   $("fTitle").focus();
@@ -491,8 +591,10 @@ function probeFile(path){
 }
 
 function save(){
+  if (saving) return;                       // 防止连点 / 连按 Ctrl+S 造成并发提交
   var title = $("fTitle").value.trim();
   if (!title){ alert("请先填标题"); $("fTitle").focus(); return; }
+  saving = true;
 
   var name  = slugify($("fName").value.trim() || title);
   var date  = dateFromInput($("fDate").value) || dateFromInput(nowInput());
@@ -551,6 +653,8 @@ function save(){
     setStatus("保存失败：" + e.message + extra, "fail");
   }).then(function(){
     btn.disabled = false;
+    saving = false;
+    if ($("tabPrev").classList.contains("on")) renderPreview();
   });
 }
 $("saveBtn").onclick = save;
@@ -596,6 +700,7 @@ function watchBuild(){
 
 /* ================== 启动 ================== */
 var saved = localStorage.getItem(LS_KEY);
+buildCheat();
 if (saved){
   login(saved).catch(function(){
     localStorage.removeItem(LS_KEY);
