@@ -12,6 +12,52 @@ Hexo 8 + Landscape 主题，发布在 **https://whitecatj.github.io/**
 往 `main` 推送后，GitHub Actions 会自动编译（1 分钟左右）并把产物发布到 `master`，
 GitHub Pages 再从 `master` 更新线上站点。整套流程不需要你本地装任何东西。
 
+## 网页后台 <https://whitecatj.github.io/admin/>
+
+写文章、传图片都在这里做，不用碰 git。
+
+1. 第一次打开要粘贴一个 GitHub Token（页面上有拿 token 的图文步骤，Fine-grained token，
+   只勾选本仓库，**Contents 权限设为 Read and write**）
+2. Token 只存在你自己这台浏览器里，换设备要重新粘一次
+3. 支持：文章列表 / 新建 / 编辑 / 删除、Markdown 预览、语法速查、图片上传、优先级、构建状态
+
+保存时它直接提交到 `main` 分支，同样会触发 Actions 自动发布。
+
+## 文章优先级（置顶）
+
+在文章 front-matter 里加一个 `sticky` 字段，数字越大越靠前：
+
+```markdown
+---
+title: "文章标题"
+date: 2026-10-12 20:30:00
+sticky: 10          # 不写或写 0 就是普通文章
+tags:
+  - "题解"
+---
+```
+
+首页的排序规则是**先按 `sticky` 从大到小，`sticky` 相同的再按日期从新到旧**；
+被置顶的文章，日期旁边会显示一个「置顶」小标签。
+
+`priority` 和 `sticky` 是同义词，写哪个都行（两个都写时以 `sticky` 为准），
+后台里对应的输入框叫「优先级」。
+
+> 只影响首页列表。`/archives/` 归档页仍然保持纯时间倒序，作为「全部文章按时间翻」的入口。
+
+## 上传图片
+
+后台的正文区域支持三种上传方式，传完会自动把 markdown 插到光标处：
+
+- 点「＋ 上传图片」选文件（可以多选）
+- 把图片直接拖进正文框
+- 复制图片后在正文框里 `Ctrl+V`
+- 切到「图片」页签能看到所有已上传的图，点一下插入，hover 右上角可以删
+
+图片存在 `source/images/uploads/`，站点路径是 `/images/uploads/xxx.png`。
+超过 1600px 或 1.2MB 的图会先在浏览器里压缩再传，避免仓库被大图撑爆。
+上传只是提交图片，**文章本身还要再点一次「保存并发布」**。
+
 ## 在网站上写文章（推荐）
 
 1. 打开 <https://github.com/whitecatj/whitecatj.github.io/tree/main/source/_posts>
@@ -60,11 +106,15 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 ## 目录说明
 
 ```
-_config.yml                    站点配置（标题、URL、permalink、代码高亮等）
+_config.yml                      站点配置（标题、URL、permalink、代码高亮等）
 package.json / package-lock.json 依赖清单，Actions 用它们还原环境
-source/_posts/*.md             文章源文件（16 篇老文章已迁移到这里）
-.github/workflows/deploy.yml   自动构建发布脚本
-tools/                         本地工具（迁移脚本、API 发布脚本），不参与构建
+source/_posts/*.md               文章源文件（16 篇老文章已迁移到这里）
+source/admin/index.html          网页后台（单文件，skip_render 原样拷贝，不经 Hexo 渲染）
+source/images/uploads/           后台上传的图片
+source/images/                   头像、背景图
+themes/winterwind/               主题源码（layout / css / js）
+scripts/                         构建期脚本（优先级归一化、KaTeX 前台渲染），随 Hexo 自动加载
+.github/workflows/deploy.yml     自动构建发布脚本
 ```
 
 ## 与 2020 年旧站的差异
