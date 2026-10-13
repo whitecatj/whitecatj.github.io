@@ -51,7 +51,15 @@
         <a href="/">首页</a><a href="/archives">归档</a>
       <button class="nav-search-btn winter-search" type="button" aria-label="搜索">搜索</button>
       </nav>
-      <div id="search-form-wrap"><form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">搜索</button><input type="hidden" name="sitesearch" value="https://winterwindww.github.io"></form></div>
+      <div id="search-form-wrap" data-index="/search.json">
+        <div class="ww-search">
+          <input type="search" class="ww-search-input" id="ww-search-input"
+                 placeholder="搜索文章…" autocomplete="off" spellcheck="false"
+                 aria-label="搜索文章" aria-expanded="false" aria-controls="ww-search-results">
+          <button type="button" class="ww-search-close" aria-label="关闭搜索">×</button>
+        </div>
+        <div id="ww-search-results" class="ww-search-results" role="listbox" aria-label="搜索结果" hidden></div>
+      </div>
     </div>
     <div id="header-title" class="inner">
       <h1 id="logo-wrap"><a href="/" id="logo">冬风的博客</a></h1>
@@ -229,6 +237,9 @@
 
 
 <script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
 
 
 
