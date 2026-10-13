@@ -17,15 +17,15 @@ body{background:#f4f4fa;color:#303345;font-family:"Segoe UI","Microsoft YaHei",s
 #header-inner{justify-content:flex-end}#logo{font-family:"Songti SC","SimSun","Noto Serif SC",Georgia,"Times New Roman",serif;font-weight:600;font-size:46px;letter-spacing:3px}#subtitle-wrap{margin-top:20px}#subtitle{color:#ffb3c6;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:27px;letter-spacing:1.5px;text-shadow:0 2px 10px #3a1020;display:inline-block}#subtitle::before{content:"— ";font-size:18px;opacity:.8}@media(max-width:767px){#header-title{left:45%;right:16px}#logo{font-size:27px;letter-spacing:1px;white-space:nowrap}#subtitle{font-size:23px}}@media(max-width:350px){#header-title{left:44%}#logo{font-size:24px;letter-spacing:0}#subtitle{font-size:21px}}
 
 /* 首页横幅左上角随机诗词：导航下方左侧，楷体；出处悬停显示 */
-.poem-line{position:absolute;top:78px;left:28px;z-index:3;max-width:46%;padding:8px 16px;border-radius:12px;background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.55);color:#453e5c;font-family:"Kaiti SC","STKaiti","KaiTi","楷体","Songti SC","SimSun","Noto Serif SC",Georgia,"Times New Roman",serif;font-size:15px;line-height:1.6;letter-spacing:1.5px;cursor:pointer;-webkit-user-select:none;user-select:none;opacity:0;transition:opacity .5s ease,background .2s ease;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(23,20,49,.15)}
+.poem-line{position:absolute;bottom:30px;left:28px;top:auto;right:auto;z-index:3;max-width:46%;padding:9px 17px 10px;border-radius:12px;background:linear-gradient(135deg,rgba(255,214,232,.20),rgba(198,152,216,.12));border:1px solid rgba(255,214,232,.26);color:rgba(255,244,249,.95);font-family:"Kaiti SC","STKaiti","KaiTi","楷体","Songti SC","SimSun","Noto Serif SC",Georgia,"Times New Roman",serif;font-size:15px;line-height:1.6;letter-spacing:1.5px;text-shadow:0 1px 8px rgba(30,14,40,.5);cursor:pointer;-webkit-user-select:none;user-select:none;opacity:0;transition:opacity .5s ease,background .2s ease,border-color .2s ease;-webkit-backdrop-filter:blur(7px) saturate(1.15);backdrop-filter:blur(7px) saturate(1.15);box-shadow:0 4px 18px rgba(24,12,36,.2)}
 .poem-line.on{opacity:1}
-.poem-line:hover{background:rgba(255,255,255,.97)}
-.poem-line:focus-visible{outline:none;background:rgba(255,255,255,.97);box-shadow:0 0 0 2px rgba(119,100,146,.45),0 2px 12px rgba(23,20,49,.15)}
+.poem-line:hover{background:linear-gradient(135deg,rgba(255,214,232,.30),rgba(198,152,216,.19));border-color:rgba(255,214,232,.44)}
+.poem-line:focus-visible{outline:none;background:linear-gradient(135deg,rgba(255,214,232,.30),rgba(198,152,216,.19));box-shadow:0 0 0 2px rgba(255,190,215,.45),0 4px 18px rgba(24,12,36,.2)}
 .poem-text{display:block;overflow-wrap:anywhere}
-.poem-from{display:block;max-height:0;opacity:0;overflow:hidden;margin-top:0;font-size:12px;letter-spacing:1px;color:#9992a8;text-align:right;transition:max-height .25s ease,opacity .25s ease,margin-top .25s ease}
+.poem-from{display:block;max-height:0;opacity:0;overflow:hidden;margin-top:0;font-size:12px;letter-spacing:1px;color:rgba(255,206,228,.82);text-align:right;transition:max-height .25s ease,opacity .25s ease,margin-top .25s ease}
 .poem-line:hover .poem-from,.poem-line:focus-visible .poem-from{max-height:24px;opacity:1;margin-top:3px}
-@media(max-width:767px){.poem-line{top:52px;left:16px;right:16px;max-width:none;padding:5px 10px;font-size:11px;line-height:1.55;letter-spacing:.5px;border-radius:9px}.poem-from{font-size:10px;letter-spacing:.3px}}
-@media(max-width:350px){.poem-line{font-size:10.5px}}
+@media(max-width:767px){.poem-line{bottom:18px;left:16px;max-width:78%;padding:6px 12px 7px;font-size:11.5px;line-height:1.55;letter-spacing:.6px;border-radius:10px}.poem-from{font-size:10px;letter-spacing:.3px}}
+@media(max-width:350px){.poem-line{font-size:10.5px;max-width:84%}}
 
 /* 签名（subtitle）落在站名正下方居中、整体略偏右 */
 #header-title{right:auto;width:max-content;text-align:center}
