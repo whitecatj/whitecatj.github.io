@@ -1,5 +1,8 @@
 (function($){
   // Search
+  // 开关只负责「显示/隐藏面板」；检索与结果渲染在 js/search.js 里。
+  // 注意：这里刻意不用 input 的 blur 关闭——否则鼠标点结果时会先失焦，
+  // 面板还没来得及跳转就被隐藏了。改成「点面板外 / Esc / 点关闭按钮」关闭。
   var $searchWrap = $('#search-form-wrap'),
     isSearchAnim = false,
     searchAnimDuration = 200;
@@ -15,20 +18,48 @@
     }, searchAnimDuration);
   };
 
-  $('.nav-search-btn').on('click', function(){
+  var closeSearch = function(){
+    $searchWrap.removeClass('on');
+    $('#ww-search-results').attr('hidden', 'hidden');
+    $('#ww-search-input').attr('aria-expanded', 'false');
+  };
+
+  var openSearch = function(){
     if (isSearchAnim) return;
 
     startSearchAnim();
     $searchWrap.addClass('on');
     stopSearchAnim(function(){
-      $('.search-form-input').focus();
+      $('#ww-search-input').focus();
     });
+  };
+
+  $('.nav-search-btn').on('click', function(e){
+    e.stopPropagation();
+    if ($searchWrap.hasClass('on')) {
+      closeSearch();
+    } else {
+      openSearch();
+    }
   });
 
-  $('.search-form-input').on('blur', function(){
-    startSearchAnim();
-    $searchWrap.removeClass('on');
-    stopSearchAnim();
+  $('.ww-search-close').on('click', function(e){
+    e.stopPropagation();
+    closeSearch();
+  });
+
+  // 点击面板外部任意位置关闭
+  $(document).on('click', function(e){
+    if (!$searchWrap.hasClass('on')) return;
+    if ($(e.target).closest('#search-form-wrap').length) return;
+    closeSearch();
+  });
+
+  // Esc 关闭（输入框内由 search.js 处理，这里兜住面板外聚焦的情况）
+  $(document).on('keydown', function(e){
+    if ((e.key === 'Escape' || e.keyCode === 27) && $searchWrap.hasClass('on')) {
+      closeSearch();
+    }
   });
 
   // Share

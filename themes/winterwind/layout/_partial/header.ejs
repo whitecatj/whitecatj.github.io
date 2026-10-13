@@ -10,7 +10,15 @@
         <% for (var i in theme.menu){ %><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a><% } %>
       <button class="nav-search-btn winter-search" type="button" aria-label="搜索">搜索</button>
       </nav>
-      <div id="search-form-wrap"><%- search_form({button: '搜索', text: __('search')}) %></div>
+      <div id="search-form-wrap" data-index="<%- url_for('search.json') %>">
+        <div class="ww-search">
+          <input type="search" class="ww-search-input" id="ww-search-input"
+                 placeholder="搜索文章…" autocomplete="off" spellcheck="false"
+                 aria-label="搜索文章" aria-expanded="false" aria-controls="ww-search-results">
+          <button type="button" class="ww-search-close" aria-label="关闭搜索">×</button>
+        </div>
+        <div id="ww-search-results" class="ww-search-results" role="listbox" aria-label="搜索结果" hidden></div>
+      </div>
     </div>
     <div id="header-title" class="inner">
       <h1 id="logo-wrap"><a href="<%- url_for() %>" id="logo">冬风的博客</a></h1>
