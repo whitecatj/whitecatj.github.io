@@ -1,8 +1,8 @@
 {
-  "name": "whitecatj-blog",
+  "name": "winterwindww-blog",
   "version": "0.0.0",
   "private": true,
-  "description": "white_catj's Blog - Hexo + Landscape",
+  "description": "Winterwindww's Blog - Hexo + Landscape",
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",

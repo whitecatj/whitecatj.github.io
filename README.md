@@ -1,4 +1,4 @@
-# white_catj's Blog
+# Winterwindww's Blog
 
 Hexo 8 + Landscape 主题，发布在 **https://winterwindww.github.io/**
 

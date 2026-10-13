@@ -11,7 +11,7 @@ from datetime import datetime, timedelta, timezone
 from bs4 import BeautifulSoup, NavigableString
 from markdownify import MarkdownConverter
 
-SNAPSHOT = r"C:/Users/PC/WorkBuddy/2026-10-12-10-19-16/blog-snapshot/whitecatj.github.io-b17a5511"
+SNAPSHOT = r"C:/Users/PC/WorkBuddy/2026-10-12-10-19-16/blog-snapshot/winterwindww.github.io-b17a5511"
 OUTDIR = r"C:/Users/PC/Desktop/my-blog/source/_posts"
 TZ = timezone(timedelta(hours=8))  # 原站服务器按 UTC+8
 
