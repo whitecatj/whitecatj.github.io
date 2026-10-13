@@ -15,3 +15,14 @@ body{background:#f4f4fa;color:#303345;font-family:"Segoe UI","Microsoft YaHei",s
 #wrap>.outer::before,#wrap>.outer::after{display:none}#wrap{background:#f4f4fa}
 
 #header-inner{justify-content:flex-end}#logo{font-family:"Songti SC","SimSun","Noto Serif SC",Georgia,"Times New Roman",serif;font-weight:600;font-size:46px;letter-spacing:3px}#subtitle-wrap{margin-top:20px}#subtitle{color:#ffb3c6;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:27px;letter-spacing:1.5px;text-shadow:0 2px 10px #3a1020;display:inline-block}#subtitle::before{content:"— ";font-size:18px;opacity:.8}@media(max-width:767px){#header-title{left:45%;right:16px}#logo{font-size:27px;letter-spacing:1px;white-space:nowrap}#subtitle{font-size:23px}}@media(max-width:350px){#header-title{left:44%}#logo{font-size:24px;letter-spacing:0}#subtitle{font-size:21px}}
+
+/* 首页横幅右上角随机诗词：紧贴导航下方，与标题右缘对齐 */
+.poem-line{position:absolute;top:78px;right:28px;z-index:3;max-width:62%;padding:7px 14px;border-radius:10px;background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.5);color:#4a4458;font-size:13px;line-height:1.6;letter-spacing:.5px;text-align:right;cursor:pointer;-webkit-user-select:none;user-select:none;opacity:0;transition:opacity .5s ease,background .2s ease;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(23,20,49,.16)}
+.poem-line.on{opacity:1}
+.poem-line:hover{background:rgba(255,255,255,.97)}
+.poem-line:focus-visible{outline:none;background:rgba(255,255,255,.97);box-shadow:0 0 0 2px rgba(119,100,146,.45),0 2px 12px rgba(23,20,49,.16)}
+.poem-text{display:block;overflow-wrap:anywhere}
+.poem-from{position:absolute;left:0;right:0;top:100%;margin-top:5px;font-size:11px;letter-spacing:.5px;color:#fff;text-shadow:0 1px 6px rgba(23,20,49,.65);opacity:0;transform:translateY(-3px);transition:opacity .22s ease,transform .22s ease;pointer-events:none}
+.poem-line:hover .poem-from,.poem-line:focus-visible .poem-from{opacity:1;transform:translateY(0)}
+@media(max-width:767px){.poem-line{top:58px;right:16px;max-width:56%;padding:5px 10px;font-size:12px}.poem-from{position:static;margin-top:2px;color:#8d879b;text-shadow:none;opacity:.8;transform:none;font-size:10px}}
+@media(max-width:350px){.poem-line{max-width:64%;font-size:11px}}

@@ -5,6 +5,7 @@
   <div id="container">
     <div id="wrap">
       <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+      <% if (is_home()){ %><script src="<%- url_for('js/poem-lines.js') %>" defer></script><% } %>
       <div class="outer">
         <div class="winter-mobile-profile"><%- partial('_partial/winter-profile') %></div>
         <section id="main"><%- body %></section>

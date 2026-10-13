@@ -1,6 +1,10 @@
 <header id="header">
   <div id="banner" role="img" aria-label="Madeline 坐在 Celeste 山顶望向云海"></div>
   <div id="header-outer" class="outer">
+    <div id="poem-line" class="poem-line" role="button" tabindex="0" aria-label="随机诗词，点击换一句">
+      <span class="poem-text"></span>
+      <span class="poem-from"></span>
+    </div>
     <div id="header-inner" class="inner">
       <nav class="winter-nav" aria-label="主导航">
         <% for (var i in theme.menu){ %><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a><% } %>
