@@ -88,3 +88,14 @@ valine:
   lang: zh-cn # i18n: zh-cn/en
   placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
   guest_info: nick,mail,link #valine comment header info
+
+# ===============
+# giscus comment system (基于 GitHub Discussions)  https://giscus.app
+# ===============
+giscus:
+  enable: true
+  repo: whitecatj/whitecatj.github.io
+  repoId: MDEwOlJlcG9zaXRvcnkyMjQ2Mzk1MTg=
+  category: Announcements
+  categoryId: DIC_kwDODWO6Hs4DISgc
+  theme: light
