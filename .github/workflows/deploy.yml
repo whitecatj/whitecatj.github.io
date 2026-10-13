@@ -42,6 +42,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: master
           publish_dir: ./public
-          user_name: whitecatj
-          user_email: 58222279+whitecatj@users.noreply.github.com
+          user_name: Winterwindww
+          user_email: 58222279+Winterwindww@users.noreply.github.com
           commit_message: 'Site updated from main branch'

@@ -11,8 +11,8 @@ language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
-## 与原站保持一致（原站 og:url 为 http://whitecatj.github.io/index.html）
-url: http://whitecatj.github.io
+## 站点地址（GitHub Pages 用户站点，已随用户名变更为 Winterwindww）
+url: https://winterwindww.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -97,6 +97,6 @@ theme: winterwind
 ## 若不能（例如在 WorkBuddy 沙箱里），改用 tools/publish.py
 deploy:
   type: git
-  repo: https://github.com/whitecatj/whitecatj.github.io.git
+  repo: https://github.com/Winterwindww/Winterwindww.github.io.git
   branch: master
   message: 'Site updated: {{ now("YYYY-MM-DD HH:mm:ss") }}'

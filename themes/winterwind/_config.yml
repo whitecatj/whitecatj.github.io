@@ -46,14 +46,13 @@ sidebar: right
 widgets:
 - category
 - tag
-- tagcloud
 - archive
 - recent_posts
 
 # ===============
 # Widget behavior
 # ===============
-archive_type: 'monthly'
+archive_type: 'yearly'
 show_count: false
 # How many posts display in Home page.
 recent_posts_limits: 5
@@ -94,7 +93,7 @@ valine:
 # ===============
 giscus:
   enable: true
-  repo: whitecatj/whitecatj.github.io
+  repo: Winterwindww/Winterwindww.github.io
   repoId: MDEwOlJlcG9zaXRvcnkyMjQ2Mzk1MTg=
   category: Announcements
   categoryId: DIC_kwDODWO6Hs4DISgc
