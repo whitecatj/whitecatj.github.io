@@ -26,3 +26,9 @@ body{background:#f4f4fa;color:#303345;font-family:"Segoe UI","Microsoft YaHei",s
 .poem-line:hover .poem-from,.poem-line:focus-visible .poem-from{max-height:24px;opacity:1;margin-top:3px}
 @media(max-width:767px){.poem-line{top:52px;left:16px;right:16px;max-width:none;padding:5px 10px;font-size:11px;line-height:1.55;letter-spacing:.5px;border-radius:9px}.poem-from{font-size:10px;letter-spacing:.3px}}
 @media(max-width:350px){.poem-line{font-size:10.5px}}
+
+/* 签名（subtitle）落在站名正下方居中、整体略偏右 */
+#header-title{right:auto;width:max-content;text-align:center}
+#subtitle-wrap{position:relative;left:20px}
+@media(max-width:767px){#subtitle-wrap{left:14px}}
+@media(max-width:350px){#subtitle-wrap{left:12px}}
