@@ -12,18 +12,26 @@
       </header>
     <% } %>
     <div class="e-content article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
+      <%
+        // Hexo 的 excerpt 过滤器会把 <!-- more --> 替换成 <span id="more"></span>，
+        // 所以正文里有没有这个占位符，就代表作者有没有显式指定摘要分隔位置。
+        var hasMoreCut = String(post.content || '').indexOf('<span id="more"></span>') !== -1;
+      %>
+      <% if (index && post.excerpt){ %>
         <%- post.excerpt %>
         <% if (theme.excerpt_link){ %>
           <p class="article-more-link">
             <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
           </p>
         <% } %>
+      <% } else if (index && hasMoreCut){ %>
+        <%# 分隔线写在正文最前面（摘要为空）：首页只显示标题，不显示正文 %>
       <% } else { %>
         <%- post.content %>
       <% } %>
     </div>
     <footer class="article-footer">
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class="fa fa-share"><%= __('share') %></span></a>
       <% if (post.comments && theme.disqus_shortname){ %>
         <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><span class="fa fa-comment"><%= __('comment') %></span></a>
       <% } %>
@@ -52,24 +60,4 @@
   <section id="comments" class="vcomment">
 
   </section>
-<% } %>
-<% if (!index && post.comments !== false && theme.giscus && theme.giscus.enable){ %>
-<section id="comments" class="giscus-comments">
-  <div class="giscus"></div>
-</section>
-<script src="https://giscus.app/client.js"
-        data-repo="<%= theme.giscus.repo %>"
-        data-repo-id="<%= theme.giscus.repoId %>"
-        data-category="<%= theme.giscus.category %>"
-        data-category-id="<%= theme.giscus.categoryId %>"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="<%= theme.giscus.theme || 'light' %>"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
 <% } %>

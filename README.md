@@ -1,6 +1,6 @@
-# Winterwindww's Blog
+# white_catj's Blog
 
-Hexo 8 + Landscape 主题，发布在 **https://winterwindww.github.io/**
+Hexo 8 + Landscape 主题，发布在 **https://whitecatj.github.io/**
 
 ## 仓库结构
 
@@ -12,7 +12,7 @@ Hexo 8 + Landscape 主题，发布在 **https://winterwindww.github.io/**
 往 `main` 推送后，GitHub Actions 会自动编译（1 分钟左右）并把产物发布到 `master`，
 GitHub Pages 再从 `master` 更新线上站点。整套流程不需要你本地装任何东西。
 
-## 网页后台 <https://winterwindww.github.io/admin/>
+## 网页后台 <https://whitecatj.github.io/admin/>
 
 写文章、传图片都在这里做，不用碰 git。
 
@@ -58,9 +58,42 @@ tags:
 超过 1600px 或 1.2MB 的图会先在浏览器里压缩再传，避免仓库被大图撑爆。
 上传只是提交图片，**文章本身还要再点一次「保存并发布」**。
 
+## 首页摘要（`<!-- more -->`）
+
+首页列表里，每篇文章默认显示**整篇正文**。长文章想只露个开头，就在正文里放一条
+摘要分隔线。它是 Hexo 的约定写法 —— 一个独占一行的 HTML 注释：
+
+```markdown
+开头这一段会出现在首页……
+
+<!-- more -->
+
+剩下的内容只在文章详情页可见。
+```
+
+三种情况：
+
+| 分隔线怎么写 | 首页显示什么 |
+|---|---|
+| 不写 | 整篇正文 |
+| 写在正文中间 | 分隔线以上的内容 + 「阅读全文」链接 |
+| 写在正文最前面 | 只有标题，完全不显示正文 |
+
+**不用手打**：后台正文上方有「✂ 摘要分隔」按钮，把光标放到想断开的地方点一下就行，
+快捷键是 `Ctrl+Shift+M`；正文下方的灰条会实时告诉你首页会长什么样。
+
+两个坑后台已经帮你兜住了：
+
+- **分隔线必须独占一行、前后各留一个空行。** 它是在 markdown 渲染成 HTML **之后**
+  按字符串切分的，紧贴着文字写会切出残缺的 HTML，首页排版就乱了 —— 保存时会自动补好。
+- 一篇里只认**第一条**，多余的会被清掉。
+
+直接在 GitHub 上手写 markdown 时，`<!--more-->`、`<!-- more -->` 都能识别，
+但建议统一写成 `<!-- more -->`。
+
 ## 在网站上写文章（推荐）
 
-1. 打开 <https://github.com/Winterwindww/Winterwindww.github.io/tree/main/source/_posts>
+1. 打开 <https://github.com/whitecatj/whitecatj.github.io/tree/main/source/_posts>
 2. 右上角 **Add file → Create new file**，文件名写成 `文章标题.md`
 3. 内容按这个格式写：
 
@@ -108,7 +141,7 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 ```
 _config.yml                      站点配置（标题、URL、permalink、代码高亮等）
 package.json / package-lock.json 依赖清单，Actions 用它们还原环境
-source/_posts/*.md               文章源文件（16 篇老文章已迁移到这里）
+source/_posts/*.md               文章源文件
 source/admin/index.html          网页后台（单文件，skip_render 原样拷贝，不经 Hexo 渲染）
 source/images/uploads/           后台上传的图片
 source/images/                   头像、背景图

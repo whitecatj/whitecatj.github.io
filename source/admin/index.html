@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>博客后台 · Winterwindww's Blog</title>
+<title>博客后台 · white_catj's Blog</title>
 <style>
 :root{
   --blue:#006bde; --blue-h:#0059bb; --bg:#f2f4f7; --card:#fff; --line:#e4e8ee;
@@ -111,6 +111,14 @@ textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Con
 .spin{display:inline-block;width:12px;height:12px;border:2px solid #cfe3fa;border-top-color:var(--blue);
   border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
 @keyframes sp{to{transform:rotate(360deg)}}
+.imgbar .sep{width:1px;height:18px;background:var(--line);margin:0 3px}
+.moretip{margin-top:8px;padding:7px 11px;border-radius:7px;font-size:12.5px;line-height:1.65;
+  background:#f6f8fa;border:1px solid var(--line);color:var(--muted)}
+.moretip b{color:var(--text)}
+.moretip.on{background:#f0f7ff;border-color:#cfe3fa}
+.moretip.only{background:#fff8ec;border-color:#f2ddb8}
+.pane.md .morecut{margin:20px 0;height:0;border:0;border-top:2px dashed #c9d4e2;text-align:center}
+.pane.md .morecut span{position:relative;top:-10px;background:#fcfdff;padding:0 10px;font-size:12px;color:#8a94a6}
 
 /* ------- 图片上传 / 图片库 ------- */
 .imgbar{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
@@ -144,7 +152,7 @@ textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Con
 <div id="login">
   <div class="card login">
     <h1>博客后台</h1>
-    <p class="sub">Winterwindww's Blog · 在网页上写文章，点一下就发布</p>
+    <p class="sub">white_catj's Blog · 在网页上写文章，点一下就发布</p>
 
     <label class="f" for="tk">访问令牌（GitHub Token）</label>
     <input class="in" id="tk" type="password" placeholder="github_pat_... 或 ghp_..." autocomplete="off" spellcheck="false">
@@ -160,7 +168,7 @@ textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Con
       <ol>
         <li>打开 <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">新建 Fine-grained token</a></li>
         <li>Token name 写 <code>blog-admin</code>，Expiration 选 90 天</li>
-        <li>Repository access 选 <b>Only select repositories</b> → 勾 <code>Winterwindww.github.io</code></li>
+        <li>Repository access 选 <b>Only select repositories</b> → 勾 <code>whitecatj.github.io</code></li>
         <li>Permissions → Repository permissions → <b>Contents</b> 设为 <b>Read and write</b></li>
         <li>点 Generate token，复制 <code>github_pat_</code> 开头那串，贴到上面</li>
       </ol>
@@ -171,9 +179,9 @@ textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Con
 <!-- ================= 主界面 ================= -->
 <div id="app">
   <header>
-    <div class="brand">Winterwindww's Blog <span class="tag">后台</span></div>
+    <div class="brand">white_catj's Blog <span class="tag">后台</span></div>
     <div class="sp"></div>
-    <a class="btn ghost sm" id="siteLink" href="https://winterwindww.github.io/" target="_blank">查看站点</a>
+    <a class="btn ghost sm" id="siteLink" href="https://whitecatj.github.io/" target="_blank">查看站点</a>
     <span class="who" id="whoami"></span>
     <button class="btn ghost sm" id="logout">退出</button>
   </header>
@@ -229,9 +237,12 @@ textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Con
 
         <div class="imgbar">
           <button class="btn ghost sm" id="pickImg" type="button">＋ 上传图片</button>
+          <span class="sep"></span>
+          <button class="btn ghost sm" id="moreBtn" type="button" title="在光标处插入摘要分隔线（Ctrl+Shift+M）">✂ 摘要分隔</button>
           <span class="up">也可以直接把图片拖进来，或复制图片后在正文里 Ctrl+V 粘贴</span>
           <input type="file" id="imgFile" accept="image/*" multiple hidden>
         </div>
+        <div class="moretip" id="moreTip"></div>
 
         <div class="dropzone" id="dropWrap">
           <textarea class="in body" id="fBody" spellcheck="false" placeholder="直接写 markdown，代码块用三个反引号包裹。&#10;&#10;空一行再写 &lt;!-- more --&gt; 可控制首页摘要。"></textarea>
@@ -259,11 +270,11 @@ textarea.body{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Con
 
 /* ================== 配置 ================== */
 var API    = "https://api.github.com";
-var REPO   = "Winterwindww/Winterwindww.github.io";
+var REPO   = "whitecatj/whitecatj.github.io";
 var BRANCH = "main";
 var POSTS  = "source/_posts";
-var SITE   = "https://winterwindww.github.io";
-var LS_KEY = "winterwindww_blog_token";
+var SITE   = "https://whitecatj.github.io";
+var LS_KEY = "whitecatj_blog_token";
 
 var token = "";
 var list  = [];      // [{name, sha, title, date, tags}]
@@ -436,6 +447,7 @@ function setStatus(text, cls){
 function showForm(on){
   $("form").className = "form" + (on ? " on" : "");
   $("emptyTip").style.display = on ? "none" : "block";
+  refreshMoreTip();
 }
 function updateUrl(){
   var n = $("fName").value.trim() || slugify($("fTitle").value);
@@ -578,7 +590,7 @@ var CHEAT = [
   ['&lt;img src="/images/uploads/x.png" width="320"&gt;', '想控制显示宽度时用 HTML 写法'],
   ['| A | B |\\n|---|---|\\n| 1 | 2 |', '表格'],
   ['---', '分隔线'],
-  ['<!-- more -->', '独占一行时，上面的内容作为首页摘要']
+  ['<!-- more -->', '摘要分隔线，<b>必须独占一行</b>。它上面的内容进首页，下面的只在文章页显示。<br>不写 → 首页显示全文；写在最前面 → 首页只显示标题。<br>不用手打：点正文上方的「✂ 摘要分隔」一键插入（Ctrl+Shift+M），保存时会自动补好前后空行。']
 ];
 function buildCheat(){
   var rows = CHEAT.map(function(r){
@@ -607,22 +619,44 @@ $("tabEdit").onclick = function(){ showTab("edit"); };
 $("tabPrev").onclick = function(){ showTab("prev"); };
 $("tabLib").onclick  = function(){ showTab("lib"); };
 $("tabHelp").onclick = function(){ showTab("help"); };
+$("moreBtn").onclick = insertMore;
+document.addEventListener("keydown", function(e){
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && String(e.key).toLowerCase() === "m"){
+    e.preventDefault();
+    if ($("form").classList.contains("on")) insertMore();
+  }
+});
 
 var previewTimer = null;
+// 预览是交给 GitHub 渲染的，而它会直接吃掉 HTML 注释，
+// 所以先塞一个正文里不可能出现的哨兵文本，渲染完再换回看得见的虚线。
+var CUT_SENT = "WBCUT7F3A";
+var CUT_HTML = '<div class="morecut"><span>✂ 摘要分隔线 · 以上内容进首页</span></div>';
 function renderPreview(){
   var box = $("preview"), text = $("fBody").value;
   if (!text.trim()){ box.innerHTML = '<p class="dim">（正文还是空的）</p>'; return; }
+  var hasCut = MORE_RE.test(text);
   box.innerHTML = '<p class="dim">渲染中…</p>';
   gh("/markdown", {
     method: "POST", raw: true,
-    body: JSON.stringify({ text: text, mode: "gfm", context: REPO })
+    body: JSON.stringify({
+      text: hasCut ? text.replace(MORE_RE_G, "\n\n" + CUT_SENT + "\n\n") : text,
+      mode: "gfm", context: REPO
+    })
   }).then(function(html){
+    html = String(html || "");
+    if (hasCut){
+      html = html
+        .replace(new RegExp("<p>\\s*" + CUT_SENT + "\\s*</p>"), CUT_HTML)
+        .replace(new RegExp(CUT_SENT, "g"), CUT_HTML);
+    }
     if ($("tabPrev").classList.contains("on")) box.innerHTML = html || '<p class="dim">（没有内容）</p>';
   }).catch(function(e){
     box.innerHTML = '<p class="dim">预览失败：' + esc(e.message) + '（不影响保存）</p>';
   });
 }
 $("fBody").addEventListener("input", function(){
+  refreshMoreTip();
   if (!$("tabPrev").classList.contains("on")) return;
   clearTimeout(previewTimer);
   previewTimer = setTimeout(renderPreview, 500);
@@ -691,7 +725,11 @@ function save(){
   var tags  = $("fTags").value.split(/[，,]/).map(function(s){ return s.trim(); }).filter(Boolean);
   var sticky = Math.round(Number($("fSticky").value));
   if (!isFinite(sticky)) sticky = 0;
-  var body  = $("fBody").value;
+  // 提交前统一把摘要分隔线整理成规范写法（补前后空行、去掉多余的那几条），
+  // 顺手把编辑区也同步过去，作者下次打开看到的就是标准格式
+  var body  = normalizeMore($("fBody").value);
+  $("fBody").value = body;
+  refreshMoreTip();
 
   var content = buildPost({ title:title, date:date, tags:tags, sticky:sticky, body:body });
   var path = POSTS + "/" + name + ".md";
@@ -824,6 +862,74 @@ function uploadImage(file){
       })
     });
   }).then(function(){ return IMGURL + "/" + name; });
+}
+
+/* ================== 摘要分隔线 ==================
+   Hexo 把正文里独占一行的 <!-- more --> 当作首页摘要的分界：
+     标记以上的内容进首页；以下的内容点「阅读全文」才看得到。
+     · 完全不写        → 首页显示整篇正文
+     · 写在正文最前面  → 首页只显示标题
+   它是在 markdown 渲染成 HTML 之后才按字符串切分的，所以标记必须独占
+   一行、前后各留一个空行；紧贴着文字写会切出残缺的 HTML，首页就乱套了。
+   正因为这个坑，这里改成由程序生成规范写法，顺便兼容手写过的各种变体。
+*/
+var MORE_RE   = /<!--\s*more\s*-->/i;
+var MORE_RE_G = /<!--\s*more\s*-->/gi;
+var MORE_TAG  = "<!-- more -->";
+
+// 把正文里的分隔线统一规范成：只保留第一条 + 独占一行 + 前后各一个空行
+function normalizeMore(body){
+  var text = String(body == null ? "" : body).replace(/\r\n?/g, "\n");
+  var m = MORE_RE.exec(text);
+  if (!m) return text.replace(/^\s+/, "").replace(/\s+$/, "");
+  var head = text.slice(0, m.index).replace(/\s+$/, "");
+  var tail = text.slice(m.index + m[0].length).replace(/^\s+/, "").replace(MORE_RE_G, "").replace(/^\s+/, "");
+  return (head ? head + "\n\n" : "") + MORE_TAG + (tail ? "\n\n" + tail : "");
+}
+
+// 实时告诉作者「首页会长什么样」
+function refreshMoreTip(){
+  var el = $("moreTip"); if (!el) return;
+  var v = $("fBody").value;
+  var m = MORE_RE.exec(v);
+  if (!m){
+    el.className = "moretip";
+    el.innerHTML = '首页摘要：<b>未设置</b>，首页会显示整篇正文。想只露开头一段，就把光标放到断开的位置，点上面的「✂ 摘要分隔」。';
+    return;
+  }
+  var head = v.slice(0, m.index).trim();
+  if (!head){
+    el.className = "moretip on only";
+    el.innerHTML = '首页摘要：<b>只显示标题</b> —— 分隔线在正文最前面，首页不会出现这篇的正文。';
+    return;
+  }
+  var n = head.split(/\n{2,}/).filter(function(s){ return s.trim(); }).length;
+  el.className = "moretip on";
+  el.innerHTML = '首页摘要：分隔线以上约 <b>' + n + ' 段</b>会出现在首页，末尾带「阅读全文」链接。';
+}
+
+function insertMore(){
+  var ta = $("fBody");
+  showTab("edit");
+  var v = ta.value;
+  var existed = MORE_RE.exec(v);
+  if (existed){                       // 已经有一条，不重复插，直接选中让作者自己挪
+    ta.focus();
+    ta.setSelectionRange(existed.index, existed.index + existed[0].length);
+    setStatus("正文里已经有一条摘要分隔线了，已帮你选中；想换位置就先删掉再点这里。", "fail");
+    return;
+  }
+  var s = ta.selectionStart || 0, e = ta.selectionEnd || 0;
+  var before = v.slice(0, s).replace(/\s+$/, "");
+  var after  = v.slice(e).replace(/^\s+/, "");
+  ta.value = (before ? before + "\n\n" : "") + MORE_TAG + (after ? "\n\n" + after : "\n");
+  var caret = (before ? before.length + 2 : 0) + MORE_TAG.length;
+  ta.focus();
+  ta.setSelectionRange(caret, caret);
+  refreshMoreTip();
+  setStatus(before
+    ? "分隔线插好了：它上面的内容进首页，下面的点「阅读全文」才看得到。"
+    : "分隔线在正文最前面：这篇在首页只显示标题。", "done");
 }
 
 function insertAtCursor(text){
