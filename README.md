@@ -1,6 +1,6 @@
 # white_catj's Blog
 
-Hexo 8 + Landscape 主题，发布在 **https://whitecatj.github.io/**
+Hexo 8 + 自定义主题 winterwind，发布在 **https://winterwindww.github.io/**
 
 ## 仓库结构
 
@@ -12,7 +12,7 @@ Hexo 8 + Landscape 主题，发布在 **https://whitecatj.github.io/**
 往 `main` 推送后，GitHub Actions 会自动编译（1 分钟左右）并把产物发布到 `master`，
 GitHub Pages 再从 `master` 更新线上站点。整套流程不需要你本地装任何东西。
 
-## 网页后台 <https://whitecatj.github.io/admin/>
+## 网页后台 <https://winterwindww.github.io/admin/>
 
 写文章、传图片都在这里做，不用碰 git。
 
@@ -93,7 +93,7 @@ tags:
 
 ## 在网站上写文章（推荐）
 
-1. 打开 <https://github.com/whitecatj/whitecatj.github.io/tree/main/source/_posts>
+1. 打开 <https://github.com/Winterwindww/Winterwindww.github.io/tree/main/source/_posts>
 2. 右上角 **Add file → Create new file**，文件名写成 `文章标题.md`
 3. 内容按这个格式写：
 
